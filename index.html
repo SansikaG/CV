@@ -1,1011 +1,454 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-
-
-<!-- Mirrored from portfolio-sansika.fr/ by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 09 Nov 2025 18:40:40 GMT -->
 <head>
   <meta charset="utf-8" />
-  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta
-    content="Portfolio de Sansika Gnanapragasam - Etudiant en BTS SIO (Services Informatiques aux Organisations) option SLAM (Solutions Logicielles et Application Métier)"
-    name="description" />
-  <meta content="Gnanapragasam, Sansika ,Portfolio, BTS SIO, SLAM, STUDI, Paris" name="keywords" />
-  <meta content="Sansika Gnanapragasam" name="author" />
-  <title>Portfolio BTS SIO⎟ Sansika Gnanapragasam</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Portfolio — Sansika Gnanapragasam</title>
+  <meta name="description" content="Portfolio de Sansika Gnanapragasam - Étudiant en informatique (BTS SIO SLAM)" />
+  <style>
+    /* ==========================
+       Portfolio — Sansika (single file)
+       Theme: Clair, accent rose
+       ========================== */
+    :root{
+      --bg: #ffffff;
+      --surface: #f8f8fb;
+      --card: #ffffff;
+      --muted: #6b6b76;
+      --text: #0d1620;
+      --rose: #ff4fa3;
+      --rose-2: #ff8ec2;
+      --glass: rgba(255,79,163,0.08);
+      --radius: 14px;
+      --container: 1200px;
+      --gutter: 20px;
+      --title-size: 48px;
+      --section-title-size: 28px;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
 
-  <!-- ===== Favicons ===== -->
-  <link href="assets/img/mslogo-removebg-preview%20(1).png" rel="icon" />
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;background:linear-gradient(180deg,var(--surface),#fff);color:var(--text);-webkit-font-smoothing:antialiased}
+    a{color:var(--rose)}
+    img{max-width:100%;display:block;height:auto}
+    .container{max-width:var(--container);margin:0 auto;padding:0 var(--gutter)}
 
-  <!-- ===== Google fonts ===== -->
-  <link rel="preconnect" href="https://fonts.googleapis.com/" />
-  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-    rel="stylesheet">
+    /* Header */
+    header{position:sticky;top:12px;z-index:200;padding-top:10px}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px;border-radius:12px;background:rgba(255,255,255,0.9);backdrop-filter:blur(6px);box-shadow:0 10px 30px rgba(16,24,40,0.04)}
+    .brand{display:flex;align-items:center;gap:14px}
+    .logo{width:64px;height:64px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:900;color:#fff;background:linear-gradient(135deg,var(--rose),var(--rose-2));font-size:20px;box-shadow:0 12px 40px rgba(255,79,163,0.12)}
+    .brand h1{font-size:18px;margin:0}
+    .brand p{margin:0;font-size:13px;color:var(--muted)}
+    nav ul{display:flex;gap:8px;list-style:none;margin:0;padding:0;align-items:center}
+    nav li{padding:10px 14px;border-radius:10px;font-weight:700;font-size:16px;color:var(--text);cursor:pointer}
+    nav li:hover{background:var(--glass)}
+    nav li.active{background:linear-gradient(90deg,var(--rose),var(--rose-2));color:#fff;box-shadow:0 8px 30px rgba(255,79,163,0.12)}
 
-  <!-- ====== Boxicons ====== -->
-  <link rel="stylesheet" href="assets/css/icomoon.css">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet" />
+    .mobile-toggle{display:none;background:transparent;border:none;font-size:22px;cursor:pointer;padding:6px;border-radius:8px}
+    @media (max-width:900px){
+      nav ul{display:none;position:absolute;top:86px;right:18px;background:#fff;border-radius:12px;padding:12px;box-shadow:0 18px 40px rgba(33,33,33,0.08);flex-direction:column;min-width:220px}
+      nav ul.show{display:flex}
+      .mobile-toggle{display:inline-flex}
+    }
 
-  <!-- ===== Vendeur CSS ===== -->
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet" />
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" />
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+    /* Hero */
+    main{padding:28px 0}
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center}
+    .card{background:var(--card);padding:28px;border-radius:var(--radius);box-shadow:0 12px 48px rgba(16,24,40,0.06);border:1px solid rgba(15,15,20,0.03)}
+    .eyebrow{color:var(--muted);font-size:15px;margin-bottom:8px}
+    h1.title{font-size:var(--title-size);margin:6px 0 12px;line-height:1.02}
+    h1.title .accent{background:linear-gradient(90deg,var(--rose),var(--rose-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+    p.lead{color:var(--muted);font-size:18px;margin:10px 0 18px}
 
-  <!-- ===== Main CSS ===== -->
-  <link href="assets/css/style.css" rel="stylesheet" />
+    .cta{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{background:transparent;border:2px solid rgba(0,0,0,0.06);padding:12px 16px;border-radius:12px;color:var(--text);cursor:pointer;font-weight:800;font-size:16px}
+    .btn.primary{background:linear-gradient(90deg,var(--rose),var(--rose-2));color:#fff;border:none;box-shadow:0 12px 36px rgba(255,79,163,0.12)}
+
+    /* profile card */
+    .profile{display:flex;flex-direction:column;gap:12px;align-items:center;text-align:center;padding:20px}
+    .avatar{width:240px;height:240px;border-radius:18px;display:flex;align-items:center;justify-content:center;font-size:72px;font-weight:900;color:#fff;background:linear-gradient(135deg,var(--rose),#c64e95);box-shadow:0 12px 44px rgba(255,79,163,0.12)}
+    .profile h3{margin:0;font-size:22px}
+    .profile p{margin:0;color:var(--muted);font-size:15px}
+
+    /* Sections */
+    section{margin-top:36px}
+    .section-head{display:flex;align-items:end;justify-content:space-between;gap:12px}
+    .section-head h2{margin:0;font-size:var(--section-title-size)}
+    .section-head p{margin:0;color:var(--muted)}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+    .project{padding:18px;border-radius:12px;background:linear-gradient(180deg,#fff,#fbfbfd);border:1px solid rgba(0,0,0,0.04)}
+    .project h4{margin:0 0 8px;font-size:18px}
+    .project p{color:var(--muted);margin:0}
+
+    .chip{padding:10px 12px;border-radius:999px;background:linear-gradient(180deg,rgba(255,79,163,0.06),rgba(255,79,163,0.02));color:var(--rose);font-weight:700;font-size:14px}
+
+    /* timeline */
+    .timeline{border-left:3px solid rgba(0,0,0,0.06);padding-left:20px}
+    .timeline-item{position:relative;padding:14px 0}
+    .timeline-item::before{content:'';position:absolute;left:-21px;top:18px;width:18px;height:18px;border-radius:50%;background:linear-gradient(90deg,var(--rose),var(--rose-2));box-shadow:0 8px 22px rgba(255,79,163,0.12)}
+
+    /* skills */
+    .skills{display:flex;flex-wrap:wrap;gap:12px}
+    .skill{min-width:150px;padding:16px;border-radius:12px;background:#fff;border:1px solid rgba(0,0,0,0.04);text-align:left}
+    .skill h4{margin:0 0 6px;font-size:16px}
+    .skill p{margin:0;color:var(--muted);font-size:14px}
+
+    /* veille */
+    .feed{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+    .feed-card{padding:14px;border-radius:12px;background:#fff;border:1px solid rgba(0,0,0,0.04)}
+    .feed-card h5{margin:0 0 8px}
+
+    /* contact */
+    form{display:flex;flex-direction:column;gap:12px}
+    input,textarea,select{padding:14px;border-radius:10px;border:1px solid rgba(0,0,0,0.06);background:#fff;font-size:15px}
+    input:focus,textarea:focus{outline:none;box-shadow:0 12px 30px rgba(255,79,163,0.06);border-color:var(--rose)}
+
+    footer{margin:40px 0 80px;text-align:center;color:var(--muted)}
+
+    /* helpers */
+    .muted{color:var(--muted)}
+    .center{display:flex;align-items:center;justify-content:center}
+    .row{display:flex;gap:12px;align-items:center}
+    .pill{display:inline-block;padding:8px 12px;border-radius:999px;background:rgba(0,0,0,0.03);font-weight:700}
+
+    /* responsive */
+    @media (max-width:1100px){
+      .hero{grid-template-columns:1fr 360px}
+      .grid-3{grid-template-columns:repeat(2,1fr)}
+      .feed{grid-template-columns:1fr}
+    }
+    @media (max-width:760px){
+      .hero{grid-template-columns:1fr}
+      .avatar{width:180px;height:180px}
+      .logo{width:52px;height:52px}
+    }
+    @media (max-width:480px){
+      .grid-3{grid-template-columns:1fr}
+      nav ul{display:none}
+    }
+  </style>
 </head>
-<!-- ========== Fin Head ========== -->
-
 <body>
-  <!-- ========== Header ========== -->
-  <header id="header" class="fixed-top">
-    <div class="container d-flex align-items-center justify-content-between">
-      <h1 class="logo">
-        <a href="index-2.html">Y.B</a>
-      </h1>
+  <!-- HEADER / NAV -->
+  <header class="container" role="banner" style="padding-top:8px">
+    <div class="nav">
+      <div class="brand" aria-hidden="false">
+        <div class="logo" aria-hidden="true">Y.B</div>
+        <div>
+          <h1>Gnanapragasam Sansika</h1>
+          <p>Étudiant en informatique</p>
+        </div>
+      </div>
 
-      <!-- ========== Navbar ========== -->
-      <nav id="navbar" class="navbar">
-        <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Accueil</a></li>
-          <li><a class="nav-link scrollto" href="#about">A propos</a></li>
-          <li><a class="nav-link scrollto" href="#resume">Parcours</a></li>
-          <li><a class="nav-link scrollto" href="#skills">Compétences</a></li>
-          <li><a class="nav-link scrollto" href="#veille">Veille Technologique</a></li>         
-          </li>
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-          <li>
-            <a class="getstarted scrollto" href="autres/hireme.html">Projet</a>
-          </li>
+      <nav aria-label="Navigation principale">
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Ouvrir le menu">☰</button>
+        <ul id="nav-list" role="menubar" aria-label="Principales sections">
+          <li data-link="#home" class="active" role="menuitem">Accueil</li>
+          <li data-link="#about" role="menuitem">À propos</li>
+          <li data-link="#parcours" role="menuitem">Parcours</li>
+          <li data-link="#competences" role="menuitem">Compétences</li>
+          <li data-link="#veille" role="menuitem">Veille Technologique</li>
+          <li data-link="#projects" role="menuitem">Projet</li>
+          <li data-link="#contact" role="menuitem">Contact</li>
         </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
       </nav>
-      <!-- ========== Fin Navbar ========== -->
     </div>
   </header>
-  <!-- ========== Fin Header ========== -->
 
-  <!-- ========== Hero section ========== -->
-  <section id="hero" class="d-flex align-items-center">
-    <div class="container-fluid" data-aos="fade-up">
-      <div class="row justify-content-center">
-        <div class="col-xl-5 col-lg-6 pt-3 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
-          <ul class="socials list-unstyled">
-            <li>
-              <a href="https://www.linkedin.com/in/Sansika-Gnanapragasam1/" target="_blank" title="Profile Linkedin"><i
-                  class="bx bxl-linkedin"></i></a>
-            </li>
-            <li>
-              <a href="#" target="_blank" title="Profile Twitter"><i class="bx bxl-twitter"></i></a>
-            </li>
-            <li>
-              <a href="https://github.com/SansikaGnanapragasam" target="_blank" title="Profile Github"><i
-                  class="bx bxl-github"></i></a>
-            </li>
-          </ul>
-          <h1>Gnanapragasam Sansika</h1>
-          <h2>Étudiant en informatique</h2>
-          <div>
-            <a href="#about" class="btn-get-started scrollto">Bienvenue</a>
-          </div>
+  <!-- MAIN -->
+  <main id="home" class="container" role="main">
+
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="home-title">
+      <div class="card">
+        <div class="eyebrow">Bienvenue</div>
+        <h1 class="title" id="home-title">Gnanapragasam Sansika <span class="accent">— Étudiant en informatique</span></h1>
+        <p class="lead">Étudiant en BTS SIO (option SLAM) — Ce portfolio présente mon parcours, mes projets académiques, mes stages, et ma veille technologique. Merci de visiter mon travail.</p>
+
+        <div style="margin-top:18px" class="cta" role="group" aria-label="Actions">
+          <a class="btn primary" href="#contact">Me contacter</a>
+          <a class="btn" href="#projects">Voir mes projets</a>
+          <a class="btn" href="#veille">Ma veille</a>
         </div>
-        <div class="col-xl-4 col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="150">
-          <img src="assets/img/Hand%20coding-bro.png" class="img-fluid animated" alt="" />
-        </div>
+
+        <div style="margin-top:14px;color:var(--muted)">Basé à Paris · CV & Lettre de motivation disponibles ci-dessous</div>
       </div>
-    </div>
-  </section>
-  <!-- ========== Fin Hero ========== -->
 
-  <!-- ========== Main ========== -->
-  <main id="main">
-    <!-- ========== About section ========== -->
-    <section id="about" class="about">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-6 order-1 order-lg-2" data-aos="zoom-in" data-aos-delay="150">
-            <img src="assets/img/Programming-bro%20(1).png" class="img-fluid" alt="" />
+      <aside class="card profile" aria-label="Carte profil">
+        <div class="avatar" id="avatar-initials">SG</div>
+        <h3 id="profile-name">Sansika Gnanapragasam</h3>
+        <p class="muted">Étudiant • Développement • SLAM</p>
+
+        <div style="display:flex;gap:10px;margin-top:12px;flex-wrap:wrap">
+          <a class="btn" id="cv-link" href="#" aria-label="Télécharger CV">CV</a>
+          <a class="btn" id="lm-link" href="#" aria-label="Télécharger Lettre de motivation">Lettre de motivation</a>
+        </div>
+
+        <div style="margin-top:14px;text-align:left">
+          <div class="muted" style="font-size:13px">Centres d'intérêt</div>
+          <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap">
+            <span class="chip">Coder</span>
+            <span class="chip">Sport</span>
+            <span class="chip">Lire</span>
+            <span class="chip">Voyager</span>
           </div>
-          <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right">
-            <div class="about-elementor-widget-container">
-              <h2 class="elementor-heading-title elementor-size-default">
-                A propos
-              </h2>
-            </div>
-            <p>
-              Bonjour je suis Sansika Gnanapragasam, diplomé d'un BTS SIO (Services
-              Informatiques aux Organisations) au Lycée Voillaume,
-              dans la spécialité SLAM (Solutions Logicielles et Applications
-              Métiers).
-            </p>
-            <p>
-              Toujours en cours d'étude, à l'issue de mon BTS j'envisage de
-              continuer par une année de Bachelor en Développement Full-stack
-              en alternance ou en licence informatique.
-            </p>
-            <p>
-              En attendant je vous propose ce portfolio qui est une vitrine de
-              mes réalisations académiques, de mes compétences et de mon
-              parcours et je suis ravi de vous inviter à explorer mon travail.
-              Vous découvrirez mes projets, mon engagement dans
-              l'informatique, mes compétences en développement, et mon
-              parcours académique.
-            </p>
-            <p>
-              Enfin vous retrouverez ci-dessous mon CV et ma Lettre de
-              motivation.
-            </p>
-            <a href="assets/cv_Sansika.pdf" class="read-more" target="_blank">CV<i
-                class="bi bi-long-arrow-right"></i>
-            </a>
-            <a href="assets/Lettre_Motivation.pdf" class="read-more" target="_blank">Lettre de
-              Motivation<i class="bi bi-long-arrow-right"></i>
-            </a>
-            <h3>Centres d'intérêt</h3>
-            <div class="about-hobbies-section">
-              <!-- ========== Start Lordicon : Animated Icons ========== -->
-              <div>
-                <lord-icon src="https://cdn.lordicon.com/vlycxjwx.json" trigger="loop" delay="2000"
-                  colors="primary:#121331,secondary:#4030e8" style="width: 45px; height: 45px">
-                </lord-icon>
-              </div>
-              <div class="ue-lord-icon-contet">
-                <div class="about-ue-box-title">Coder</div>
-              </div>
-              <div>
-                <lord-icon src="https://cdn.lordicon.com/iauexvsm.json" trigger="loop" delay="2000"
-                  colors="primary:#121331,secondary:#4030e8" style="width: 50px; height: 50px">
-                </lord-icon>
-              </div>
-              <div class="ue-lord-icon-contet">
-                <div class="about-ue-box-title">Sport</div>
-              </div>
-              <div>
-                <lord-icon src="https://cdn.lordicon.com/lenjvibx.json" trigger="loop" delay="2000"
-                  colors="primary:#121331,secondary:#4030e8" style="width: 45px; height: 45px">
-                </lord-icon>
-              </div>
-              <div class="ue-lord-icon-contet">
-                <div class="about-ue-box-title">Lire</div>
-              </div>
-              <div>
-                <lord-icon src="https://cdn.lordicon.com/pbbsmkso.json" trigger="loop" delay="2000"
-                  colors="primary:#121331,secondary:#4030e8" style="width: 45px; height: 45px">
-                </lord-icon>
-              </div>
-              <div class="ue-lord-icon-contet">
-                <div class="about-ue-box-title">Voyager</div>
-              </div>
-              <!-- ========== Fin Lordicon: Animated Icons ========== -->
-            </div>
-          </div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- À PROPOS -->
+    <section id="about" aria-labelledby="about-title">
+      <div class="card">
+        <div class="section-head">
+          <h2 id="about-title">À propos</h2>
+          <p class="muted">Présentation</p>
+        </div>
+
+        <p style="margin-top:12px;color:var(--muted);line-height:1.65">
+          Bonjour, je suis <strong>Sansika Gnanapragasam</strong>, diplômé d'un <strong>BTS SIO (Services Informatiques aux Organisations)</strong> au Lycée Voillaume, spécialité <strong>SLAM</strong> (Solutions Logicielles et Applications Métiers).
+        </p>
+
+        <p style="margin-top:12px;color:var(--muted);line-height:1.65">
+          Toujours en cours d'étude, à l'issue de mon BTS j'envisage de poursuivre par une année de Bachelor en Développement Full-stack en alternance ou une licence informatique.
+        </p>
+
+        <p style="margin-top:12px;color:var(--muted);line-height:1.65">
+          Ce portfolio est une vitrine de mes réalisations académiques, de mes compétences et de mon parcours. Vous trouverez mes projets, mon engagement dans l'informatique, mes compétences en développement, ainsi que mon CV et ma lettre de motivation.
+        </p>
+
+        <div style="display:flex;gap:10px;margin-top:14px;flex-wrap:wrap">
+          <a class="btn" href="#" id="cv-download">CV</a>
+          <a class="btn" href="#" id="lm-download">Lettre de Motivation</a>
         </div>
       </div>
     </section>
-    <!-- ========== Fin About section  ========== -->
 
-    <!-- ========== BTS section ========== -->
-    <section id="about" class="about-bts-sio">
-      <div class="container">
-        <div class="section-header">
-          <h2>Qu'est ce que le BTS SIO ?</h2>
-          <span>Je vous présente la formation que j'ai suivie et évolué durant
-            un an.</span>
-          <p>
-            Le Brevet de Technicien Supérieur aux Services Informatiques
-            aux Organisations (BTS SIO) est un programme de niveau Bac+2 s'adresse aux personnes qui souhaitent se
-            former en deux ans aux métiers d'administrateur
-            réseau ou de développeur.
-          </p>
-          <p>
-            Elle peut-être réalisable soit en alternance d'une durée de 12 ou
-            de 24 mois ou alors en initial avec minimum 10 semaines de stages
-            obligatoire en entreprise d’une durée de 2 à 3 mois, afin de
-            s'initier aux réalités du domaine professionnel.
-          </p>
-          <h3>Elle propose deux spécialités :</h3>
+    <!-- PARCOURS -->
+    <section id="parcours" aria-labelledby="parcours-title">
+      <h2 id="parcours-title" style="margin-top:18px">Parcours</h2>
+      <div class="card timeline" style="margin-top:12px">
+        <div class="timeline-item">
+          <strong>Janvier 2025 – Mars 2025</strong>
+          <div class="muted">Stage Développement Web — mises à jour et améliorations du site personnel de mon maître de stage; interface front inspirée d'Airbnb/Booking; site de gestion de commandes.</div>
         </div>
-        <div class="about-study-bts-sio">
-          <div class="about-col_bts_slam">
-            <h4>
-              <img src="assets/img/code.svg" alt="Code Logo" width="30px" />
-              Spécialité SLAM
-            </h4>
-            <p>
-              Cette spécialité vous formera à développer des compétences en
-              développement d'applications et de logiciels, à concevoir des
-              bases de données, programmer dans divers langages, tester et
-              déployer des solutions logicielles.
-            </p>
-            <p>
-              Voici une liste de quelque'uns des métiers principaux
-              accessibles après l’obtention de ce diplôme (SLAM) :
-            </p>
-            <ul>
-              <li>Analyste-programmeur</li>
-              <li>Développeur / Développeuse d’applications mobile</li>
-              <li>Technicien / Technicienne informatique</li>
-              <li>Développeur / Développeuse web</li>
-              <li>Intégrateur web</li>
-            </ul>
-          </div>
-          <div class="about-col_bts_sisr">
-            <h4>
-              <img src="assets/img/workflows.svg" alt="Code Logo" width="30px" />
-              Spécialité SISR
-            </h4>
-            <p>
-              Cette spécialité vous formera sur la gestion, la maintenance des
-              infrastructures réseau. Vous apprendrez à gérer des systèmes
-              d'exploitation, des services réseaux, mais aussi à sécuriser une
-              infrastructure et à proposer des solutions pour optimiser la
-              performance d'un réseau.
-            </p>
-            <p>
-              Voici une liste de quelque'uns des métiers principaux
-              accessibles après l’obtention de ce diplôme (SISR) :
-            </p>
-            <ul>
-              <li>Administrateur systèmes et réseaux</li>
-              <li>Technicien / Technicienne support</li>
-              <li>Technicien / Technicienne réseau</li>
-              <li>Gestionnaire d’infrastructures informatiques</li>
-              <li>Responsable sécurité des systèmes d’information junior</li>
-            </ul>
-          </div>
+
+        <div class="timeline-item">
+          <strong>Février 2023 – Avril 2023</strong>
+          <div class="muted">Stage Node.js — outil d'export de données NoSQL vers XML; optimisation structure base de données.</div>
+        </div>
+
+        <div class="timeline-item">
+          <strong>Juin 2022 – Août 2022</strong>
+          <div class="muted">Stage ERP — amélioration d'application ERP; ergonomie et performance.</div>
+        </div>
+
+        <div class="timeline-item">
+          <strong>2024 – 2025</strong>
+          <div class="muted">BTS SIO (SLAM) — Lycée Voillaume</div>
+        </div>
+
+        <div class="timeline-item">
+          <strong>2021 – 2024</strong>
+          <div class="muted">BUT Informatique — Université Sorbonne Paris Nord</div>
+        </div>
+
+        <div class="timeline-item">
+          <strong>2019 – 2021</strong>
+          <div class="muted">BAC STI2D — Lycée Léonard de Vinci</div>
         </div>
       </div>
     </section>
-    <!-- ========== Fin BTS section ========== -->
 
-    <!-- ========== Resumer section ========== -->
-    <section id="resume" class="resume">
-      <div class="container">
-        <div class="section-title">
-          <h2>Parcours Scolaire</h2>
-          <span>Suiver mon cursus scolaire, mes différentes formations et mon
-            parcours professionnel.</span>
+    <!-- COMPETENCES -->
+    <section id="competences" aria-labelledby="comp-title">
+      <h2 id="comp-title" style="margin-top:18px">Compétences</h2>
+      <div class="grid-3" style="margin-top:12px">
+        <div class="skill card">
+          <h4>HTML & Sémantique</h4>
+          <p class="muted">Structure propre, balises accessibles.</p>
         </div>
-        <div class="row">
-          <div class="col-md-12 col-md-offset-0">
-            <ul class="timeline">
-              <li class="timeline-heading text-center animate-box fadeInUp animated-fast">
-                <div>
-                  <h3>Expériences professionnelles</h3>
-                </div>
-              </li>
-              <li class="animate-box timeline-unverted fadeInUp animated-fast">
-                <div class="timeline-badge"><i class="icon-suitcase"></i></div>
-                <div class="timeline-panel">
-                  <div class="timeline-heading">
-                    <h3 class="timeline-title">Stage Développement Web</h3>
-                    <span class="company">⎪ janvier 2025 - mars 2025</span>
-                  </div>
-                  <div class="timeline-body">
-                    <p>
-                      Réalisation de diverses missions de développement web : mises à jour et améliorations du site personnel de mon maitre de stage, création d’une interface front-end inspirée des plateformes Airbnb et Booking, et développement d’un site de gestion de commandes pour un traiteur.
-                    </p>
-                  </div>
-                </div>
-              </li>
-              
-              <li class="timeline-inverted animate-box fadeInUp animated-fast">
-                <div class="timeline-badge"><i class="icon-suitcase"></i></div>
-                <div class="timeline-panel">
-                  <div class="timeline-heading">
-                    <h3 class="timeline-title">Stage Développement Node.js</h3>
-                    <span class="company">⎪ Février 2023 - Avril 2023</span>
-                  </div>
-                  <div class="timeline-body">
-                    <p>
-                      Développement d’un outil en Node.js permettant d’exporter des données depuis une base NoSQL vers un fichier XML. J’ai également participé à la modification et l’optimisation de la structure de la base de données.
-                    </p>
-                  </div>
-                </div>
-              </li>
-              
-              <li class="animate-box timeline-unverted fadeInUp animated-fast">
-                <div class="timeline-badge"><i class="icon-suitcase"></i></div>
-                <div class="timeline-panel">
-                  <div class="timeline-heading">
-                    <h3 class="timeline-title">Stage ERP – Faculté</h3>
-                    <span class="company">⎪ juin 2022 - août 2022</span>
-                  </div>
-                  <div class="timeline-body">
-                    <p>
-                      Participation à l'amélioration d’une application ERP utilisée au sein de la faculté. J’ai modifié certaines fonctionnalités existantes, ajouté de nouvelles tâches et contribué à affiner l’ergonomie et la performance globale de l’outil.
-                    </p>
-                  </div>
-                </div>
-              </li>
-              
-              <br>
-              <li class="timeline-heading text-center animate-box fadeInUp animated-fast">
-                <div>
-                  <h3>Education</h3>
-                </div>
-              </li>
-              <li class="timeline-inverted animate-box fadeInUp animated-fast">
-                <div class="timeline-badge"><i class="icon-graduation-cap"></i></div>
-                <div class="timeline-panel">
-                  <div class="timeline-heading">
-                    <h3 class="timeline-title">BTS - Services Informatiques aux Organisations</h3>
-                    <span class="company">Lycée Voillaume (Actuel)⎥ 2024 - 2025</span>
-                  </div>
-                  <div class="timeline-body">
-                    <p>Choix spécialités : Option SLAM (Solutions logicielles et Applications Métiers).</p>
-                  </div>
-                </div>
-              </li>
-              <li class="animate-box timeline-unverted fadeInUp animated-fast">
-                <div class="timeline-badge"><i class="icon-graduation-cap"></i></div>
-                <div class="timeline-panel">
-                  <div class="timeline-heading">
-                    <h3 class="timeline-title">BUT - Informatique</h3>
-                    <span class="company">Université Sorbonne Paris Nord, Villetaneuse 93430 2021 - 2024</span>
-                  </div>
-                  <div class="timeline-body">
-                    <p>Choix des spécialités : Première année et Deuxième année But (Développement d'Application).</p>
-                  </div>
-                </div>
-              </li>
-              <li class="timeline-inverted animate-box fadeInUp animated-fast">
-                <div class="timeline-badge"><i class="icon-graduation-cap"></i></div>
-                <div class="timeline-panel">
-                  <div class="timeline-heading">
-                    <h3 class="timeline-title">BAC - Sciences et technologies de l'industrie du Développement Durable</h3>
-                    <span class="company">Lycée Léonard de Vinci, Paris 75014 ⎥ 2019 - 2021</span>
-                  </div>
-                  <div class="timeline-body">
-                    <p>Choix des spécialités : Première STI2D (Système d'Information et du Numérique (SIN)), Terminal STI2D (Système d’Information et du Numérique (SIN)).</p>
-                  </div>
-                </div>
-              </li>
-            </ul>
+
+        <div class="skill card">
+          <h4>CSS & Design</h4>
+          <p class="muted">Responsive, variables CSS, animations légères.</p>
+        </div>
+
+        <div class="skill card">
+          <h4>JavaScript & Node.js</h4>
+          <p class="muted">Interactions, fetch API, petits outils serveur.</p>
+        </div>
+
+        <div class="skill card">
+          <h4>Bases de données</h4>
+          <p class="muted">SQL, NoSQL — conception et optimisation.</p>
+        </div>
+
+        <div class="skill card">
+          <h4>Outils & IDE</h4>
+          <p class="muted">VS Code, Android Studio, Notepad++, IntelliJ IDEA, GitHub.</p>
+        </div>
+
+        <div class="skill card">
+          <h4>Soft skills</h4>
+          <p class="muted">Travail en équipe, curiosité, autonomie.</p>
+        </div>
+      </div>
+
+      <div style="margin-top:18px" class="card">
+        <h4 style="margin:0 0 8px">Langages pratiqués (estimations)</h4>
+        <p class="muted">HTML 55% · PHP 20% · CSS 33% · C# 25% · Bash 35% · JavaScript 30% · Java 30% · SQL 40% · Node.js 15% · Python 25%</p>
+      </div>
+    </section>
+
+    <!-- VEILLE TECHNOLOGIQUE -->
+    <section id="veille" aria-labelledby="veille-title">
+      <h2 id="veille-title" style="margin-top:18px">Veille Technologique</h2>
+
+      <div class="card" style="margin-top:12px">
+        <p class="muted">La veille technologique consiste à surveiller les évolutions techniques et innovations pour rester informé et adapter ses pratiques. Ci-dessous quelques ressources et notes de veille :</p>
+
+        <div class="feed" style="margin-top:12px">
+          <div class="feed-card">
+            <h5>OpenAI — nouveau modèle open source</h5>
+            <p class="muted">OpenAI prévoit la publication d'un modèle open source, rendant les technologies plus accessibles à la recherche et à la communauté.</p>
+            <div class="muted" style="margin-top:8px;font-size:13px">07-04-2025 — GoodTech.info</div>
           </div>
+
+          <div class="feed-card">
+            <h5>Main bionique ultra-réaliste</h5>
+            <p class="muted">PSYONIC présente une main bionique offrant retour sensoriel précis — avancée majeure.</p>
+            <div class="muted" style="margin-top:8px;font-size:13px">03-04-2025 — EconomieDuSavoir</div>
+          </div>
+
+          <div class="feed-card">
+            <h5>Capteur de glucose non-invasif</h5>
+            <p class="muted">Abbott dévoile un biocapteur surveillant le glucose sans piqûre — progrès pour la santé connectée.</p>
+            <div class="muted" style="margin-top:8px;font-size:13px">03-04-2025 — EconomieDuSavoir</div>
+          </div>
+
+          <div class="feed-card">
+            <h5>Éthique de l'IA</h5>
+            <p class="muted">Appels pour développer une IA respectueuse de la dignité humaine et des enjeux éthiques.</p>
+            <div class="muted" style="margin-top:8px;font-size:13px">04-04-2025 — VaticanNews</div>
+          </div>
+        </div>
+
+        <div style="margin-top:12px" class="muted">
+          <strong>Outils de veille :</strong> Google Actualités, Feedly, Twitter, articles, podcasts.
         </div>
       </div>
     </section>
-    <!-- ========== Fin Resume seciton =========  -->
 
-    <!-- ========== Logiciels section ========== -->
-    <section id="skills" class="skills-softwar">
-      <div id="fh5co-features" class="animate-box fadeInUp animated-fast">
-        <div class="container">
-          <div class="services-padding">
-            <div class="section-title">
-              <h2>Logiciels utilisés </h2>
-              <span>Voici les différents outils et logiciels que j'ai utilisés lors
-                de ma formation.</span>
-            </div>
-            <div class="row">
-              <div class="col-md-4 text-center">
-                <div class="feature-left">
-                  <span class="icon">
-                    <!-- ========== Start Lordicon: Animated Icons ========== -->
-                    <script src="../cdn.lordicon.com/lordicon.js"></script>
-                    <lord-icon src="https://cdn.lordicon.com/vlycxjwx.json" trigger="hover" stroke="bold"
-                      colors="primary:#ffffff,secondary:#ffffff" style="width: 38px; height: 38px">
-                    </lord-icon>
-                    <!-- ========== Animated icons by Lordicon.com ========== -->
-                  </span>
-                  <div class="feature-copy">
-                    <h3 class="title">Visual Studio Code</h3>
-                    <p class="description">
-                      l'Éditeur de code complet de Microsoft, polyvalent avec de
-                      nombreux langages de programmation.
-                    </p>
-                  </div>
-                </div>
-              </div>
+    <!-- PROJETS -->
+    <section id="projects" aria-labelledby="projects-title">
+      <h2 id="projects-title" style="margin-top:18px">Projet</h2>
+      <div class="grid-3" style="margin-top:12px">
+        <article class="project">
+          <h4>Portfolio personnel (ce site)</h4>
+          <p class="muted">Vitrine des travaux académiques, stages et veille technologique.</p>
+        </article>
 
-              <div class="col-md-4 text-center">
-                <div class="feature-left">
-                  <div class="icon">
-                    <!-- ========== Start Lordicon: Animated Icons ========== -->
-                    <script src="../cdn.lordicon.com/lordicon.js"></script>
-                    <lord-icon src="https://cdn.lordicon.com/afuthwlx.json" trigger="hover" stroke="bold"
-                      colors="primary:#ffffff,secondary:#ffffff" style="width: 38px; height: 38px">
-                    </lord-icon>
-                    <!-- ========== Animated icons by Lordicon.com ========== -->
-                  </div>
-                  <div class="feature-copy">
-                    <h3 class="title">Android Studio</h3>
-                    <p class="description">
-                      Android Studio est l’environnement de développement officiel pour créer des applications Android. Il offre un éditeur d’interface visuelle, un émulateur Android et de nombreux outils pour faciliter le développement mobile.
-                    </p>
-                  </div>
-                </div>
-              </div>
+        <article class="project">
+          <h4>Site de gestion de commandes (stage)</h4>
+          <p class="muted">Application simple pour gérer commandes et clients (front + back minimal).</p>
+        </article>
 
-              <div class="col-md-4 text-center">
-                <div class="feature-left">
-                  <div class="icon">
-                    <!-- ========== Start Lordicon: Animated Icons ========== -->
-                    <script src="../cdn.lordicon.com/lordicon.js"></script>
-                    <lord-icon src="https://cdn.lordicon.com/xynjytfp.json" trigger="hover" stroke="bold"
-                      colors="primary:#ffffff,secondary:#ffffff" style="width: 38px; height: 38px">
-                    </lord-icon>
-                    <!-- ========== Animated icons by Lordicon.com ========== -->
-                  </div>
-                  <div class="feature-copy">
-                    <h3 class="title">Notepad++</h3>
-                    <p class="description">
-                      Notepad++ est un éditeur de texte léger et rapide, idéal pour lire et modifier du code source dans de nombreux langages. Il est très utilisé pour son interface simple et ses fonctionnalités pratiques comme la coloration syntaxique.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-
-            <div class="row">
-              <div class="col-md-4 text-center">
-                <div class="feature-left">
-                  <div class="icon">
-                    <!-- ========== Start Lordicon: Animated Icons ========== -->
-                    <script src="../cdn.lordicon.com/lordicon.js"></script>
-                    <lord-icon src="https://cdn.lordicon.com/xirobkro.json" trigger="hover" stroke="bold"
-                      colors="primary:#ffffff,secondary:#ffffff" style="width: 38px; height: 38px">
-                    </lord-icon>
-                    <!-- ========== Animated icons by Lordicon.com ========== -->
-                  </div>
-                  <div class="feature-copy">
-                    <h3 class="title">VirtualBox</h3>
-                    <p class="description">
-                      Logiciel et application de virtualisation, créer et exécuter des machines virtuelles, utilisé
-                      plusieurs
-                      systèmes d'exploitation à la fois.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-4 text-center">
-                <div class="feature-left">
-                  <div class="icon">
-                    <!-- ===== Start Lordicon: Animated Icons ===== -->
-                    <script src="../cdn.lordicon.com/lordicon.js"></script>
-                    <lord-icon src="https://cdn.lordicon.com/jfzghjvx.json" trigger="hover" stroke="bold"
-                      colors="primary:#fff,secondary:#fff" style="width: 40px; height: 40px">
-                    </lord-icon>
-                    <!-- ========== Animated icons by Lordicon.com ========== -->
-                  </div>
-                  <div class="feature-copy">
-                    <h3 class="title">Eclipse</h3>
-                    <p class="description">
-                      Eclipse est un IDE open-source utilisé principalement pour le développement en Java, mais il prend également en charge d'autres langages comme C, C++ ou PHP grâce à ses nombreux plugins.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-4 text-center">
-                <div class="feature-left">
-                  <div class="icon">
-                    <!-- ========== Start Lordicon: Animated Icons ========== -->
-                    <script src="../cdn.lordicon.com/lordicon.js"></script>
-                    <lord-icon src="https://cdn.lordicon.com/kqvibaec.json" trigger="hover" stroke="bold"
-                      colors="primary:#ffffff,secondary:#ffffff" style="width: 40px; height: 40px">
-                    </lord-icon>
-                    <!-- ========== Animated icons by Lordicon.com ========== -->
-                  </div>
-                  <div class="feature-copy">
-                    <h3 class="title">GitHub & Terminal</h3>
-                    <p class="description">
-                      Github est une entreprise de développement et services logiciels.
-                      Terminal est l'interface utilisateur permet d'exécuter des commandes, de voir les résultats.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-md-4 text-center">
-                <div class="feature-left">
-                  <div class="icon">
-                    <!-- ========== Start Lordicon: Animated Icons ========== -->
-                    <script src="../cdn.lordicon.com/lordicon.js"></script>
-                    <lord-icon src="https://cdn.lordicon.com/zvheymqn.json" trigger="hover" stroke="bold"
-                      colors="primary:#ffffff,secondary:#ffffff" style="width: 38px; height: 38px">
-                    </lord-icon>
-                    <!-- ========== Animated icons by Lordicon.com ========== -->
-                  </div>
-                  <div class="feature-copy">
-                    <h3 class="title">IntelliJ IDEA</h3>
-                    <p class="description">
-                      IntelliJ IDEA est un environnement de développement intégré (IDE) performant, principalement utilisé pour le développement en Java, mais aussi compatible avec Kotlin, Groovy, et d'autres langages. Il est très apprécié pour ses fonctionnalités avancées de complétion de code et de refactoring.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-4 text-center">
-                <div class="feature-left">
-                  <div class="icon">
-                    <!-- ========== Start Lordicon: Animated Icons ========== -->
-                    <script src="../cdn.lordicon.com/lordicon.js"></script>
-                    <lord-icon src="https://cdn.lordicon.com/wuvorxbv.json" trigger="hover" stroke="bold"
-                      colors="primary:#ffffff,secondary:#ffffff" style="width: 38px; height: 38px">
-                    </lord-icon>
-                    <!-- ========== Animated icons by Lordicon.com ========== -->
-                  </div>
-                  <div class="feature-copy">
-                    <h3 class="title">Figma</h3>
-                    <p class="description">
-                      Logiciel et application d'éditeur graphiques, de conception de wireframes qui permet de créer des
-                      maquettes.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-4 text-center">
-                <div class="feature-left">
-                  <div class="icon">
-                    <!-- ========== Start Lordicon: Animated Icons ========== -->
-                    <script src="../cdn.lordicon.com/lordicon.js"></script>
-                    <lord-icon src="https://cdn.lordicon.com/uvqdhrsk.json" trigger="hover" stroke="bold"
-                      colors="primary:#ffffff,secondary:#ffffff" style="width: 38px; height: 38px">
-                    </lord-icon>
-                    <!-- ========== Animated icons by Lordicon.com ========== -->
-                  </div>
-                  <div class="feature-copy">
-                    <h3 class="title">Visual Paradigm</h3>
-                    <p class="description">
-                      Visual Paradigm est un outil de création de diagrammes basé sur le Web.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
+        <article class="project">
+          <h4>Prototype type Airbnb/Booking</h4>
+          <p class="muted">Interface front inspirée des plateformes de réservation pour apprentissage UX/UI.</p>
+        </article>
       </div>
     </section>
-    <!-- ========== Fin Logiciel section ========== -->
 
-    <!-- ========== Compétences section ========== -->
-    <section id="skills" class="skills-language">
-      <div class="container aos-init aos-animate" data-aos="fade-up">
-        <div class="section-title">
-          <h2>Langages Pratiqués</h2>
-          <span>Durant ma formation j'ai pu pratiquer et aqcuérir des
-            connaissances sur différents langages.</span>
+    <!-- CONTACT -->
+    <section id="contact" aria-labelledby="contact-title">
+      <h2 id="contact-title" style="margin-top:18px">Contact</h2>
+      <div class="card" style="margin-top:12px;display:flex;gap:18px;flex-wrap:wrap">
+        <div style="flex:1;min-width:260px">
+          <p class="muted">Localisation : <strong>Paris, 75000, France</strong></p>
+          <p class="muted">Email : <a id="email-link" href="mailto:SansikaGnanapragasam17@gmail.com">SansikaGnanapragasam17@gmail.com</a></p>
+          <p class="muted">Téléphone : <strong>+33 7 67 19 99 43</strong></p>
         </div>
 
-        <div class="row">
-          <div class="col-md-6">
-            <div class="progress-wrap">
-              <h3><span class="name-left">HTML5</span><span class="value-right">50%</span></h3>
-              <div class="progress">
-                <div class="progress-bar progress-bar-1 progress-bar-striped active" role="progressbar"
-                  aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:50%">
-                </div>
-              </div>
-            </div>
-
-            <div class="progress-wrap">
-              <h3><span class="name-left">PHP</span><span class="value-right">20%</span></h3>
-              <div class="progress">
-                <div class="progress-bar progress-bar-2 progress-bar-striped active" role="progressbar"
-                  aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width:20%">
-                </div>
-              </div>
-            </div>
-
-            <div class="progress-wrap">
-              <h3><span class="name-left">CSS3</span><span class="value-right">30%</span></h3>
-              <div class="progress">
-                <div class="progress-bar progress-bar-3 progress-bar-striped active" role="progressbar"
-                  aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width:30%">
-                </div>
-              </div>
-            </div>
-
-            <div class="progress-wrap">
-              <h3><span class="name-left">C#</span><span class="value-right">25%</span></h3>
-              <div class="progress">
-                <div class="progress-bar progress-bar-3 progress-bar-striped active" role="progressbar"
-                  aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width:25%">
-                </div>
-              </div>
-            </div>
-
-            <div class="progress-wrap">
-              <h3><span class="name-left">Bash</span><span class="value-right">35%</span></h3>
-              <div class="progress">
-                <div class="progress-bar progress-bar-6 progress-bar-striped active" role="progressbar"
-                  aria-valuenow="35" aria-valuemin="0" aria-valuemax="100" style="width:35%">
-                </div>
-              </div>
-            </div>
-
+        <form id="contact-form" style="flex:1;min-width:320px;display:flex;flex-direction:column;gap:12px" aria-label="Formulaire de contact">
+          <input id="field-name" placeholder="Votre nom" required>
+          <input id="field-email" placeholder="Votre email" required>
+          <input id="field-subject" placeholder="Objet" required>
+          <textarea id="field-message" placeholder="Votre message" rows="6" required></textarea>
+          <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+            <button class="btn primary" type="submit">Envoyer le message</button>
+            <div class="muted" style="font-size:13px">Réponse simulée (démo)</div>
           </div>
-          <div class="col-md-6">
-            <div class="progress-wrap">
-              <h3><span class="name-left">JAVASCRIPT</span><span class="value-right">30%</span></h3>
-              <div class="progress">
-                <div class="progress-bar progress-bar-4 progress-bar-striped active" role="progressbar" aria-valuenow="30"
-                  aria-valuemin="0" aria-valuemax="100" style="width:30%">
-                </div>
-              </div>
-            </div>
-
-            <div class="progress-wrap">
-              <h3><span class="name-left">JAVA</span><span class="value-right">30%</span></h3>
-              <div class="progress">
-                <div class="progress-bar progress-bar-5 progress-bar-striped active" role="progressbar"
-                  aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width:30%">
-                </div>
-              </div>
-            </div>
-
-            <div class="progress-wrap">
-              <h3><span class="name-left">SQL</span><span class="value-right">40%</span></h3>
-              <div class="progress">
-                <div class="progress-bar progress-bar-6 progress-bar-striped active" role="progressbar"
-                  aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:40%">
-                </div>
-              </div>
-            </div>
-
-
-            <div class="progress-wrap">
-              <h3><span class="name-left">Nodejs</span><span class="value-right">15%</span></h3>
-              <div class="progress">
-                <div class="progress-bar progress-bar-6 progress-bar-striped active" role="progressbar"
-                  aria-valuenow="15" aria-valuemin="0" aria-valuemax="100" style="width:15%">
-                </div>
-              </div>
-            </div>
-
-            <div class="progress-wrap">
-              <h3><span class="name-left">Python</span><span class="value-right">25%</span></h3>
-              <div class="progress">
-                <div class="progress-bar progress-bar-6 progress-bar-striped active" role="progressbar"
-                  aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width:25%">
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
+        </form>
       </div>
     </section>
-    <!-- ========== Fin Compétences section =========== -->
 
-    <!-- ========== Veille section  ========== -->
-    <section id="veille" class="faq">
-      <div class="container" data-aos="fade-up">
-        <div class="section-title">
-          <h2>Veille Technologique</h2>
-        </div>
-
-        <div class="faq-list">
-          <ul>
-            <li data-aos="fade-up" data-aos="fade-up" data-aos-delay="100">
-              <i class="bx bx-help-circle icon-help"></i>
-              <a  id= "icon" data-bs-toggle="collapse" class="collapsed" data-bs-target="#faq-list-1">Qu'est ce que la veille
-                technologique ?
-                <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-              <div id="faq-list-1" class="collapse show" data-bs-parent=".faq-list">
-                <p class="description">
-                  La veille technologique, consiste à surveiller les
-                  évolutions techniques, les innovations dans un secteur
-                  d’activité donnée, prendre les informations les plus
-                  pertinentes et les plus récentes afin de passer le moins de
-                  temps possible sur des recherches d'information, pour
-                  faciliter les recherches, il faut que la collecte, le
-                  partage et la diffusion d'informations permette d'anticiper
-                  ou de s'informer sur des changements en matière de
-                  recherche.
-                </p>
-              </div>
-            </li>
-
-            <li data-aos="fade-up" data-aos-delay="200">
-              <i class="bx bx-help-circle icon-help"></i>
-              <a  id= "icon" data-bs-toggle="collapse" data-bs-target="#faq-list-2" class="collapsed">
-                Qu'est ce que le but d'une veille technologique ?
-                <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-              <div id="faq-list-2" class="collapse" data-bs-parent=".faq-list">
-                <p class="list-obj">
-                  - Suivre les évolutions techniques <br />
-                  - Etre informé des inventions et innovations des concurrents
-                  <br />
-                  - Diminuer les coûts de production <br />
-                  - Augmenter nos compétences <br />
-                </p>
-              </div>
-            </li>
-
-            <li data-aos="fade-up" data-aos-delay="300">
-              <i class="bx bx-help-circle icon-help"></i>
-              <a  id= "icon" data-bs-toggle="collapse" data-bs-target="#faq-list-3" class="collapsed">Quelles sont les outils de ma
-                veille ?
-                <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-              <div id="faq-list-3" class="collapse" data-bs-parent=".faq-list">
-                <span class="header-infos">
-                  Pour veiller aux derniers tendance de la realité virtuelle
-                  j'ai utilisé :
-                </span>
-                <h6>Google Actualités & Alerte : </h6>
-                <p class="definition">
-                  Un outil simple d’utilisation qui permet de se tenir
-                  informé des dernières technologies sorties</p>
-
-                  <h6>Feedly : </h6>
-                  <p class="definition">
-                    Un agrégateur de flux RSS très connu, un
-                  outil complet pour toute veille technologique.</p>
-
-                  <h6>Twitter : </h6>
-                    <p class="definition">
-                      Une mine d'information, le
-                  réseau social qui permet de se tenir informer des dernières
-                  innovations.</p>
-              </div>
-            </li>
-
-            <li data-aos="fade-up" data-aos-delay="400">
-              <i class="bx bx-help-circle icon-help"></i>
-              <a id="icon" data-bs-toggle="collapse" data-bs-target="#faq-list-4" class="collapsed">
-                Quelle a été le sujet de ma veille technologie ?
-                <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i>
-              </a>
-              <div id="faq-list-4" class="collapse" data-bs-parent=".faq-list">
-                <span class="header-infos">
-                  J'ai décidé de traiter sur le sujet de
-                  l'intelligence artificielle et des dernières innovations technologiques, qui sont en constante évolution et influencent de nombreux secteurs.
-                </span>
-                <br />
-                <h5>Principal problématique :</h5>
-                <h6>Quelles avancées technologiques récentes façonnent notre avenir ?</h6>
-                <p class="prob1">
-                  Nous allons répondre à cette problématique en distinguant
-                  trois thématiques :
-                </p>
-                <p class="subject1"> - <strong>Thème 1</strong> : L'ouverture de l'IA au grand public</p>
-                <p class="subject2"> - <strong>Thème 2</strong> : Les nouvelles innovations technologiques 2025</p>
-                <p class="subject2"> - <strong>Thème 3</strong> : Une technologie éthique est-elle possible ?</p>
-              </div>
-            </li>
-            
-            <li data-aos="fade-up" data-aos-delay="500">
-              <i class="bx bx-help-circle icon-help"></i>
-              <a id="icon" data-bs-toggle="collapse" data-bs-target="#faq-list-5" class="collapsed">
-                Quelles sont les différents thématiques abordés ?
-                <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i>
-              </a>
-              <div id="faq-list-5" class="collapse" data-bs-parent=".faq-list">
-            
-                <!-- ========== Thème 1 ========== -->
-                <h4>Thème 1 : L'ouverture de l'IA au grand public</h4>
-                <div class="blog-meta">
-                  <p><i class="bx bx-news"> GoodTech.info</i></p>
-                  <p><i class="bx bxs-calendar"> 07-04-2025</i></p>
-                </div>
-            
-                <h5>OpenAI va sortir un nouveau modèle open source</h5>
-                <p class="description">
-                  OpenAI, l'entreprise à l'origine de ChatGPT, prévoit la publication d'un nouveau modèle à poids ouverts, rendant ses technologies plus accessibles au public et à la recherche. C'est une avancée majeure vers la transparence en intelligence artificielle.
-                </p>
-                <a class="btn" href="https://goodtech.info/revue-presse-open-source-7-avril-2025-ia/?utm_source=chatgpt.com" target="_blank">Article
-                  <i class='bx bx-link-external'></i>
-                </a>
-            
-                <h5>Un appel pour une IA plus responsable et locale</h5>
-                <p class="description">
-                  Des chercheurs et experts appellent au développement d'IA locales, personnalisables et open source, afin de protéger les données personnelles et démocratiser l'accès à ces outils puissants.
-                </p>
-                <a class="btn" href="https://www.lemonde.fr/blog/binaire/2025/04/?utm_source=chatgpt.com" target="_blank">Article
-                  <i class='bx bx-link-external'></i>
-                </a>
-                <hr>
-            
-                <!-- ========== Thème 2 ========== -->
-                <h4>Thème 2 : Les nouvelles innovations technologiques 2025</h4>
-                <div class="blog-meta">
-                  <p><i class="bx bx-news"> EconomieDuSavoir</i></p>
-                  <p><i class="bx bxs-calendar"> 03-04-2025</i></p>
-                </div>
-            
-                <h5>Une main bionique ultra-réaliste</h5>
-                <p class="description">
-                  La startup PSYONIC a présenté une main bionique révolutionnaire offrant un retour sensoriel précis et un contrôle naturel, une avancée capitale pour les personnes amputées ou les robots humanoïdes.
-                </p>
-                <a class="btn" href="https://economiedusavoir.com/12-innovations-presentees-au-ces-2025/?utm_source=chatgpt.com" target="_blank">Article
-                  <i class='bx bx-link-external'></i>
-                </a>
-            
-                <h5>Un capteur de glucose non-invasif</h5>
-                <p class="description">
-                  Abbott a dévoilé un biocapteur qui surveille les taux de glucose en continu sans piqûre, une solution prometteuse pour les personnes diabétiques ou soucieuses de leur santé.
-                </p>
-                <a class="btn" href="https://economiedusavoir.com/12-innovations-presentees-au-ces-2025/?utm_source=chatgpt.com" target="_blank">Article
-                  <i class='bx bx-link-external'></i>
-                </a>
-                <hr>
-            
-                <!-- ========== Thème 3 ========== -->
-                <h4>Thème 3 : Une technologie éthique est-elle possible ?</h4>
-                <div class="blog-meta">
-                  <p><i class="bx bx-news"> VaticanNews</i></p>
-                  <p><i class="bx bxs-calendar"> 04-04-2025</i></p>
-                </div>
-            
-                <h5>L’appel du Pape à l’éthique technologique</h5>
-                <p class="description">
-                  Le Pape François a récemment souligné l'importance de développer des technologies au service du bien commun. Il insiste sur le respect de la dignité humaine, appelant à une IA qui favorise les relations humaines plutôt que de les remplacer.
-                </p>
-                <a class="btn" href="https://www.vaticannews.va/fr/pape/news/2025-04/intention-de-priere-pape-nouvelles-technologies-utilisation.html?utm_source=chatgpt.com" target="_blank">Article
-                  <i class='bx bx-link-external'></i>
-                </a>
-            
-                <h5>Des technologies pour améliorer la santé mentale</h5>
-                <p class="description">
-                  Mywaves a présenté une technologie innovante qui analyse les ondes cérébrales pour optimiser le sommeil. Une solution concrète pour améliorer la qualité de vie grâce à des interfaces cerveau-machine.
-                </p>
-                <a class="btn" href="https://www.lespecialiste.be/fr/actualites/e-health/ces-2025-un-apercu-des-avancees-technologiques-pour-la-sante.html?utm_source=chatgpt.com" target="_blank">Article
-                  <i class='bx bx-link-external'></i>
-                </a>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </section>
-    <!-- ========== Fin Veille section ==========  -->
-
-    <!-- ========== Contact section ========== -->
-    <section id="contact" class="contact section-bg">
-      <div class="container" data-aos="fade-up">
-        <div class="section-title">
-          <h2>Contact</h2>
-          <span>
-            Si vous avez une question, une demande, un projet ou juste une
-            envie d'en savoir un peu plus sur moi n'hésitez sourtout pas.
-            Contactez-moi !
-          </span>
-          <br>
-          <br>
-        </div>
-        <div class="row">
-          <div class="col-lg-6">
-            <div class="info-box mb-4">
-              <i class="bx bx-map"></i>
-              <h3>Localisation</h3>
-              <p>75000 Paris, France</p>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6">
-            <div class="info-box mb-4">
-              <i class="bx bx-envelope"></i>
-              <h3>Adresse mail</h3>
-              <p>SansikaGnanapragasam17@gmail.com</p>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6">
-            <div class="info-box mb-4">
-              <i class="bx bx-phone-call"></i>
-              <h3>Numéro Téléphone</h3>
-              <p>+33 7 67 19 99 43</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-lg-6">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d20991.30064298089!2d2.343935660367497!3d48.8789430390168!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e74623cb693%3A0x10389ef77ae91296!2s75000%20Paris!5e0!3m2!1sfr!2sfr!4v1742313303026!5m2!1sfr!2sfr"
-              allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" style="border:0"
-              frameborder="0" width="100%" height="384px">
-            </iframe>
-          </div>
-          <div class="col-lg-6">
-            <form action="https://portfolio-Sansika.fr/forms/contact.php" method="post" role="form" class="php-email-form">
-              <div class="row">
-                <div class="col-md-6 form-group">
-                  <input type="text" name="lastName" class="form-control" id="name" placeholder="Votre nom" autocomplete="family-name" required />
-                </div>
-                <div class="col-md-6 form-group mt-3 mt-md-0">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Votre mail" autocomplete="email" required />
-                </div>
-              </div>
-              <div class="form-group mt-3">
-                <input type="text" class="form-control" name="subject" id="subject" placeholder="Objet" required />
-              </div>
-              <div class="form-group mt-3">
-                <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
-              </div>
-              <div class="my-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">
-                  Votre message a été envoyé. Nous vous remercions de votre
-                  attention.
-                </div>
-              </div>
-              <div class="text-center">
-                <button type="submit">Envoyer le message</button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- ========== Fin Contact section ========== -->
+    <footer style="margin-top:28px">
+      <div class="muted center">© <span id="year"></span> Gnanapragasam Sansika — Tous droits réservés</div>
+    </footer>
   </main>
-  <!-- ========== Fin Main ========== -->
 
-  <!-- ========== Footer ========== -->
-  <footer id="footer">
-    <div class="footer-top">
-      <div class="container">
-        <div class="row">
-          <div class="footer-contact">
-            <h3>Y.B</h3>
-            <p>
-              <strong>Localisation</strong> : France, 75000 Paris<br>
-              <strong>Mobile</strong> : +33 7 67 19 99 43 <br>
-              <strong>Email</strong> : SansikaGnanapragasam17@gmail.com <br>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
+  <script>
+    // ===== Interactions & helpers =====
 
-    <div class="container">
-      <div class="copyright-wrap d-md-flex py-4">
-        <div class="me-md-auto text-center text-md-start">
-          <div class="copyright">
-            &copy; Copyright <strong><span>2024</span></strong> Tous droits
-            réservés
-          </div>
-          <div class="credits">
-            Designed by
-            <a href="#">Sansika Gnanapragasam</a>
-          </div>
-        </div>
-        <div class="social-links text-center text-md-right pt-3 pt-md-0">
-          <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-          <a href="https://www.linkedin.com/in/Sansika-Gnanapragasam1/" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-          <a href="https://github.com/SansikaGnanapragasam" target="_blank" title="Profile Github"><i class="bx bxl-github"></i></a>
-        </div>
-      </div>
-    </div>
-  </footer>
-  <!-- ========== Fin Footer ========== -->
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-      class="bi bi-arrow-up-short"></i></a>
-  <div id="preloader"></div>
+    // Mobile menu
+    const mobileToggle = document.getElementById('mobile-toggle');
+    const navList = document.getElementById('nav-list');
+    mobileToggle && mobileToggle.addEventListener('click', () => navList.classList.toggle('show'));
 
-  <!-- ========== Vendor JS ========== -->
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
+    // Smooth scroll + nav click
+    const navItems = Array.from(document.querySelectorAll('#nav-list li'));
+    navItems.forEach(item => {
+      item.addEventListener('click', () => {
+        const target = item.dataset.link;
+        if(target && document.querySelector(target)){
+          document.querySelector(target).scrollIntoView({behavior:'smooth', block:'start'});
+          navList.classList.remove('show');
+        }
+      });
+    });
 
-  <!-- ========== Main JS ========== -->
-  <script src="assets/js/main.js"></script>
-  <script src="../cdn.lordicon.com/lordicon.js"></script>
+    // Highlight active section
+    const sections = document.querySelectorAll('main > section');
+    const observerOptions = { root: null, rootMargin: '0px', threshold: 0.45 };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          const id = entry.target.id;
+          navItems.forEach(i => i.classList.toggle('active', (i.dataset.link === '#' + id || (i.dataset.link === '#home' && id === 'home'))));
+        }
+      });
+    }, observerOptions);
+    sections.forEach(s => observer.observe(s));
 
+    // Contact form demo
+    document.getElementById('contact-form').addEventListener('submit', function(e){
+      e.preventDefault();
+      const name = document.getElementById('field-name').value || 'Anonyme';
+      const btn = this.querySelector('button[type="submit"]');
+      btn.disabled = true;
+      btn.textContent = 'Loading...';
+      setTimeout(() => {
+        alert('Votre message a été envoyé. Merci ' + name + ' ! (simulation)');
+        btn.disabled = false;
+        btn.textContent = 'Envoyer le message';
+        this.reset();
+      }, 900);
+    });
+
+    // Quick replace helper (use in console if needed)
+    function replaceNameGlobally(fullName){
+      const els = [document.getElementById('profile-name'), document.getElementById('home-title'), document.getElementById('about-title')];
+      els.forEach(el => { if(el) el.textContent = el.textContent.replace(/Gnanapragasam Sansika|Sansika Gnanapragasam/g, fullName); });
+      const initials = fullName.split(' ').map(p => p[0]||'').slice(0,2).join('').toUpperCase();
+      const avatar = document.getElementById('avatar-initials'); if(avatar) avatar.textContent = initials;
+      const emailLink = document.getElementById('email-link'); if(emailLink) emailLink.href = 'mailto:' + fullName.toLowerCase().replace(/\s+/g,'.') + '@example.com';
+    }
+  </script>
 </body>
-
-
-<!-- Mirrored from portfolio-Sansika.fr/ by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 09 Nov 2025 18:40:46 GMT -->
 </html>
