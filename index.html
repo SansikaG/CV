@@ -1,454 +1,243 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Portfolio — Sansika Gnanapragasam</title>
-  <meta name="description" content="Portfolio de Sansika Gnanapragasam - Étudiant en informatique (BTS SIO SLAM)" />
-  <style>
-    /* ==========================
-       Portfolio — Sansika (single file)
-       Theme: Clair, accent rose
-       ========================== */
-    :root{
-      --bg: #ffffff;
-      --surface: #f8f8fb;
-      --card: #ffffff;
-      --muted: #6b6b76;
-      --text: #0d1620;
-      --rose: #ff4fa3;
-      --rose-2: #ff8ec2;
-      --glass: rgba(255,79,163,0.08);
-      --radius: 14px;
-      --container: 1200px;
-      --gutter: 20px;
-      --title-size: 48px;
-      --section-title-size: 28px;
-      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio — Sansika Gnanapragasam</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Orbitron:wght@500;700&display=swap');
 
-    *{box-sizing:border-box}
-    html,body{height:100%;margin:0;background:linear-gradient(180deg,var(--surface),#fff);color:var(--text);-webkit-font-smoothing:antialiased}
-    a{color:var(--rose)}
-    img{max-width:100%;display:block;height:auto}
-    .container{max-width:var(--container);margin:0 auto;padding:0 var(--gutter)}
+:root {
+  --bg: #0d0d0d;
+  --text: #f0f0f0;
+  --muted: #888;
+  --accent-pink: #ff4fa3;
+  --accent-purple: #b33cff;
+  --accent-blue: #4fc3ff;
+  --accent-green: #39ff14;
+  --radius: 12px;
+  --container: 1100px;
+  --gutter: 20px;
+  --title-size: 48px;
+  --section-title-size: 28px;
+  --font-body: 'Roboto Mono', monospace;
+  --font-title: 'Orbitron', sans-serif;
+}
 
-    /* Header */
-    header{position:sticky;top:12px;z-index:200;padding-top:10px}
-    .nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px;border-radius:12px;background:rgba(255,255,255,0.9);backdrop-filter:blur(6px);box-shadow:0 10px 30px rgba(16,24,40,0.04)}
-    .brand{display:flex;align-items:center;gap:14px}
-    .logo{width:64px;height:64px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:900;color:#fff;background:linear-gradient(135deg,var(--rose),var(--rose-2));font-size:20px;box-shadow:0 12px 40px rgba(255,79,163,0.12)}
-    .brand h1{font-size:18px;margin:0}
-    .brand p{margin:0;font-size:13px;color:var(--muted)}
-    nav ul{display:flex;gap:8px;list-style:none;margin:0;padding:0;align-items:center}
-    nav li{padding:10px 14px;border-radius:10px;font-weight:700;font-size:16px;color:var(--text);cursor:pointer}
-    nav li:hover{background:var(--glass)}
-    nav li.active{background:linear-gradient(90deg,var(--rose),var(--rose-2));color:#fff;box-shadow:0 8px 30px rgba(255,79,163,0.12)}
+*{box-sizing:border-box;}
+html, body {
+  margin:0;
+  height:100%;
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  scroll-behavior: smooth;
+}
 
-    .mobile-toggle{display:none;background:transparent;border:none;font-size:22px;cursor:pointer;padding:6px;border-radius:8px}
-    @media (max-width:900px){
-      nav ul{display:none;position:absolute;top:86px;right:18px;background:#fff;border-radius:12px;padding:12px;box-shadow:0 18px 40px rgba(33,33,33,0.08);flex-direction:column;min-width:220px}
-      nav ul.show{display:flex}
-      .mobile-toggle{display:inline-flex}
-    }
+a { color: var(--accent-pink); text-decoration:none; }
+.container { max-width: var(--container); margin: 0 auto; padding: 0 var(--gutter); }
 
-    /* Hero */
-    main{padding:28px 0}
-    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center}
-    .card{background:var(--card);padding:28px;border-radius:var(--radius);box-shadow:0 12px 48px rgba(16,24,40,0.06);border:1px solid rgba(15,15,20,0.03)}
-    .eyebrow{color:var(--muted);font-size:15px;margin-bottom:8px}
-    h1.title{font-size:var(--title-size);margin:6px 0 12px;line-height:1.02}
-    h1.title .accent{background:linear-gradient(90deg,var(--rose),var(--rose-2));-webkit-background-clip:text;background-clip:text;color:transparent}
-    p.lead{color:var(--muted);font-size:18px;margin:10px 0 18px}
+/* Header */
+header { position: sticky; top: 0; z-index: 200; padding: 10px 0; }
+.nav { display:flex; justify-content:space-between; align-items:center; background: rgba(0,0,0,0.85); padding:12px; border-radius:12px; backdrop-filter: blur(6px); transition:0.3s;}
+.nav:hover{background: rgba(20,20,20,0.95);}
+.brand { display:flex; align-items:center; gap:14px; }
+.logo { width:50px; height:50px; border-radius:12px; display:flex; align-items:center; justify-content:center; font-weight:900; font-size:20px; background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple)); color:#fff; }
+.brand h1 { font-size:16px; margin:0; font-family: var(--font-title);}
+.brand p { margin:0; font-size:12px; color:var(--muted);}
+nav ul { display:flex; gap:8px; list-style:none; margin:0; padding:0; }
+nav li { padding:8px 12px; border-radius:10px; font-weight:700; font-size:14px; cursor:pointer; transition: 0.3s; }
+nav li:hover { background: rgba(255,79,163,0.2); }
+nav li.active { background: linear-gradient(90deg,var(--accent-pink),var(--accent-purple)); color:#fff; box-shadow: 0 4px 20px rgba(255,79,163,0.3); }
 
-    .cta{display:flex;gap:12px;flex-wrap:wrap}
-    .btn{background:transparent;border:2px solid rgba(0,0,0,0.06);padding:12px 16px;border-radius:12px;color:var(--text);cursor:pointer;font-weight:800;font-size:16px}
-    .btn.primary{background:linear-gradient(90deg,var(--rose),var(--rose-2));color:#fff;border:none;box-shadow:0 12px 36px rgba(255,79,163,0.12)}
+/* Mobile toggle */
+.mobile-toggle { display:none; background:transparent; border:none; font-size:22px; cursor:pointer; }
+@media (max-width:900px){
+  nav ul { display:none; flex-direction:column; position:absolute; top:70px; right:18px; background:#111; padding:12px; border-radius:12px; }
+  nav ul.show { display:flex; }
+  .mobile-toggle { display:inline-flex; }
+}
 
-    /* profile card */
-    .profile{display:flex;flex-direction:column;gap:12px;align-items:center;text-align:center;padding:20px}
-    .avatar{width:240px;height:240px;border-radius:18px;display:flex;align-items:center;justify-content:center;font-size:72px;font-weight:900;color:#fff;background:linear-gradient(135deg,var(--rose),#c64e95);box-shadow:0 12px 44px rgba(255,79,163,0.12)}
-    .profile h3{margin:0;font-size:22px}
-    .profile p{margin:0;color:var(--muted);font-size:15px}
+/* Sections */
+section { margin-top:28px; padding:28px; border-radius:var(--radius); background: rgba(20,20,20,0.9); border:1px solid rgba(255,255,255,0.05); transition:0.3s opacity; opacity:0; transform: translateY(20px); }
+section.visible{opacity:1; transform: translateY(0);}
+section h2 { font-family: var(--font-title); font-size:var(--section-title-size); color: var(--accent-pink); margin-bottom:12px; text-shadow:0 0 6px var(--accent-pink);}
+section h3 { font-family: var(--font-title); color: var(--accent-blue); margin:6px 0; }
+section p { font-size:12px; color: var(--muted); line-height:1.5; margin-bottom:10px; }
+.chip { padding:4px 8px; border-radius:999px; background: rgba(255,79,163,0.2); color: var(--accent-pink); font-size:10px; font-weight:700; margin:2px; display:inline-block; }
 
-    /* Sections */
-    section{margin-top:36px}
-    .section-head{display:flex;align-items:end;justify-content:space-between;gap:12px}
-    .section-head h2{margin:0;font-size:var(--section-title-size)}
-    .section-head p{margin:0;color:var(--muted)}
-    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-    .project{padding:18px;border-radius:12px;background:linear-gradient(180deg,#fff,#fbfbfd);border:1px solid rgba(0,0,0,0.04)}
-    .project h4{margin:0 0 8px;font-size:18px}
-    .project p{color:var(--muted);margin:0}
+/* Hero */
+.hero { display:grid; grid-template-columns:1fr 300px; gap:20px; align-items:start; }
+.eyebrow { font-size:12px; color: var(--accent-blue); margin-bottom:6px; text-transform:uppercase;}
+h1.title { font-size:36px; font-family: var(--font-title); margin-bottom:12px; line-height:1.1; }
+h1.title .accent { background: linear-gradient(90deg,var(--accent-pink),var(--accent-purple)); -webkit-background-clip:text; color:transparent; }
 
-    .chip{padding:10px 12px;border-radius:999px;background:linear-gradient(180deg,rgba(255,79,163,0.06),rgba(255,79,163,0.02));color:var(--rose);font-weight:700;font-size:14px}
+.cta { display:flex; gap:8px; flex-wrap:wrap; margin-top:12px;}
+.btn { padding:8px 12px; border-radius:var(--radius); font-weight:700; font-size:12px; border:1px solid rgba(255,79,163,0.3); background:transparent; color:var(--accent-pink); cursor:pointer; transition:0.3s; }
+.btn:hover { background: var(--accent-pink); color:#111; }
+.btn.primary { background: linear-gradient(90deg,var(--accent-pink),var(--accent-purple)); color:#fff; border:none; }
 
-    /* timeline */
-    .timeline{border-left:3px solid rgba(0,0,0,0.06);padding-left:20px}
-    .timeline-item{position:relative;padding:14px 0}
-    .timeline-item::before{content:'';position:absolute;left:-21px;top:18px;width:18px;height:18px;border-radius:50%;background:linear-gradient(90deg,var(--rose),var(--rose-2));box-shadow:0 8px 22px rgba(255,79,163,0.12)}
+/* Profile */
+.profile { display:flex; flex-direction:column; align-items:center; text-align:center; padding:16px; }
+.avatar { width:120px; height:120px; border-radius:16px; font-size:36px; font-weight:900; display:flex; align-items:center; justify-content:center; color:#fff; background: linear-gradient(135deg,var(--accent-pink),var(--accent-purple)); margin-bottom:8px;}
+.profile h3 { margin:0; font-size:14px; color:var(--accent-blue);}
+.profile p { margin:0; font-size:10px; color:var(--muted); }
 
-    /* skills */
-    .skills{display:flex;flex-wrap:wrap;gap:12px}
-    .skill{min-width:150px;padding:16px;border-radius:12px;background:#fff;border:1px solid rgba(0,0,0,0.04);text-align:left}
-    .skill h4{margin:0 0 6px;font-size:16px}
-    .skill p{margin:0;color:var(--muted);font-size:14px}
+/* Responsive */
+@media(max-width:900px){ .hero{grid-template-columns:1fr;} .avatar{width:100px;height:100px;font-size:28px;} }
 
-    /* veille */
-    .feed{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-    .feed-card{padding:14px;border-radius:12px;background:#fff;border:1px solid rgba(0,0,0,0.04)}
-    .feed-card h5{margin:0 0 8px}
-
-    /* contact */
-    form{display:flex;flex-direction:column;gap:12px}
-    input,textarea,select{padding:14px;border-radius:10px;border:1px solid rgba(0,0,0,0.06);background:#fff;font-size:15px}
-    input:focus,textarea:focus{outline:none;box-shadow:0 12px 30px rgba(255,79,163,0.06);border-color:var(--rose)}
-
-    footer{margin:40px 0 80px;text-align:center;color:var(--muted)}
-
-    /* helpers */
-    .muted{color:var(--muted)}
-    .center{display:flex;align-items:center;justify-content:center}
-    .row{display:flex;gap:12px;align-items:center}
-    .pill{display:inline-block;padding:8px 12px;border-radius:999px;background:rgba(0,0,0,0.03);font-weight:700}
-
-    /* responsive */
-    @media (max-width:1100px){
-      .hero{grid-template-columns:1fr 360px}
-      .grid-3{grid-template-columns:repeat(2,1fr)}
-      .feed{grid-template-columns:1fr}
-    }
-    @media (max-width:760px){
-      .hero{grid-template-columns:1fr}
-      .avatar{width:180px;height:180px}
-      .logo{width:52px;height:52px}
-    }
-    @media (max-width:480px){
-      .grid-3{grid-template-columns:1fr}
-      nav ul{display:none}
-    }
-  </style>
+/* Timeline */
+.timeline-item{margin-bottom:10px; font-size:12px; color:var(--muted);}
+.timeline-item strong{color:var(--accent-purple);}
+</style>
 </head>
 <body>
-  <!-- HEADER / NAV -->
-  <header class="container" role="banner" style="padding-top:8px">
-    <div class="nav">
-      <div class="brand" aria-hidden="false">
-        <div class="logo" aria-hidden="true">Y.B</div>
-        <div>
-          <h1>Gnanapragasam Sansika</h1>
-          <p>Étudiant en informatique</p>
-        </div>
-      </div>
 
-      <nav aria-label="Navigation principale">
-        <button class="mobile-toggle" id="mobile-toggle" aria-label="Ouvrir le menu">☰</button>
-        <ul id="nav-list" role="menubar" aria-label="Principales sections">
-          <li data-link="#home" class="active" role="menuitem">Accueil</li>
-          <li data-link="#about" role="menuitem">À propos</li>
-          <li data-link="#parcours" role="menuitem">Parcours</li>
-          <li data-link="#competences" role="menuitem">Compétences</li>
-          <li data-link="#veille" role="menuitem">Veille Technologique</li>
-          <li data-link="#projects" role="menuitem">Projet</li>
-          <li data-link="#contact" role="menuitem">Contact</li>
-        </ul>
-      </nav>
+<header class="container">
+  <div class="nav">
+    <div class="brand">
+      <div class="logo">SG</div>
+      <div>
+        <h1>Sansika</h1>
+        <p>Dév. Informatique</p>
+      </div>
     </div>
-  </header>
 
-  <!-- MAIN -->
-  <main id="home" class="container" role="main">
+    <nav aria-label="Navigation principale">
+      <button class="mobile-toggle" aria-label="Ouvrir le menu">☰</button>
+      <ul id="nav-list" role="menubar">
+        <li data-link="#home" class="active">Accueil</li>
+        <li data-link="#about">À propos</li>
+        <li data-link="#parcours">Parcours</li>
+        <li data-link="#competences">Compétences</li>
+        <li data-link="#veille">Veille</li>
+        <li data-link="#projects">Projets</li>
+        <li data-link="#contact">Contact</li>
+      </ul>
+    </nav>
+  </div>
+</header>
 
-    <!-- HERO -->
-    <section class="hero" aria-labelledby="home-title">
-      <div class="card">
-        <div class="eyebrow">Bienvenue</div>
-        <h1 class="title" id="home-title">Gnanapragasam Sansika <span class="accent">— Étudiant en informatique</span></h1>
-        <p class="lead">Étudiant en BTS SIO (option SLAM) — Ce portfolio présente mon parcours, mes projets académiques, mes stages, et ma veille technologique. Merci de visiter mon travail.</p>
+<main class="container">
 
-        <div style="margin-top:18px" class="cta" role="group" aria-label="Actions">
-          <a class="btn primary" href="#contact">Me contacter</a>
-          <a class="btn" href="#projects">Voir mes projets</a>
-          <a class="btn" href="#veille">Ma veille</a>
-        </div>
-
-        <div style="margin-top:14px;color:var(--muted)">Basé à Paris · CV & Lettre de motivation disponibles ci-dessous</div>
+  <!-- HOME -->
+  <section id="home" class="hero">
+    <div class="card">
+      <div class="eyebrow">Bienvenue</div>
+      <h1 class="title">Gnanapragasam Sansika <span class="accent">— Dév. Informatique</span></h1>
+      <p>Bienvenue sur mon portfolio, style néon, fond noir, thème informatique.</p>
+      <p>Je présente mes compétences, mes projets et ma veille technologique.</p>
+      <div class="cta">
+        <a class="btn primary" href="#contact">Me contacter</a>
+        <a class="btn" href="#projects">Voir mes projets</a>
       </div>
-
-      <aside class="card profile" aria-label="Carte profil">
-        <div class="avatar" id="avatar-initials">SG</div>
-        <h3 id="profile-name">Sansika Gnanapragasam</h3>
-        <p class="muted">Étudiant • Développement • SLAM</p>
-
-        <div style="display:flex;gap:10px;margin-top:12px;flex-wrap:wrap">
-          <a class="btn" id="cv-link" href="#" aria-label="Télécharger CV">CV</a>
-          <a class="btn" id="lm-link" href="#" aria-label="Télécharger Lettre de motivation">Lettre de motivation</a>
-        </div>
-
-        <div style="margin-top:14px;text-align:left">
-          <div class="muted" style="font-size:13px">Centres d'intérêt</div>
-          <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap">
-            <span class="chip">Coder</span>
-            <span class="chip">Sport</span>
-            <span class="chip">Lire</span>
-            <span class="chip">Voyager</span>
-          </div>
-        </div>
-      </aside>
-    </section>
-
-    <!-- À PROPOS -->
-    <section id="about" aria-labelledby="about-title">
-      <div class="card">
-        <div class="section-head">
-          <h2 id="about-title">À propos</h2>
-          <p class="muted">Présentation</p>
-        </div>
-
-        <p style="margin-top:12px;color:var(--muted);line-height:1.65">
-          Bonjour, je suis <strong>Sansika Gnanapragasam</strong>, diplômé d'un <strong>BTS SIO (Services Informatiques aux Organisations)</strong> au Lycée Voillaume, spécialité <strong>SLAM</strong> (Solutions Logicielles et Applications Métiers).
-        </p>
-
-        <p style="margin-top:12px;color:var(--muted);line-height:1.65">
-          Toujours en cours d'étude, à l'issue de mon BTS j'envisage de poursuivre par une année de Bachelor en Développement Full-stack en alternance ou une licence informatique.
-        </p>
-
-        <p style="margin-top:12px;color:var(--muted);line-height:1.65">
-          Ce portfolio est une vitrine de mes réalisations académiques, de mes compétences et de mon parcours. Vous trouverez mes projets, mon engagement dans l'informatique, mes compétences en développement, ainsi que mon CV et ma lettre de motivation.
-        </p>
-
-        <div style="display:flex;gap:10px;margin-top:14px;flex-wrap:wrap">
-          <a class="btn" href="#" id="cv-download">CV</a>
-          <a class="btn" href="#" id="lm-download">Lettre de Motivation</a>
-        </div>
+    </div>
+    <aside class="card profile">
+      <div class="avatar">SG</div>
+      <h3>Sansika</h3>
+      <p>BTS SIO SLAM • Fullstack</p>
+      <div>
+        <span class="chip">Coder</span>
+        <span class="chip">Tech</span>
+        <span class="chip">Lecture</span>
+        <span class="chip">Voyager</span>
       </div>
-    </section>
+    </aside>
+  </section>
 
-    <!-- PARCOURS -->
-    <section id="parcours" aria-labelledby="parcours-title">
-      <h2 id="parcours-title" style="margin-top:18px">Parcours</h2>
-      <div class="card timeline" style="margin-top:12px">
-        <div class="timeline-item">
-          <strong>Janvier 2025 – Mars 2025</strong>
-          <div class="muted">Stage Développement Web — mises à jour et améliorations du site personnel de mon maître de stage; interface front inspirée d'Airbnb/Booking; site de gestion de commandes.</div>
-        </div>
+  <!-- ABOUT -->
+  <section id="about">
+    <h2>À propos</h2>
+    <p>Je suis un étudiant passionné par le développement informatique et les solutions logicielles.</p>
+    <p>Je travaille sur des projets full-stack et explore l’IA et le développement web moderne.</p>
+    <p>Mon objectif : créer des projets innovants et apprendre constamment de nouvelles technologies.</p>
+  </section>
 
-        <div class="timeline-item">
-          <strong>Février 2023 – Avril 2023</strong>
-          <div class="muted">Stage Node.js — outil d'export de données NoSQL vers XML; optimisation structure base de données.</div>
-        </div>
+  <!-- PARCOURS -->
+  <section id="parcours">
+    <h2>Parcours</h2>
+    <div class="timeline">
+      <div class="timeline-item"><strong>2024-2025</strong> : BTS SIO SLAM – Lycée Voillaume</div>
+      <div class="timeline-item"><strong>2023-2024</strong> : Stage Node.js – Projet export données NoSQL</div>
+      <div class="timeline-item"><strong>2022-2023</strong> : Stage ERP – Optimisation d'application</div>
+      <div class="timeline-item"><strong>2021-2022</strong> : BUT Informatique – Université Sorbonne Paris Nord</div>
+      <div class="timeline-item"><strong>2019-2021</strong> : BAC STI2D – Lycée Léonard de Vinci</div>
+    </div>
+  </section>
 
-        <div class="timeline-item">
-          <strong>Juin 2022 – Août 2022</strong>
-          <div class="muted">Stage ERP — amélioration d'application ERP; ergonomie et performance.</div>
-        </div>
+  <!-- COMPETENCES -->
+  <section id="competences">
+    <h2>Compétences</h2>
+    <div class="skills">
+      <div class="skill"><h4>HTML & CSS</h4><p>Structure propre et responsive, accessibilité.</p></div>
+      <div class="skill"><h4>JavaScript</h4><p>Interactivité, animations légères, API fetch.</p></div>
+      <div class="skill"><h4>Node.js & Back-end</h4><p>Création de petits serveurs, outils backend.</p></div>
+      <div class="skill"><h4>SQL & NoSQL</h4><p>Conception et optimisation de bases de données.</p></div>
+      <div class="skill"><h4>Soft Skills</h4><p>Travail en équipe, autonomie et curiosité.</p></div>
+    </div>
+  </section>
 
-        <div class="timeline-item">
-          <strong>2024 – 2025</strong>
-          <div class="muted">BTS SIO (SLAM) — Lycée Voillaume</div>
-        </div>
+  <!-- VEILLE -->
+  <section id="veille">
+    <h2>Veille Technologique</h2>
+    <p>Surveillance des innovations en IA, développement web et sécurité.</p>
+    <p>Exemples récents : modèles open-source, capteurs biomédicaux, interfaces futuristes.</p>
+    <p>Outils : GitHub, Feedly, blogs spécialisés, podcasts tech.</p>
+  </section>
 
-        <div class="timeline-item">
-          <strong>2021 – 2024</strong>
-          <div class="muted">BUT Informatique — Université Sorbonne Paris Nord</div>
-        </div>
+  <!-- PROJETS -->
+  <section id="projects">
+    <h2>Projets</h2>
+    <div class="grid-3">
+      <div class="project"><h4>Portfolio personnel</h4><p>Présentation complète de mes compétences et projets.</p></div>
+      <div class="project"><h4>Site gestion commandes</h4><p>Application front + back minimal pour apprentissage pratique.</p></div>
+      <div class="project"><h4>Prototype Airbnb/Booking</h4><p>Interface front inspirée des plateformes UX/UI.</p></div>
+    </div>
+  </section>
 
-        <div class="timeline-item">
-          <strong>2019 – 2021</strong>
-          <div class="muted">BAC STI2D — Lycée Léonard de Vinci</div>
-        </div>
-      </div>
-    </section>
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Email : <a href="mailto:SansikaGnanapragasam17@gmail.com">SansikaGnanapragasam17@gmail.com</a></p>
+    <p>Téléphone : +33 7 67 19 99 43</p>
+    <form>
+      <input placeholder="Nom" required>
+      <input type="email" placeholder="Email" required>
+      <textarea rows="4" placeholder="Message" required></textarea>
+      <button class="btn primary" type="submit">Envoyer</button>
+    </form>
+  </section>
 
-    <!-- COMPETENCES -->
-    <section id="competences" aria-labelledby="comp-title">
-      <h2 id="comp-title" style="margin-top:18px">Compétences</h2>
-      <div class="grid-3" style="margin-top:12px">
-        <div class="skill card">
-          <h4>HTML & Sémantique</h4>
-          <p class="muted">Structure propre, balises accessibles.</p>
-        </div>
+</main>
 
-        <div class="skill card">
-          <h4>CSS & Design</h4>
-          <p class="muted">Responsive, variables CSS, animations légères.</p>
-        </div>
+<script>
+const mobileToggle = document.querySelector('.mobile-toggle');
+const navList = document.getElementById('nav-list');
+mobileToggle && mobileToggle.addEventListener('click', () => navList.classList.toggle('show'));
 
-        <div class="skill card">
-          <h4>JavaScript & Node.js</h4>
-          <p class="muted">Interactions, fetch API, petits outils serveur.</p>
-        </div>
-
-        <div class="skill card">
-          <h4>Bases de données</h4>
-          <p class="muted">SQL, NoSQL — conception et optimisation.</p>
-        </div>
-
-        <div class="skill card">
-          <h4>Outils & IDE</h4>
-          <p class="muted">VS Code, Android Studio, Notepad++, IntelliJ IDEA, GitHub.</p>
-        </div>
-
-        <div class="skill card">
-          <h4>Soft skills</h4>
-          <p class="muted">Travail en équipe, curiosité, autonomie.</p>
-        </div>
-      </div>
-
-      <div style="margin-top:18px" class="card">
-        <h4 style="margin:0 0 8px">Langages pratiqués (estimations)</h4>
-        <p class="muted">HTML 55% · PHP 20% · CSS 33% · C# 25% · Bash 35% · JavaScript 30% · Java 30% · SQL 40% · Node.js 15% · Python 25%</p>
-      </div>
-    </section>
-
-    <!-- VEILLE TECHNOLOGIQUE -->
-    <section id="veille" aria-labelledby="veille-title">
-      <h2 id="veille-title" style="margin-top:18px">Veille Technologique</h2>
-
-      <div class="card" style="margin-top:12px">
-        <p class="muted">La veille technologique consiste à surveiller les évolutions techniques et innovations pour rester informé et adapter ses pratiques. Ci-dessous quelques ressources et notes de veille :</p>
-
-        <div class="feed" style="margin-top:12px">
-          <div class="feed-card">
-            <h5>OpenAI — nouveau modèle open source</h5>
-            <p class="muted">OpenAI prévoit la publication d'un modèle open source, rendant les technologies plus accessibles à la recherche et à la communauté.</p>
-            <div class="muted" style="margin-top:8px;font-size:13px">07-04-2025 — GoodTech.info</div>
-          </div>
-
-          <div class="feed-card">
-            <h5>Main bionique ultra-réaliste</h5>
-            <p class="muted">PSYONIC présente une main bionique offrant retour sensoriel précis — avancée majeure.</p>
-            <div class="muted" style="margin-top:8px;font-size:13px">03-04-2025 — EconomieDuSavoir</div>
-          </div>
-
-          <div class="feed-card">
-            <h5>Capteur de glucose non-invasif</h5>
-            <p class="muted">Abbott dévoile un biocapteur surveillant le glucose sans piqûre — progrès pour la santé connectée.</p>
-            <div class="muted" style="margin-top:8px;font-size:13px">03-04-2025 — EconomieDuSavoir</div>
-          </div>
-
-          <div class="feed-card">
-            <h5>Éthique de l'IA</h5>
-            <p class="muted">Appels pour développer une IA respectueuse de la dignité humaine et des enjeux éthiques.</p>
-            <div class="muted" style="margin-top:8px;font-size:13px">04-04-2025 — VaticanNews</div>
-          </div>
-        </div>
-
-        <div style="margin-top:12px" class="muted">
-          <strong>Outils de veille :</strong> Google Actualités, Feedly, Twitter, articles, podcasts.
-        </div>
-      </div>
-    </section>
-
-    <!-- PROJETS -->
-    <section id="projects" aria-labelledby="projects-title">
-      <h2 id="projects-title" style="margin-top:18px">Projet</h2>
-      <div class="grid-3" style="margin-top:12px">
-        <article class="project">
-          <h4>Portfolio personnel (ce site)</h4>
-          <p class="muted">Vitrine des travaux académiques, stages et veille technologique.</p>
-        </article>
-
-        <article class="project">
-          <h4>Site de gestion de commandes (stage)</h4>
-          <p class="muted">Application simple pour gérer commandes et clients (front + back minimal).</p>
-        </article>
-
-        <article class="project">
-          <h4>Prototype type Airbnb/Booking</h4>
-          <p class="muted">Interface front inspirée des plateformes de réservation pour apprentissage UX/UI.</p>
-        </article>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" aria-labelledby="contact-title">
-      <h2 id="contact-title" style="margin-top:18px">Contact</h2>
-      <div class="card" style="margin-top:12px;display:flex;gap:18px;flex-wrap:wrap">
-        <div style="flex:1;min-width:260px">
-          <p class="muted">Localisation : <strong>Paris, 75000, France</strong></p>
-          <p class="muted">Email : <a id="email-link" href="mailto:SansikaGnanapragasam17@gmail.com">SansikaGnanapragasam17@gmail.com</a></p>
-          <p class="muted">Téléphone : <strong>+33 7 67 19 99 43</strong></p>
-        </div>
-
-        <form id="contact-form" style="flex:1;min-width:320px;display:flex;flex-direction:column;gap:12px" aria-label="Formulaire de contact">
-          <input id="field-name" placeholder="Votre nom" required>
-          <input id="field-email" placeholder="Votre email" required>
-          <input id="field-subject" placeholder="Objet" required>
-          <textarea id="field-message" placeholder="Votre message" rows="6" required></textarea>
-          <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
-            <button class="btn primary" type="submit">Envoyer le message</button>
-            <div class="muted" style="font-size:13px">Réponse simulée (démo)</div>
-          </div>
-        </form>
-      </div>
-    </section>
-
-    <footer style="margin-top:28px">
-      <div class="muted center">© <span id="year"></span> Gnanapragasam Sansika — Tous droits réservés</div>
-    </footer>
-  </main>
-
-  <script>
-    // ===== Interactions & helpers =====
-
-    // Year
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Mobile menu
-    const mobileToggle = document.getElementById('mobile-toggle');
-    const navList = document.getElementById('nav-list');
-    mobileToggle && mobileToggle.addEventListener('click', () => navList.classList.toggle('show'));
-
-    // Smooth scroll + nav click
-    const navItems = Array.from(document.querySelectorAll('#nav-list li'));
-    navItems.forEach(item => {
-      item.addEventListener('click', () => {
-        const target = item.dataset.link;
-        if(target && document.querySelector(target)){
-          document.querySelector(target).scrollIntoView({behavior:'smooth', block:'start'});
-          navList.classList.remove('show');
-        }
-      });
-    });
-
-    // Highlight active section
-    const sections = document.querySelectorAll('main > section');
-    const observerOptions = { root: null, rootMargin: '0px', threshold: 0.45 };
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting){
-          const id = entry.target.id;
-          navItems.forEach(i => i.classList.toggle('active', (i.dataset.link === '#' + id || (i.dataset.link === '#home' && id === 'home'))));
-        }
-      });
-    }, observerOptions);
-    sections.forEach(s => observer.observe(s));
-
-    // Contact form demo
-    document.getElementById('contact-form').addEventListener('submit', function(e){
-      e.preventDefault();
-      const name = document.getElementById('field-name').value || 'Anonyme';
-      const btn = this.querySelector('button[type="submit"]');
-      btn.disabled = true;
-      btn.textContent = 'Loading...';
-      setTimeout(() => {
-        alert('Votre message a été envoyé. Merci ' + name + ' ! (simulation)');
-        btn.disabled = false;
-        btn.textContent = 'Envoyer le message';
-        this.reset();
-      }, 900);
-    });
-
-    // Quick replace helper (use in console if needed)
-    function replaceNameGlobally(fullName){
-      const els = [document.getElementById('profile-name'), document.getElementById('home-title'), document.getElementById('about-title')];
-      els.forEach(el => { if(el) el.textContent = el.textContent.replace(/Gnanapragasam Sansika|Sansika Gnanapragasam/g, fullName); });
-      const initials = fullName.split(' ').map(p => p[0]||'').slice(0,2).join('').toUpperCase();
-      const avatar = document.getElementById('avatar-initials'); if(avatar) avatar.textContent = initials;
-      const emailLink = document.getElementById('email-link'); if(emailLink) emailLink.href = 'mailto:' + fullName.toLowerCase().replace(/\s+/g,'.') + '@example.com';
+const navItems = Array.from(document.querySelectorAll('#nav-list li'));
+navItems.forEach(item => {
+  item.addEventListener('click', () => {
+    const target = item.dataset.link;
+    if(target && document.querySelector(target)){
+      document.querySelector(target).scrollIntoView({behavior:'smooth', block:'start'});
+      navList.classList.remove('show');
     }
-  </script>
+  });
+});
+
+// Highlight active section
+const sections = document.querySelectorAll('main > section');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      navItems.forEach(i => i.classList.toggle('active', i.dataset.link === '#' + entry.target.id));
+      entry.target.classList.add('visible');
+    }
+  });
+},{threshold:0.4});
+sections.forEach(s => observer.observe(s));
+</script>
+
 </body>
 </html>
