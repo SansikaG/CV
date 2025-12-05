@@ -41,14 +41,12 @@ a { color: var(--accent-pink); text-decoration:none; }
 header { position: sticky; top: 0; z-index: 200; padding: 10px 0; }
 .nav { display:flex; justify-content:space-between; align-items:center; background: rgba(0,0,0,0.85); padding:12px; border-radius:12px; backdrop-filter: blur(6px); transition:0.3s;}
 .nav:hover{background: rgba(20,20,20,0.95);}
-.brand { display:flex; align-items:center; gap:14px; }
-.logo { width:50px; height:50px; border-radius:12px; display:flex; align-items:center; justify-content:center; font-weight:900; font-size:20px; background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple)); color:#fff; }
-.brand h1 { font-size:16px; margin:0; font-family: var(--font-title);}
-.brand p { margin:0; font-size:12px; color:var(--muted);}
+
+/* NAVIGATION */
 nav ul { display:flex; gap:8px; list-style:none; margin:0; padding:0; }
 nav li { padding:8px 12px; border-radius:10px; font-weight:700; font-size:14px; cursor:pointer; transition: 0.3s; }
 nav li:hover { background: rgba(255,79,163,0.2); }
-nav li.active { background: linear-gradient(90deg,var(--accent-pink),var(--accent-purple)); color:#fff; box-shadow: 0 4px 20px rgba(255,79,163,0.3); }
+nav li.active { background: linear-gradient(90deg,var(--accent-pink),var(--accent-purple)); color:#fff; }
 
 /* Mobile toggle */
 .mobile-toggle { display:none; background:transparent; border:none; font-size:22px; cursor:pointer; }
@@ -59,38 +57,27 @@ nav li.active { background: linear-gradient(90deg,var(--accent-pink),var(--accen
 }
 
 /* Sections */
-section { margin-top:28px; padding:28px; border-radius:var(--radius); background: rgba(20,20,20,0.9); border:1px solid rgba(255,255,255,0.05); transition:0.3s opacity; opacity:0; transform: translateY(20px); }
-section.visible{opacity:1; transform: translateY(0);}
-section h2 { font-family: var(--font-title); font-size:var(--section-title-size); color: var(--accent-pink); margin-bottom:12px; text-shadow:0 0 6px var(--accent-pink);}
-section h3 { font-family: var(--font-title); color: var(--accent-blue); margin:6px 0; }
-section p { font-size:12px; color: var(--muted); line-height:1.5; margin-bottom:10px; }
-.chip { padding:4px 8px; border-radius:999px; background: rgba(255,79,163,0.2); color: var(--accent-pink); font-size:10px; font-weight:700; margin:2px; display:inline-block; }
+section { margin-top:28px; padding:28px; border-radius:var(--radius); background: rgba(20,20,20,0.9); border:1px solid rgba(255,255,255,0.05); opacity:0; transform: translateY(20px); transition:0.3s; }
+section.visible { opacity:1; transform: translateY(0); }
+section h2 { font-family: var(--font-title); font-size:var(--section-title-size); color: var(--accent-pink); margin-bottom:12px; text-shadow:0 0 6px var(--accent-pink); }
 
-/* Hero */
+/* HERO */
 .hero { display:grid; grid-template-columns:1fr 300px; gap:20px; align-items:start; }
-.eyebrow { font-size:12px; color: var(--accent-blue); margin-bottom:6px; text-transform:uppercase;}
-h1.title { font-size:36px; font-family: var(--font-title); margin-bottom:12px; line-height:1.1; }
+h1.title { font-size:36px; font-family: var(--font-title); margin-bottom:12px; }
 h1.title .accent { background: linear-gradient(90deg,var(--accent-pink),var(--accent-purple)); -webkit-background-clip:text; color:transparent; }
 
-.cta { display:flex; gap:8px; flex-wrap:wrap; margin-top:12px;}
-.btn { padding:8px 12px; border-radius:var(--radius); font-weight:700; font-size:12px; border:1px solid rgba(255,79,163,0.3); background:transparent; color:var(--accent-pink); cursor:pointer; transition:0.3s; }
-.btn:hover { background: var(--accent-pink); color:#111; }
-.btn.primary { background: linear-gradient(90deg,var(--accent-pink),var(--accent-purple)); color:#fff; border:none; }
+/* PROFILE */
+.profile { text-align:center; padding:16px; }
+.avatar { width:120px; height:120px; border-radius:16px; background:linear-gradient(135deg,var(--accent-pink),var(--accent-purple)); display:flex; align-items:center; justify-content:center; font-size:36px; font-weight:900; }
 
-/* Profile */
-.profile { display:flex; flex-direction:column; align-items:center; text-align:center; padding:16px; }
-.avatar { width:120px; height:120px; border-radius:16px; font-size:36px; font-weight:900; display:flex; align-items:center; justify-content:center; color:#fff; background: linear-gradient(135deg,var(--accent-pink),var(--accent-purple)); margin-bottom:8px;}
-.profile h3 { margin:0; font-size:14px; color:var(--accent-blue);}
-.profile p { margin:0; font-size:10px; color:var(--muted); }
+/* EXTRA */
+.grid-3 { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:12px; }
 
-/* Responsive */
-@media(max-width:900px){ .hero{grid-template-columns:1fr;} .avatar{width:100px;height:100px;font-size:28px;} }
-
-/* Timeline */
-.timeline-item{margin-bottom:10px; font-size:12px; color:var(--muted);}
-.timeline-item strong{color:var(--accent-purple);}
+/* Chips */
+.chip { padding:4px 8px; border-radius:999px; background: rgba(255,79,163,0.2); color: var(--accent-pink); font-size:10px; font-weight:700; margin:2px; display:inline-block; }
 </style>
 </head>
+
 <body>
 
 <header class="container">
@@ -99,17 +86,18 @@ h1.title .accent { background: linear-gradient(90deg,var(--accent-pink),var(--ac
       <div class="logo">SG</div>
       <div>
         <h1>Sansika</h1>
-        <p>Dév. Informatique</p>
+        <p>BTS SIO • SISR</p>
       </div>
     </div>
 
-    <nav aria-label="Navigation principale">
-      <button class="mobile-toggle" aria-label="Ouvrir le menu">☰</button>
-      <ul id="nav-list" role="menubar">
+    <nav>
+      <button class="mobile-toggle">☰</button>
+      <ul id="nav-list">
         <li data-link="#home" class="active">Accueil</li>
         <li data-link="#about">À propos</li>
         <li data-link="#parcours">Parcours</li>
         <li data-link="#competences">Compétences</li>
+        <li data-link="#certifications">Certifications</li>
         <li data-link="#veille">Veille</li>
         <li data-link="#projects">Projets</li>
         <li data-link="#contact">Contact</li>
@@ -120,119 +108,146 @@ h1.title .accent { background: linear-gradient(90deg,var(--accent-pink),var(--ac
 
 <main class="container">
 
-  <!-- HOME -->
-  <section id="home" class="hero">
-    <div class="card">
-      <div class="eyebrow">Bienvenue</div>
-      <h1 class="title">Gnanapragasam Sansika <span class="accent">— Dév. Informatique</span></h1>
-      <p>Bienvenue sur mon portfolio, style néon, fond noir, thème informatique.</p>
-      <p>Je présente mes compétences, mes projets et ma veille technologique.</p>
-      <div class="cta">
-        <a class="btn primary" href="#contact">Me contacter</a>
-        <a class="btn" href="#projects">Voir mes projets</a>
-      </div>
+<!-- HERO -->
+<section id="home" class="hero">
+  <div>
+    <h1 class="title">Gnanapragasam Sansika <span class="accent">— BTS SIO SISR</span></h1>
+    <p>Bienvenue sur mon portfolio.</p>
+    <p>Bienvenue sur mon portfolio !
+        Je m’appelle Sansika Gnanapragasam et je suis étudiante en BTS SIO (Services Informatiques aux Organisations), option SISR. Passionnée par les systèmes, les réseaux et la cybersécurité, je me forme chaque jour à la gestion d’infrastructures, la sécurisation des environnements informatiques et l’administration de serveurs.
+        
+        Curieuse et motivée, j’aime comprendre comment fonctionnent les architectures techniques, résoudre des problèmes et améliorer la performance des systèmes informatiques.
+        À travers ce portfolio, je vous présente mon parcours, mes compétences, mes projets, ainsi que ma veille technologique.
+        
+        <p>Bonne visite !</p>
+  </div>
+
+  <aside class="profile">
+    <div class="avatar">SG</div>
+    <h3>Sansika</h3>
+    <p>BTS SIO SISR • Informatique Réseaux</p>
+    <div>
+      <span class="chip">Réseaux</span>
+      <span class="chip">Cybersécurité</span>
+      <span class="chip">Serveurs</span>
     </div>
-    <aside class="card profile">
-      <div class="avatar">SG</div>
-      <h3>Sansika</h3>
-      <p>BTS SIO SLAM • Fullstack</p>
-      <div>
-        <span class="chip">Coder</span>
-        <span class="chip">Tech</span>
-        <span class="chip">Lecture</span>
-        <span class="chip">Voyager</span>
-      </div>
-    </aside>
-  </section>
+  </aside>
+</section>
 
-  <!-- ABOUT -->
-  <section id="about">
-    <h2>À propos</h2>
-    <p>Je suis un étudiant passionné par le développement informatique et les solutions logicielles.</p>
-    <p>Je travaille sur des projets full-stack et explore l’IA et le développement web moderne.</p>
-    <p>Mon objectif : créer des projets innovants et apprendre constamment de nouvelles technologies.</p>
-  </section>
+<!-- ABOUT -->
+<section id="about">
+  <h2>À propos</h2>
+  <p>Étudiante en BTS SIO SISR, je me spécialise dans les infrastructures systèmes et réseaux.</p>
+  <p>Je configure des serveurs, sécurise des environnements, virtualise et administre des réseaux.</p>
+</section>
 
-  <!-- PARCOURS -->
-  <section id="parcours">
-    <h2>Parcours</h2>
-    <div class="timeline">
-      <div class="timeline-item"><strong>2024-2025</strong> : BTS SIO SLAM – Lycée Voillaume</div>
-      <div class="timeline-item"><strong>2023-2024</strong> : Stage Node.js – Projet export données NoSQL</div>
-      <div class="timeline-item"><strong>2022-2023</strong> : Stage ERP – Optimisation d'application</div>
-      <div class="timeline-item"><strong>2021-2022</strong> : BUT Informatique – Université Sorbonne Paris Nord</div>
-      <div class="timeline-item"><strong>2019-2021</strong> : BAC STI2D – Lycée Léonard de Vinci</div>
-    </div>
-  </section>
+<!-- PARCOURS -->
+<section id="parcours">
+  <h2>Parcours</h2>
+  <p><strong>2024-2025</strong> : BTS SIO SISR – Lycée Voillaume</p>
+  <p><strong>2023-2024</strong> : Stage — Gestion réseau, dépannage, maintenance</p>
+  <p><strong>2021-2022</strong> : BUT Informatique – Sorbonne Paris Nord</p>
+  <p><strong>2019-2021</strong> : BAC STI2D – Lycée Léonard de Vinci</p>
+</section>
 
-  <!-- COMPETENCES -->
-  <section id="competences">
-    <h2>Compétences</h2>
-    <div class="skills">
-      <div class="skill"><h4>HTML & CSS</h4><p>Structure propre et responsive, accessibilité.</p></div>
-      <div class="skill"><h4>JavaScript</h4><p>Interactivité, animations légères, API fetch.</p></div>
-      <div class="skill"><h4>Node.js & Back-end</h4><p>Création de petits serveurs, outils backend.</p></div>
-      <div class="skill"><h4>SQL & NoSQL</h4><p>Conception et optimisation de bases de données.</p></div>
-      <div class="skill"><h4>Soft Skills</h4><p>Travail en équipe, autonomie et curiosité.</p></div>
-    </div>
-  </section>
+<!-- COMPÉTENCES -->
+<section id="competences">
+  <h2>Compétences SISR</h2>
 
-  <!-- VEILLE -->
-  <section id="veille">
-    <h2>Veille Technologique</h2>
-    <p>Surveillance des innovations en IA, développement web et sécurité.</p>
-    <p>Exemples récents : modèles open-source, capteurs biomédicaux, interfaces futuristes.</p>
-    <p>Outils : GitHub, Feedly, blogs spécialisés, podcasts tech.</p>
-  </section>
+  <div class="grid-3">
+    <div><h3>🔹 Réseaux</h3><p>Câblage, VLAN, routage, sécurité LAN/WAN.</p></div>
+    <div><h3>🔹 Systèmes</h3><p>Windows Server, Debian, Active Directory, DHCP, DNS.</p></div>
+    <div><h3>🔹 Virtualisation</h3><p>VMware, VirtualBox, Proxmox.</p></div>
+    <div><h3>🔹 Cybersécurité</h3><p>Durcissement, pare-feu, surveillance, bonnes pratiques.</p></div>
+    <div><h3>🔹 Scripts</h3><p>Bash, PowerShell.</p></div>
+    <div><h3>🔹 Support & Maintenance</h3><p>Postes, réseaux, diagnostic, </p></div>
+  </div>
+</section>
 
-  <!-- PROJETS -->
-  <section id="projects">
-    <h2>Projets</h2>
-    <div class="grid-3">
-      <div class="project"><h4>Portfolio personnel</h4><p>Présentation complète de mes compétences et projets.</p></div>
-      <div class="project"><h4>Site gestion commandes</h4><p>Application front + back minimal pour apprentissage pratique.</p></div>
-      <div class="project"><h4>Prototype Airbnb/Booking</h4><p>Interface front inspirée des plateformes UX/UI.</p></div>
-    </div>
-  </section>
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <h2>Certifications</h2>
 
-  <!-- CONTACT -->
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Email : <a href="mailto:SansikaGnanapragasam17@gmail.com">SansikaGnanapragasam17@gmail.com</a></p>
-    <p>Téléphone : +33 7 67 19 99 43</p>
-    <form>
-      <input placeholder="Nom" required>
-      <input type="email" placeholder="Email" required>
-      <textarea rows="4" placeholder="Message" required></textarea>
-      <button class="btn primary" type="submit">Envoyer</button>
-    </form>
-  </section>
+  <ul>
+    <li>📌 PIX — Compétences numériques</li>
+    <li>📌 Cisco — Introduction to Cybersecurity</li>
+    <li>📌 Cisco — Networking Essentials</li>
+    <li>📌 ANSSI — SecNumAcadémie</li>
+  </ul>
+</section>
 
+<!-- VEILLE -->
+<section id="veille">
+  <h2>Veille Technologique</h2>
+  <p>Ma veille se concentre sur :</p>
+  <ul>
+    <li>🛡️ Cybersécurité (attaques, 0-day, outils SOC)</li>
+    <li>🌐 Réseaux (SD-WAN, sécurité réseau, IPv6)</li>
+    <li>🖥️ Virtualisation & serveurs (Proxmox, conteneurs)</li>
+  </ul>
+  <p>Sources : CERT-FR, ANSSI, Cisco Blog, ZATAZ, Feedly.</p>
+</section>
+
+<!-- PROJETS -->
+<section id="projects">
+  <h2>Projets SISR</h2>
+  <div class="grid-3">
+    <div><h3>🔧 Déploiement AD</h3><p>Installation + GPO + gestion utilisateurs.</p></div>
+    <div><h3>🛜 VLAN & Routage</h3><p>Création réseau entreprise (Routeur, Switch, DHCP).</p></div>
+    <div><h3>🖥️ Serveur Linux</h3><p>Configuration Apache, SSH, Firewall UFW.</p></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <h2>Contact</h2>
+  <p>Email : <a href="mailto:SansikaGnanapragasam17@gmail.com">SansikaGnanapragasam17@gmail.com</a></p>
+  <p>Téléphone : +33 7 67 19 99 43</p>
+</section>
+<!-- TABLEAU DE SYNTHÈSE -->
+<section id="tableau-synthese">
+    <h2>Tableau de Synthèse</h2>
+    <p>
+      Voici mon tableau de synthèse. Il est affiché directement ci-dessous.
+    </p>
+  
+    <!-- AFFICHAGE DIRECT DU PDF -->
+    <embed 
+      src="ton_fichier.pdf"
+      type="application/pdf"
+      width="100%"
+      height="600px"
+      style="border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);"
+    >
+    
+    <p style="margin-top:10px; font-size:12px; color:#888;">
+      Si le document ne s’affiche pas, vous pouvez le télécharger 
+      <a href="d:\Sansika\Tableau de synthèse.xlsx" target="_blank">ici</a>.
+    </p>
+  </section>
+  
 </main>
 
 <script>
 const mobileToggle = document.querySelector('.mobile-toggle');
 const navList = document.getElementById('nav-list');
-mobileToggle && mobileToggle.addEventListener('click', () => navList.classList.toggle('show'));
+mobileToggle.addEventListener('click', () => navList.classList.toggle('show'));
 
-const navItems = Array.from(document.querySelectorAll('#nav-list li'));
+const navItems = document.querySelectorAll('#nav-list li');
 navItems.forEach(item => {
   item.addEventListener('click', () => {
-    const target = item.dataset.link;
-    if(target && document.querySelector(target)){
-      document.querySelector(target).scrollIntoView({behavior:'smooth', block:'start'});
-      navList.classList.remove('show');
-    }
+    const target = document.querySelector(item.dataset.link);
+    if(target){ target.scrollIntoView({behavior:'smooth'}); }
+    navList.classList.remove('show');
   });
 });
 
-// Highlight active section
-const sections = document.querySelectorAll('main > section');
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting){
-      navItems.forEach(i => i.classList.toggle('active', i.dataset.link === '#' + entry.target.id));
-      entry.target.classList.add('visible');
+const sections = document.querySelectorAll('main section');
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      navItems.forEach(i=>i.classList.toggle("active", i.dataset.link === "#" + e.target.id));
+      e.target.classList.add("visible");
     }
   });
 },{threshold:0.4});
