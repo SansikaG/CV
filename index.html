@@ -41,12 +41,14 @@ a { color: var(--accent-pink); text-decoration:none; }
 header { position: sticky; top: 0; z-index: 200; padding: 10px 0; }
 .nav { display:flex; justify-content:space-between; align-items:center; background: rgba(0,0,0,0.85); padding:12px; border-radius:12px; backdrop-filter: blur(6px); transition:0.3s;}
 .nav:hover{background: rgba(20,20,20,0.95);}
-
-/* NAVIGATION */
+.brand { display:flex; align-items:center; gap:14px; }
+.logo { width:50px; height:50px; border-radius:12px; display:flex; align-items:center; justify-content:center; font-weight:900; font-size:20px; background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple)); color:#fff; }
+.brand h1 { font-size:16px; margin:0; font-family: var(--font-title);}
+.brand p { margin:0; font-size:12px; color:var(--muted);}
 nav ul { display:flex; gap:8px; list-style:none; margin:0; padding:0; }
 nav li { padding:8px 12px; border-radius:10px; font-weight:700; font-size:14px; cursor:pointer; transition: 0.3s; }
 nav li:hover { background: rgba(255,79,163,0.2); }
-nav li.active { background: linear-gradient(90deg,var(--accent-pink),var(--accent-purple)); color:#fff; }
+nav li.active { background: linear-gradient(90deg,var(--accent-pink),var(--accent-purple)); color:#fff; box-shadow: 0 4px 20px rgba(255,79,163,0.3); }
 
 /* Mobile toggle */
 .mobile-toggle { display:none; background:transparent; border:none; font-size:22px; cursor:pointer; }
@@ -57,27 +59,51 @@ nav li.active { background: linear-gradient(90deg,var(--accent-pink),var(--accen
 }
 
 /* Sections */
-section { margin-top:28px; padding:28px; border-radius:var(--radius); background: rgba(20,20,20,0.9); border:1px solid rgba(255,255,255,0.05); opacity:0; transform: translateY(20px); transition:0.3s; }
-section.visible { opacity:1; transform: translateY(0); }
-section h2 { font-family: var(--font-title); font-size:var(--section-title-size); color: var(--accent-pink); margin-bottom:12px; text-shadow:0 0 6px var(--accent-pink); }
+section { margin-top:28px; padding:28px; border-radius:var(--radius); background: rgba(20,20,20,0.9); border:1px solid rgba(255,255,255,0.05); transition:0.3s opacity; opacity:0; transform: translateY(20px); }
+section.visible{opacity:1; transform: translateY(0);}
+section h2 { font-family: var(--font-title); font-size:var(--section-title-size); color: var(--accent-pink); margin-bottom:12px; text-shadow:0 0 6px var(--accent-pink);}
+section h3 { font-family: var(--font-title); color: var(--accent-blue); margin:6px 0; }
+section p { font-size:12px; color: var(--muted); line-height:1.5; margin-bottom:10px; }
+.chip { padding:4px 8px; border-radius:999px; background: rgba(255,79,163,0.2); color: var(--accent-pink); font-size:10px; font-weight:700; margin:2px; display:inline-block; }
 
-/* HERO */
+/* Hero */
 .hero { display:grid; grid-template-columns:1fr 300px; gap:20px; align-items:start; }
-h1.title { font-size:36px; font-family: var(--font-title); margin-bottom:12px; }
+.eyebrow { font-size:12px; color: var(--accent-blue); margin-bottom:6px; text-transform:uppercase;}
+h1.title { font-size:36px; font-family: var(--font-title); margin-bottom:12px; line-height:1.1; }
 h1.title .accent { background: linear-gradient(90deg,var(--accent-pink),var(--accent-purple)); -webkit-background-clip:text; color:transparent; }
 
-/* PROFILE */
-.profile { text-align:center; padding:16px; }
-.avatar { width:120px; height:120px; border-radius:16px; background:linear-gradient(135deg,var(--accent-pink),var(--accent-purple)); display:flex; align-items:center; justify-content:center; font-size:36px; font-weight:900; }
+.cta { display:flex; gap:8px; flex-wrap:wrap; margin-top:12px;}
+.btn { padding:8px 12px; border-radius:var(--radius); font-weight:700; font-size:12px; border:1px solid rgba(255,79,163,0.3); background:transparent; color:var(--accent-pink); cursor:pointer; transition:0.3s; }
+.btn:hover { background: var(--accent-pink); color:#111; }
+.btn.primary { background: linear-gradient(90deg,var(--accent-pink),var(--accent-purple)); color:#fff; border:none; }
 
-/* EXTRA */
-.grid-3 { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:12px; }
+/* Profile */
+.profile { display:flex; flex-direction:column; align-items:center; text-align:center; padding:16px; }
+.avatar { width:120px; height:120px; border-radius:16px; font-size:36px; font-weight:900; display:flex; align-items:center; justify-content:center; color:#fff; background: linear-gradient(135deg,var(--accent-pink),var(--accent-purple)); margin-bottom:8px;}
+.profile h3 { margin:0; font-size:14px; color:var(--accent-blue);}
+.profile p { margin:0; font-size:10px; color:var(--muted); }
 
-/* Chips */
-.chip { padding:4px 8px; border-radius:999px; background: rgba(255,79,163,0.2); color: var(--accent-pink); font-size:10px; font-weight:700; margin:2px; display:inline-block; }
+/* Responsive */
+@media(max-width:900px){ .hero{grid-template-columns:1fr;} .avatar{width:100px;height:100px;font-size:28px;} }
+
+/* Timeline */
+.timeline-item{margin-bottom:10px; font-size:12px; color:var(--muted);}
+.timeline-item strong{color:var(--accent-purple);}
+
+/* Grid */
+.grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap:16px; }
+
+/* Cards */
+.cert-card, .project { background: rgba(20,20,20,0.9); border:1px solid rgba(255,255,255,0.05); border-radius: var(--radius); padding:16px; transition: transform 0.2s; }
+.cert-card:hover, .project:hover { transform: translateY(-4px); border-color: var(--accent-pink); }
+.cert-card h4, .project h4 { font-family: var(--font-title); color: var(--accent-blue); margin-bottom: 8px; }
+.cert-card a, .project a { color: var(--accent-pink); text-decoration: none; font-size: 12px; }
+.cert-card a:hover, .project a:hover { text-decoration: underline; }
+
+/* Embed PDF petit */
+.embed-pdf { width: 100%; height: 200px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); margin-top:8px; }
 </style>
 </head>
-
 <body>
 
 <header class="container">
@@ -86,20 +112,20 @@ h1.title .accent { background: linear-gradient(90deg,var(--accent-pink),var(--ac
       <div class="logo">SG</div>
       <div>
         <h1>Sansika</h1>
-        <p>BTS SIO • SISR</p>
+        <p>BTS SIO SISR</p>
       </div>
     </div>
 
-    <nav>
-      <button class="mobile-toggle">☰</button>
-      <ul id="nav-list">
+    <nav aria-label="Navigation principale">
+      <button class="mobile-toggle" aria-label="Ouvrir le menu">☰</button>
+      <ul id="nav-list" role="menubar">
         <li data-link="#home" class="active">Accueil</li>
         <li data-link="#about">À propos</li>
         <li data-link="#parcours">Parcours</li>
         <li data-link="#competences">Compétences</li>
-        <li data-link="#certifications">Certifications</li>
         <li data-link="#veille">Veille</li>
         <li data-link="#projects">Projets</li>
+        <li data-link="#certifications">Certifications</li>
         <li data-link="#contact">Contact</li>
       </ul>
     </nav>
@@ -108,226 +134,349 @@ h1.title .accent { background: linear-gradient(90deg,var(--accent-pink),var(--ac
 
 <main class="container">
 
-<!-- HERO -->
-<section id="home" class="hero">
-  <div>
-    <h1 class="title">Gnanapragasam Sansika <span class="accent">— BTS SIO SISR</span></h1>
-    <p>Bienvenue sur mon portfolio.</p>
-    <p>Bienvenue sur mon portfolio !
-        Je m’appelle Sansika Gnanapragasam et je suis étudiante en BTS SIO (Services Informatiques aux Organisations), option SISR. Passionnée par les systèmes, les réseaux et la cybersécurité, je me forme chaque jour à la gestion d’infrastructures, la sécurisation des environnements informatiques et l’administration de serveurs.
-        
-        Curieuse et motivée, j’aime comprendre comment fonctionnent les architectures techniques, résoudre des problèmes et améliorer la performance des systèmes informatiques.
-        À travers ce portfolio, je vous présente mon parcours, mes compétences, mes projets, ainsi que ma veille technologique.
-        
-        <p>Bonne visite !</p>
-  </div>
-
-  <aside class="profile">
-    <div class="avatar">SG</div>
-    <h3>Sansika</h3>
-    <p>BTS SIO SISR • Informatique Réseaux</p>
-    <div>
-      <span class="chip">Réseaux</span>
-      <span class="chip">Cybersécurité</span>
-      <span class="chip">Serveurs</span>
+  <!-- HOME -->
+  <section id="home" class="hero">
+    <div class="card">
+      <div class="eyebrow">Bienvenue</div>
+      <h1 class="title">Gnanapragasam Sansika <span class="accent">— BTS SIO SISR</span></h1>
+      <p>Bienvenue sur mon portfolio, style néon, fond noir, thème informatique.</p>
+      <p>Je présente mes compétences, mes projets et mes certifications.</p>
+      <div class="cta">
+        <a class="btn primary" href="#contact">Me contacter</a>
+        <a class="btn" href="#projects">Voir mes projets</a>
+      </div>
     </div>
-  </aside>
-</section>
+    <aside class="card profile">
+      <div class="avatar">SG</div>
+      <h3>Sansika</h3>
+      <p>BTS SIO SISR • Fullstack</p>
+      <div>
+        <span class="chip">Coder</span>
+        <span class="chip">Tech</span>
+        <span class="chip">Lecture</span>
+        <span class="chip">Voyager</span>
+      </div>
+    </aside>
+  </section>
 
-<!-- ABOUT -->
-<section id="about">
-  <h2>À propos</h2>
-  <p>Étudiante en BTS SIO SISR, je me spécialise dans les infrastructures systèmes et réseaux.</p>
-  <p>Je configure des serveurs, sécurise des environnements, virtualise et administre des réseaux.</p>
-</section>
+  <!-- ABOUT -->
+  <section id="about">
+    <h2>À propos</h2>
+    <p>Je suis étudiante en BTS SIO option SISR, passionnée par les systèmes et réseaux.</p>
+    <p>Mon objectif : créer des solutions informatiques fiables et sécurisées tout en améliorant mes compétences techniques.</p>
+  </section>
 
-<!-- PARCOURS -->
-<section id="parcours">
-  <h2>Parcours</h2>
-  <p><strong>2024-2025</strong> : BTS SIO SISR – Lycée Voillaume</p>
-  <p><strong>2023-2024</strong> : Stage — Gestion réseau, dépannage, maintenance</p>
-  <p><strong>2021-2022</strong> : BUT Informatique – Sorbonne Paris Nord</p>
-  <p><strong>2019-2021</strong> : BAC STI2D – Lycée Léonard de Vinci</p>
-</section>
+  <!-- PARCOURS -->
+  <section id="parcours">
+    <h2>Parcours</h2>
+    <div class="timeline">
+      <div class="timeline-item"><strong>2024-2025</strong> : BTS SIO SISR – Lycée Voillaume</div>
+      <div class="timeline-item"><strong>2023-2024</strong> : Stage Node.js – Projet export données NoSQL</div>
+      <div class="timeline-item"><strong>2022-2023</strong> : Stage ERP – Optimisation d'application</div>
+      <div class="timeline-item"><strong>2021-2022</strong> : BUT Informatique – Université Sorbonne Paris Nord</div>
+      <div class="timeline-item"><strong>2019-2021</strong> : BAC STI2D – Lycée Léonard de Vinci</div>
+    </div>
+  </section>
 
-<!-- COMPÉTENCES -->
-<section id="competences">
-  <h2>Compétences SISR</h2>
+  <!-- COMPETENCES -->
+  <section id="competences">
+    <h2>Compétences</h2>
+    <div class="skills">
+      <div class="skill"><h4>HTML & CSS</h4><p>Structure propre et responsive, accessibilité.</p></div>
+      <div class="skill"><h4>JavaScript</h4><p>Interactivité, animations légères, API fetch.</p></div>
+      <div class="skill"><h4>Node.js & Back-end</h4><p>Création de petits serveurs, outils backend.</p></div>
+      <div class="skill"><h4>SQL & NoSQL</h4><p>Conception et optimisation de bases de données.</p></div>
+      <div class="skill"><h4>Soft Skills</h4><p>Travail en équipe, autonomie et curiosité.</p></div>
+    </div>
+  </section>
 
-  <div class="grid-3">
-    <div><h3>🔹 Réseaux</h3><p>Câblage, VLAN, routage, sécurité LAN/WAN.</p></div>
-    <div><h3>🔹 Systèmes</h3><p>Windows Server, Debian, Active Directory, DHCP, DNS.</p></div>
-    <div><h3>🔹 Virtualisation</h3><p>VMware, VirtualBox, Proxmox.</p></div>
-    <div><h3>🔹 Cybersécurité</h3><p>Durcissement, pare-feu, surveillance, bonnes pratiques.</p></div>
-    <div><h3>🔹 Scripts</h3><p>Bash, PowerShell.</p></div>
-    <div><h3>🔹 Support & Maintenance</h3><p>Postes, réseaux, diagnostic, </p></div>
+  <!-- VEILLE -->
+  <section id="veille">
+    <h2>Veille Technologique</h2>
+    <p>Surveillance des innovations en IA, développement web et sécurité.</p>
+    <p>Exemples récents : modèles open-source, capteurs biomédicaux, interfaces futuristes.</p>
+    <p>Outils : GitHub, Feedly, blogs spécialisés, podcasts tech.</p>
+  </section>
+
+  <!-- PROJETS -->
+  <!-- PROJETS AMÉLIORÉS -->
+<section id="projects">
+  <h2>Projets</h2>
+  <div class="grid-3 enhanced-projects">
+    <div class="project-card">
+      <div class="project-image" style="background-image:url('spa.jpg');"></div>
+      <h4>Spa Esthétique</h4>
+      <p>Création d'un site internet pour un spa esthétique luxueux. Responsive et design moderne.</p>
+      <a href="#" class="btn">Voir le projet</a>
+    </div>
+    <div class="project-card">
+      <div class="project-image" style="background-image:url('ecommerce.jpg');"></div>
+      <h4>E-commerce Maillots</h4>
+      <p>Site web e-commerce pour des maillots de foot, intégration paiement et catalogue dynamique.</p>
+      <a href="#" class="btn">Voir le projet</a>
+    </div>
   </div>
 </section>
 
-<!-- CERTIFICATIONS -->
+<!-- CERTIFICATIONS AMÉLIORÉES -->
 <section id="certifications">
   <h2>Certifications</h2>
-
-  <ul>
-    <li>📌 PIX — Compétences numériques</li>
-    <li>📌 Cisco — Introduction to Cybersecurity</li>
-    <li>📌 Cisco — Networking Essentials</li>
-    <li>📌 ANSSI — SecNumAcadémie</li>
-  </ul>
-</section>
-
-<!-- VEILLE -->
-<section id="veille">
-  <h2>Veille Technologique</h2>
-  <p>Ma veille se concentre sur :</p>
-  <ul>
-    <li>🛡️ Cybersécurité (attaques, 0-day, outils SOC)</li>
-    <li>🌐 Réseaux (SD-WAN, sécurité réseau, IPv6)</li>
-    <li>🖥️ Virtualisation & serveurs (Proxmox, conteneurs)</li>
-  </ul>
-  <p>Sources : CERT-FR, ANSSI, Cisco Blog, ZATAZ, Feedly.</p>
-</section>
-
-<!-- PROJETS -->
-<section id="projects">
-  <h2>Projets SISR</h2>
-  <div class="grid-3">
-    <div><h3>🔧 Déploiement AD</h3><p>Installation + GPO + gestion utilisateurs.</p></div>
-    <div><h3>🛜 VLAN & Routage</h3><p>Création réseau entreprise (Routeur, Switch, DHCP).</p></div>
-    <div><h3>🖥️ Serveur Linux</h3><p>Configuration Apache, SSH, Firewall UFW.</p></div>
+  <p>Mes certifications récentes et mes formations en ligne :</p>
+  <div class="grid-3 enhanced-certs">
+    <div class="cert-card">
+      <h4>Mooc Ebios Risk Manager</h4>
+      <embed class="embed-pdf" src="ebios.pdf" type="application/pdf">
+      <span class="badge">Sécurité</span>
+    </div>
+    <div class="cert-card">
+      <h4>Mooc CNIL RGPD</h4>
+      <embed class="embed-pdf" src="cnil.pdf" type="application/pdf">
+      <span class="badge">RGPD</span>
+    </div>
+    <div class="cert-card">
+      <h4>Certification Packet Tracer</h4>
+      <embed class="embed-pdf" src="packettracer.pdf" type="application/pdf">
+      <span class="badge">Réseaux</span>
+    </div>
+    <div class="cert-card">
+      <h4>Basic Networking</h4>
+      <embed class="embed-pdf" src="basicnetworking.pdf" type="application/pdf">
+      <span class="badge">Réseaux</span>
+    </div>
   </div>
 </section>
 
+<style>
+/* === PROJETS AMÉLIORÉS === */
+.enhanced-projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.project-card {
+  background: rgba(20,20,20,0.95);
+  border: 1px solid rgba(255,79,163,0.2);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(255,79,163,0.5);
+  border-color: var(--accent-pink);
+}
+
+.project-image {
+  width: 100%;
+  height: 140px;
+  background-size: cover;
+  background-position: center;
+}
+
+.project-card h4 {
+  margin: 12px 16px 6px;
+  color: var(--accent-blue);
+  font-family: var(--font-title);
+}
+
+.project-card p {
+  margin: 0 16px 12px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.project-card .btn {
+  margin: 0 16px 16px;
+  padding: 6px 12px;
+  font-size: 12px;
+  text-align: center;
+}
+
+/* === CERTIFICATIONS AMÉLIORÉES === */
+.enhanced-certs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 24px;
+}
+
+.cert-card {
+  position: relative;
+  background: rgba(20,20,20,0.95);
+  border: 1px solid rgba(255,79,163,0.2);
+  border-radius: var(--radius);
+  padding: 16px;
+  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+}
+
+.cert-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 20px rgba(255,79,163,0.4);
+  border-color: var(--accent-purple);
+}
+
+.cert-card h4 {
+  font-family: var(--font-title);
+  color: var(--accent-blue);
+  margin-bottom: 8px;
+}
+
+.cert-card .embed-pdf {
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius);
+  margin-bottom: 12px;
+  height: 180px;
+}
+
+.cert-card .badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: var(--accent-pink);
+  color: #111;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 999px;
+  text-transform: uppercase;
+}
+</style>
+
+
+  
 <!-- CONTACT -->
 <section id="contact">
-<!-- === SECTION CONTACT AMÉLIORÉE === -->
-<section id="contact">
-    <h2>Contact</h2>
-    <div class="contact-container">
-      <!-- Partie infos / contact direct -->
-      <div class="contact-info">
-        <p><strong>Email :</strong> <a href="mailto:SansikaGnanapragasam17@gmail.com">SansikaGnanapragasam17@gmail.com</a></p>
-        <p><strong>Téléphone :</strong> +33 7 67 19 99 43</p>
-        <p>N'hésitez pas à m’envoyer un message via le formulaire ci‑dessous ✨</p>
+  <!-- === SECTION CONTACT AMÉLIORÉE === -->
+  <section id="contact">
+      <h2>Contact</h2>
+      <div class="contact-container">
+        <!-- Partie infos / contact direct -->
+        <div class="contact-info">
+          <p><strong>Email :</strong> <a href="mailto:SansikaGnanapragasam17@gmail.com">SansikaGnanapragasam17@gmail.com</a></p>
+          <p><strong>Téléphone :</strong> +33 7 67 19 99 43</p>
+          <p>N'hésitez pas à m’envoyer un message via le formulaire ci‑dessous ✨</p>
+        </div>
+    
+        <!-- Partie formulaire -->
+        <form class="contact-form" method="post" action="#">
+          <div class="form-group">
+            <label for="name">Nom / Prénom</label>
+            <input type="text" id="name" name="name" placeholder="Votre nom" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Votre email" required>
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Votre message" required></textarea>
+          </div>
+          <button class="btn primary" type="submit">Envoyer</button>
+        </form>
       </div>
-  
-      <!-- Partie formulaire -->
-      <form class="contact-form" method="post" action="#">
-        <div class="form-group">
-          <label for="name">Nom / Prénom</label>
-          <input type="text" id="name" name="name" placeholder="Votre nom" required>
-        </div>
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" placeholder="Votre email" required>
-        </div>
-        <div class="form-group">
-          <label for="message">Message</label>
-          <textarea id="message" name="message" rows="5" placeholder="Votre message" required></textarea>
-        </div>
-        <button class="btn primary" type="submit">Envoyer</button>
-      </form>
-    </div>
-  </section>
-  
-  <style>
-  /* — Styles pour Contact amélioré — */
-  
-  #contact {
-    padding: 28px;
-    background: rgba(20,20,20,0.9);
-    border: 1px solid rgba(255,255,255,0.05);
-    border-radius: var(--radius);
-    margin-top: 28px;
-  }
-  
-  #contact h2 {
-    font-family: var(--font-title);
-    color: var(--accent-pink);
-    font-size: var(--section-title-size);
-    margin-bottom: 16px;
-    text-shadow: 0 0 6px var(--accent-pink);
-  }
-  
-  .contact-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 24px;
-  }
-  
-  .contact-info {
-    flex: 1 1 300px;
-    font-size: 14px;
-    color: var(--text);
-    line-height: 1.5;
-  }
-  
-  .contact-info a {
-    color: var(--accent-pink);
-    text-decoration: none;
-  }
-  
-  .contact-form {
-    flex: 1 1 300px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-  
-  .form-group {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .form-group label {
-    font-family: var(--font-title);
-    color: var(--accent-blue);
-    margin-bottom: 6px;
-    font-size: 12px;
-  }
-  
-  .form-group input,
-  .form-group textarea {
-    padding: 10px;
-    border-radius: var(--radius);
-    border: 1px solid rgba(255,255,255,0.2);
-    background: rgba(30,30,30,0.8);
-    color: var(--text);
-    font-family: var(--font-body);
-    font-size: 12px;
-    resize: vertical;
-  }
-  
-  .form-group input:focus,
-  .form-group textarea:focus {
-    outline: none;
-    border-color: var(--accent-pink);
-  }
-  
-  .btn.primary {
-    align-self: flex-start;
-    padding: 10px 18px;
-    font-size: 14px;
-    border: none;
-    background: linear-gradient(90deg, var(--accent-pink), var(--accent-purple));
-    color: #fff;
-    border-radius: var(--radius);
-    cursor: pointer;
-    transition: background 0.3s;
-  }
-  
-  .btn.primary:hover {
-    background: linear-gradient(90deg, var(--accent-purple), var(--accent-pink));
-  }
-  
-  @media (max-width: 768px) {
+    </section>
+    
+    <style>
+    /* — Styles pour Contact amélioré — */
+    
+    #contact {
+      padding: 28px;
+      background: rgba(20,20,20,0.9);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: var(--radius);
+      margin-top: 28px;
+    }
+    
+    #contact h2 {
+      font-family: var(--font-title);
+      color: var(--accent-pink);
+      font-size: var(--section-title-size);
+      margin-bottom: 16px;
+      text-shadow: 0 0 6px var(--accent-pink);
+    }
+    
     .contact-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+    
+    .contact-info {
+      flex: 1 1 300px;
+      font-size: 14px;
+      color: var(--text);
+      line-height: 1.5;
+    }
+    
+    .contact-info a {
+      color: var(--accent-pink);
+      text-decoration: none;
+    }
+    
+    .contact-form {
+      flex: 1 1 300px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    
+    .form-group {
+      display: flex;
       flex-direction: column;
     }
-  }
-  </style>
-  
-  </section>
+    
+    .form-group label {
+      font-family: var(--font-title);
+      color: var(--accent-blue);
+      margin-bottom: 6px;
+      font-size: 12px;
+    }
+    
+    .form-group input,
+    .form-group textarea {
+      padding: 10px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(30,30,30,0.8);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 12px;
+      resize: vertical;
+    }
+    
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--accent-pink);
+    }
+    
+    .btn.primary {
+      align-self: flex-start;
+      padding: 10px 18px;
+      font-size: 14px;
+      border: none;
+      background: linear-gradient(90deg, var(--accent-pink), var(--accent-purple));
+      color: #fff;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    
+    .btn.primary:hover {
+      background: linear-gradient(90deg, var(--accent-purple), var(--accent-pink));
+    }
+    
+    @media (max-width: 768px) {
+      .contact-container {
+        flex-direction: column;
+      }
+    }
+    </style>
+    
+    </section>
   
 </main>
 
