@@ -45,10 +45,72 @@ header { position: sticky; top: 0; z-index: 200; padding: 10px 0; }
 .logo { width:50px; height:50px; border-radius:12px; display:flex; align-items:center; justify-content:center; font-weight:900; font-size:20px; background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple)); color:#fff; }
 .brand h1 { font-size:16px; margin:0; font-family: var(--font-title);}
 .brand p { margin:0; font-size:12px; color:var(--muted);}
-nav ul { display:flex; gap:8px; list-style:none; margin:0; padding:0; }
-nav li { padding:8px 12px; border-radius:10px; font-weight:700; font-size:14px; cursor:pointer; transition: 0.3s; }
-nav li:hover { background: rgba(255,79,163,0.2); }
-nav li.active { background: linear-gradient(90deg,var(--accent-pink),var(--accent-purple)); color:#fff; box-shadow: 0 4px 20px rgba(255,79,163,0.3); }
+/* === Menu amélioré compact et pro === */
+nav ul {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav li {
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease;
+  color: var(--text);
+  text-transform: uppercase;
+}
+
+nav li.active::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 15%;
+  width: 70%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-pink), var(--accent-purple));
+  border-radius: 2px;
+}
+
+nav li:hover {
+  color: var(--accent-pink);
+  background: rgba(255,79,163,0.1);
+}
+
+.mobile-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  color: var(--accent-pink);
+}
+
+@media (max-width:900px) {
+  nav ul {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 18px;
+    background: rgba(20,20,20,0.95);
+    padding: 12px;
+    border-radius: 12px;
+    gap: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  }
+  nav ul.show {
+    display: flex;
+  }
+  .mobile-toggle {
+    display: inline-flex;
+  }
+}
 
 /* Mobile toggle */
 .mobile-toggle { display:none; background:transparent; border:none; font-size:22px; cursor:pointer; }
@@ -129,6 +191,7 @@ h1.title .accent { background: linear-gradient(90deg,var(--accent-pink),var(--ac
         <li data-link="#contact">Contact</li>
       </ul>
     </nav>
+    
   </div>
 </header>
 
@@ -170,25 +233,108 @@ h1.title .accent { background: linear-gradient(90deg,var(--accent-pink),var(--ac
   <section id="parcours">
     <h2>Parcours</h2>
     <div class="timeline">
-      <div class="timeline-item"><strong>2024-2025</strong> : BTS SIO SISR – Lycée Voillaume</div>
-      <div class="timeline-item"><strong>2023-2024</strong> : Stage Node.js – Projet export données NoSQL</div>
+      <div class="timeline-item"><strong>2018-2019</strong> : 3ème – Collège Jean Moulin</div>
+      <div class="timeline-item"><strong>2019-2021</strong> : BAC STMG Gestion-Finance – Lycée Léonard de Vinci</div>
+      <div class="timeline-item"><strong>2021-2022</strong> : Première année BTS SIO – Option SISR, Lycée Voillaume</div>
       <div class="timeline-item"><strong>2022-2023</strong> : Stage ERP – Optimisation d'application</div>
-      <div class="timeline-item"><strong>2021-2022</strong> : BUT Informatique – Université Sorbonne Paris Nord</div>
-      <div class="timeline-item"><strong>2019-2021</strong> : BAC STI2D – Lycée Léonard de Vinci</div>
+      <div class="timeline-item"><strong>2023-2024</strong> : Stage Node.js – Projet export données NoSQL</div>
+      <div class="timeline-item"><strong>2024-2025</strong> : BTS SIO SISR – Lycée Voillaume</div>
     </div>
   </section>
+  
+  <style>
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .timeline-item {
+    font-size: 14px;
+    color: var(--text);
+    padding-left: 14px;
+    position: relative;
+  }
+  
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 6px;
+    width: 6px;
+    height: 6px;
+    background: var(--accent-pink);
+    border-radius: 50%;
+  }
+  
+  .timeline-item strong {
+    color: var(--accent-purple);
+    font-weight: 700;
+  }
+  </style>
+  
 
   <!-- COMPETENCES -->
   <section id="competences">
     <h2>Compétences</h2>
-    <div class="skills">
-      <div class="skill"><h4>HTML & CSS</h4><p>Structure propre et responsive, accessibilité.</p></div>
-      <div class="skill"><h4>JavaScript</h4><p>Interactivité, animations légères, API fetch.</p></div>
-      <div class="skill"><h4>Node.js & Back-end</h4><p>Création de petits serveurs, outils backend.</p></div>
-      <div class="skill"><h4>SQL & NoSQL</h4><p>Conception et optimisation de bases de données.</p></div>
-      <div class="skill"><h4>Soft Skills</h4><p>Travail en équipe, autonomie et curiosité.</p></div>
+    <div class="skills-grid">
+      <div class="skill">
+        <h4>HTML & CSS</h4>
+        <div class="skill-bar"><div class="skill-level" style="width:90%;"></div></div>
+        <p>Structure propre, responsive, accessibilité.</p>
+      </div>
+      <div class="skill">
+        <h4>JavaScript</h4>
+        <div class="skill-bar"><div class="skill-level" style="width:80%;"></div></div>
+        <p>Interactivité, animations, API fetch.</p>
+      </div>
+      <div class="skill">
+        <h4>Node.js & Back-end</h4>
+        <div class="skill-bar"><div class="skill-level" style="width:70%;"></div></div>
+        <p>Création de serveurs et outils backend.</p>
+      </div>
+      <div class="skill">
+        <h4>SQL & NoSQL</h4>
+        <div class="skill-bar"><div class="skill-level" style="width:75%;"></div></div>
+        <p>Conception et optimisation de bases de données.</p>
+      </div>
+      <div class="skill">
+        <h4>Soft Skills</h4>
+        <div class="skill-bar"><div class="skill-level" style="width:85%;"></div></div>
+        <p>Travail en équipe, autonomie, curiosité.</p>
+      </div>
     </div>
   </section>
+  
+  <style>
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+  }
+  
+  .skill h4 {
+    font-family: var(--font-title);
+    color: var(--accent-blue);
+    margin-bottom: 6px;
+  }
+  
+  .skill-bar {
+    background: rgba(255,255,255,0.05);
+    border-radius: var(--radius);
+    height: 8px;
+    margin-bottom: 6px;
+    overflow: hidden;
+  }
+  
+  .skill-level {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent-pink), var(--accent-purple));
+    border-radius: var(--radius);
+    transition: width 1s ease-in-out;
+  }
+  </style>
+  
 
   <!-- VEILLE -->
   <section id="veille">
