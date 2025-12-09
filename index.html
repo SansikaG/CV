@@ -45,72 +45,10 @@ header { position: sticky; top: 0; z-index: 200; padding: 10px 0; }
 .logo { width:50px; height:50px; border-radius:12px; display:flex; align-items:center; justify-content:center; font-weight:900; font-size:20px; background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple)); color:#fff; }
 .brand h1 { font-size:16px; margin:0; font-family: var(--font-title);}
 .brand p { margin:0; font-size:12px; color:var(--muted);}
-/* === Menu amélioré compact et pro === */
-nav ul {
-  display: flex;
-  gap: 20px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-nav li {
-  padding: 10px 16px;
-  border-radius: 10px;
-  font-weight: 700;
-  font-size: 14px;
-  cursor: pointer;
-  position: relative;
-  transition: all 0.3s ease;
-  color: var(--text);
-  text-transform: uppercase;
-}
-
-nav li.active::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 15%;
-  width: 70%;
-  height: 3px;
-  background: linear-gradient(90deg, var(--accent-pink), var(--accent-purple));
-  border-radius: 2px;
-}
-
-nav li:hover {
-  color: var(--accent-pink);
-  background: rgba(255,79,163,0.1);
-}
-
-.mobile-toggle {
-  display: none;
-  background: transparent;
-  border: none;
-  font-size: 22px;
-  cursor: pointer;
-  color: var(--accent-pink);
-}
-
-@media (max-width:900px) {
-  nav ul {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 60px;
-    right: 18px;
-    background: rgba(20,20,20,0.95);
-    padding: 12px;
-    border-radius: 12px;
-    gap: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-  }
-  nav ul.show {
-    display: flex;
-  }
-  .mobile-toggle {
-    display: inline-flex;
-  }
-}
+nav ul { display:flex; gap:8px; list-style:none; margin:0; padding:0; }
+nav li { padding:8px 12px; border-radius:10px; font-weight:700; font-size:14px; cursor:pointer; transition: 0.3s; }
+nav li:hover { background: rgba(255,79,163,0.2); }
+nav li.active { background: linear-gradient(90deg,var(--accent-pink),var(--accent-purple)); color:#fff; box-shadow: 0 4px 20px rgba(255,79,163,0.3); }
 
 /* Mobile toggle */
 .mobile-toggle { display:none; background:transparent; border:none; font-size:22px; cursor:pointer; }
@@ -167,7 +105,6 @@ h1.title .accent { background: linear-gradient(90deg,var(--accent-pink),var(--ac
 </style>
 </head>
 <body>
-
 <header class="container">
   <div class="nav">
     <div class="brand">
@@ -179,19 +116,19 @@ h1.title .accent { background: linear-gradient(90deg,var(--accent-pink),var(--ac
     </div>
 
     <nav aria-label="Navigation principale">
-      <button class="mobile-toggle" aria-label="Ouvrir le menu">☰</button>
-      <ul id="nav-list" role="menubar">
-        <li data-link="#home" class="active">Accueil</li>
-        <li data-link="#about">À propos</li>
-        <li data-link="#parcours">Parcours</li>
-        <li data-link="#competences">Compétences</li>
-        <li data-link="#veille">Veille</li>
-        <li data-link="#projects">Projets</li>
-        <li data-link="#certifications">Certifications</li>
-        <li data-link="#contact">Contact</li>
-      </ul>
-    </nav>
-    
+  <button class="mobile-toggle" aria-label="Ouvrir le menu">☰</button>
+  <ul id="nav-list" role="menubar">
+    <li data-link="#home" class="active">Accueil</li>
+    <li data-link="#about">À propos</li>
+    <li data-link="#parcours">Parcours</li>
+    <li data-link="#competences">Compétences</li>
+    <li data-link="#veille">Veille</li>
+    <li data-link="#projects">Projets</li>
+    <li data-link="#certifications">Certifications</li>
+    <li data-link="#contact">Contact</li>
+  </ul>
+</nav>
+
   </div>
 </header>
 
