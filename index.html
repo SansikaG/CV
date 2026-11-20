@@ -1,743 +1,1227 @@
-
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>[Prénom NOM] — Portfolio</title>
+<title>Sansika GNANAPRAGASAM — Portfolio BTS SIO SISR & Médical</title>
+<meta name="description" content="Portfolio de Sansika Gnanapragasam, étudiante en BTS SIO option SISR au lycée Turgot, Paris. Passionnée par la convergence entre informatique et médecine.">
+<!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --ink:#dfe6ec;
-    --paper:#0b0f14;
-    --paper-dim:#12181f;
-    --teal:#5b9dff;
-    --teal-soft:#7fd4c1;
-    --sage:#d939ae;
-    --pulse:#39d98a;
-    --line:#212933;
-    --on-accent:#081019;
-    --radius:14px;
-    --display: 'Newsreader', serif;
-    --body: 'Inter', sans-serif;
-    --mono: 'IBM Plex Mono', monospace;
-  }
-
-  *{margin:0;padding:0;box-sizing:border-box;}
-
-  html{scroll-behavior:smooth;}
-
-  body{
-    background:var(--paper);
-    color:var(--ink);
-    font-family:var(--body);
-    line-height:1.6;
-    -webkit-font-smoothing:antialiased;
-  }
-
-  a{color:inherit; text-decoration:none;}
-  ul{list-style:none;}
-  img{max-width:100%; display:block;}
-
-  ::selection{background:var(--pulse); color:var(--on-accent);}
-
-  :focus-visible{
-    outline:2px solid var(--pulse);
-    outline-offset:3px;
-  }
-
-  .wrap{max-width:1080px; margin:0 auto; padding:0 32px;}
-
-  /* ---------- NAV ---------- */
-  header{
-    position:sticky; top:0; z-index:50;
-    background:rgba(11,15,20,0.85);
-    backdrop-filter:blur(8px);
-    border-bottom:1px solid var(--line);
-  }
-  nav{
-    display:flex; align-items:center; justify-content:space-between;
-    padding:18px 32px;
-    max-width:1080px; margin:0 auto;
-  }
-  .logo{
-    font-family:var(--display);
-    font-size:1.3rem; font-style:italic;
-    color:var(--teal);
-  }
-  .navlinks{display:flex; gap:28px; font-size:0.92rem; font-weight:500;}
-  .navlinks a{
-    color:var(--teal); position:relative; padding-bottom:4px;
-  }
-  .navlinks a::after{
-    content:""; position:absolute; left:0; bottom:0; width:0; height:2px;
-    background:var(--pulse); transition:width .25s ease;
-  }
-  .navlinks a:hover::after, .navlinks a:focus-visible::after{width:100%;}
-  .navtoggle{display:none; background:none; border:none; font-size:1.4rem; color:var(--teal); cursor:pointer;}
-
-  @media (max-width:760px){
-    .navlinks{
-      position:fixed; top:64px; right:0; left:0;
-      background:var(--paper); flex-direction:column; gap:0;
-      max-height:0; overflow:hidden; transition:max-height .3s ease;
-      border-bottom:1px solid var(--line);
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        colors: {
+          darkBg: '#090d16',
+          darkCard: '#111827',
+          darkCardHover: '#1f293d',
+          accentBlue: '#3b82f6',
+          accentCyan: '#06b6d4',
+          accentGreen: '#10b981',
+          neonGlow: 'rgba(59, 130, 246, 0.15)',
+        },
+        fontFamily: {
+          sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          heading: ['Outfit', 'sans-serif'],
+        }
+      }
     }
-    .navlinks.open{max-height:400px;}
-    .navlinks a{display:block; padding:14px 32px; border-top:1px solid var(--line);}
-    .navtoggle{display:block;}
+  }
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  ::selection { background: #3b82f6; color: #fff; }
+  
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { background: #090d16; }
+  ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
+  ::-webkit-scrollbar-thumb:hover { background: #3b82f6; }
+
+  .bg-grid-pattern {
+    background-size: 40px 40px;
+    background-image: 
+      linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
   }
 
-  /* ---------- PULSE DIVIDER (signature element) ---------- */
-  .pulse-divider{width:100%; height:46px; overflow:hidden;}
-  .pulse-divider svg{width:100%; height:100%; display:block;}
-  .pulse-path{
-    fill:none; stroke:var(--pulse); stroke-width:2;
-    stroke-linecap:round; stroke-linejoin:round;
-    stroke-dasharray:1400; stroke-dashoffset:1400;
+  @keyframes floatSlow {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(1deg); }
   }
-  .pulse-path.draw{animation:draw 1.8s ease forwards;}
-  @keyframes draw{to{stroke-dashoffset:0;}}
-  @media (prefers-reduced-motion:reduce){
-    .pulse-path{stroke-dashoffset:0; animation:none;}
+  .animate-float { animation: floatSlow 6s ease-in-out infinite; }
+
+  @keyframes pulseGlow {
+    0%, 100% { opacity: 0.4; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.05); }
+  }
+  .animate-pulse-glow { animation: pulseGlow 4s ease-in-out infinite; }
+
+  .spotlight-card {
+    position: relative;
+    overflow: hidden;
+    background: rgba(17, 24, 39, 0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease;
+  }
+  .spotlight-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(59, 130, 246, 0.5);
+    box-shadow: 0 20px 40px -15px rgba(59, 130, 246, 0.25);
+  }
+  
+  .spotlight-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(59, 130, 246, 0.12), transparent 40%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+  }
+  .spotlight-card:hover::before { opacity: 1; }
+
+  .modal-backdrop {
+    backdrop-filter: blur(8px);
+    background-color: rgba(9, 13, 22, 0.85);
   }
 
-  /* ---------- HERO ---------- */
-  .hero{
-    padding:88px 0 60px;
-    display:grid; grid-template-columns:1.2fr 0.8fr; gap:40px; align-items:center;
+  .skill-details {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+    opacity: 0;
   }
-  .eyebrow{
-    font-family:var(--mono); font-size:0.8rem; letter-spacing:.08em;
-    color:var(--teal-soft); text-transform:uppercase;
-    display:flex; align-items:center; gap:10px; margin-bottom:18px;
-  }
-  .eyebrow::before{
-    content:""; width:26px; height:1px; background:var(--pulse);
-  }
-  h1{
-    font-family:var(--display); font-weight:600;
-    font-size:clamp(2.6rem, 6vw, 4.2rem);
-    color:var(--teal); line-height:1.05; margin-bottom:20px;
-  }
-  h1 em{color:var(--pulse); font-style:italic;}
-  .lede{
-    font-size:1.08rem; color:#aab6c0; max-width:46ch; margin-bottom:32px;
-  }
-  .cta-row{display:flex; gap:16px; flex-wrap:wrap; margin-bottom:36px;}
-  .btn{
-    font-family:var(--mono); font-size:0.85rem;
-    padding:13px 24px; border-radius:999px;
-    border:1px solid var(--teal);
-    transition:all .2s ease;
-  }
-  .btn.solid{background:var(--teal); color:var(--on-accent); border-color:var(--teal);}
-  .btn.solid:hover{background:var(--pulse); border-color:var(--pulse);}
-  .btn.ghost{color:var(--teal);}
-  .btn.ghost:hover{background:var(--teal); color:var(--paper);}
-
-  .social{display:inline-flex; align-items:center; gap:8px; font-family:var(--mono); font-size:0.85rem; color:var(--teal-soft);}
-  .social a{border-bottom:1px solid var(--sage); padding-bottom:1px;}
-
-  .hero-portrait{
-    position:relative;
-    aspect-ratio:3/4; border-radius:var(--radius);
-    background:var(--teal-soft);
-    overflow:hidden;
-    box-shadow:0 20px 50px -18px rgba(91,157,255,0.25);
-  }
-  .hero-portrait img{width:100%; height:100%; object-fit:cover;}
-
-  @media (max-width:760px){
-    .hero{grid-template-columns:1fr; padding-top:48px;}
-    .hero-portrait{order:-1; max-width:220px; margin:0 auto;}
+  .skill-group-card:hover .skill-details,
+  .skill-group-card.active .skill-details {
+    max-height: 500px;
+    opacity: 1;
   }
 
-  /* ---------- STATS STRIP ---------- */
-  .stats{
-    display:grid; grid-template-columns:repeat(4,1fr);
-    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
-    margin:40px 0;
-  }
-  .stat{
-    text-align:center; padding:26px 12px;
-    border-right:1px solid var(--line);
-  }
-  .stat:last-child{border-right:none;}
-  .stat b{
-    display:block; font-family:var(--display); font-size:2.1rem; color:var(--teal);
-  }
-  .stat span{
-    font-family:var(--mono); font-size:0.72rem; letter-spacing:.05em;
-    text-transform:uppercase; color:var(--teal-soft);
-  }
-  @media (max-width:600px){
-    .stats{grid-template-columns:repeat(2,1fr);}
-    .stat{border-bottom:1px solid var(--line);}
-  }
+  /* Masquer la scrollbar du carrousel de certifications tout en gardant le scroll tactile/souris fluide */
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-  /* ---------- SECTION SHELL ---------- */
-  section{padding:64px 0;}
-  .section-head{margin-bottom:44px;}
-  .section-head .eyebrow{margin-bottom:10px;}
-  .section-head h2{
-    font-family:var(--display); font-weight:600;
-    font-size:clamp(1.8rem,3.4vw,2.6rem); color:var(--teal);
+  /* Boutons CV / Lettre de motivation (À propos) */
+  .about-btn {
+    display: inline-flex; align-items: center; gap: .6rem;
+    padding: .9rem 1.6rem; border-radius: .9rem;
+    font-weight: 600; font-size: .95rem; text-decoration: none; cursor: pointer;
+    transition: transform .25s ease, background-color .25s ease, box-shadow .25s ease;
   }
-  .section-head p{color:#8b98a3; margin-top:8px; max-width:50ch;}
+  .about-btn:hover { transform: translateY(-3px); }
+  .about-btn:focus-visible { outline: 2px solid #93c5fd; outline-offset: 3px; }
+  .about-btn-fill { background: #2563eb; color: #fff; box-shadow: 0 10px 25px -10px rgba(37,99,235,.7); }
+  .about-btn-fill:hover { background: #3b82f6; }
+  .about-btn-outline { border: 1.5px solid #34d399; color: #6ee7b7; }
+  .about-btn-outline:hover { background: rgba(52,211,153,.12); box-shadow: 0 10px 25px -12px rgba(52,211,153,.6); }
 
-  /* ---------- PROFIL ---------- */
-  .profil{
-    display:grid; grid-template-columns:0.7fr 1.3fr; gap:48px; align-items:start;
-  }
-  .profil-photo{
-    border-radius:var(--radius); overflow:hidden;
-    aspect-ratio:1/1; background:var(--paper-dim);
-  }
-  .profil-card h3{
-    font-family:var(--display); font-size:1.5rem; color:var(--teal); margin-bottom:14px;
-  }
-  .profil-card p{color:#aab6c0; margin-bottom:16px;}
-  .profil-card strong{color:var(--teal);}
-  .id-table{
-    margin-top:24px; border-top:1px solid var(--line);
-  }
-  .id-table div{
-    display:flex; justify-content:space-between;
-    padding:12px 0; border-bottom:1px solid var(--line);
-    font-size:0.92rem;
-  }
-  .id-table span:first-child{font-family:var(--mono); font-size:0.78rem; color:var(--teal-soft); text-transform:uppercase; letter-spacing:.04em;}
-  @media (max-width:760px){.profil{grid-template-columns:1fr;} .profil-photo{max-width:220px;}}
-
-  /* ---------- TIMELINE (Formations / Expériences) ---------- */
-  .timeline{position:relative; padding-left:36px;}
-  .timeline::before{
-    content:""; position:absolute; left:5px; top:6px; bottom:6px; width:2px;
-    background:var(--line);
-  }
-  .tl-item{position:relative; padding-bottom:40px;}
-  .tl-item:last-child{padding-bottom:0;}
-  .tl-item::before{
-    content:""; position:absolute; left:-36px; top:4px;
-    width:12px; height:12px; border-radius:50%;
-    background:var(--paper); border:2px solid var(--pulse);
-  }
-  .tl-date{
-    font-family:var(--mono); font-size:0.78rem; color:var(--teal-soft);
-    text-transform:uppercase; letter-spacing:.04em; margin-bottom:6px; display:block;
-  }
-  .tl-item h3{
-    font-family:var(--display); font-size:1.25rem; color:var(--teal); margin-bottom:8px; font-weight:600;
-  }
-  .tl-item h3 a{border-bottom:1px solid var(--sage);}
-  .tl-item ul{margin-top:8px;}
-  .tl-item li{
-    position:relative; padding-left:16px; margin-bottom:5px; color:#aab6c0; font-size:0.95rem;
-  }
-  .tl-item li::before{
-    content:"—"; position:absolute; left:0; color:var(--sage);
-  }
-  .tl-links{margin-top:12px; display:flex; gap:14px; flex-wrap:wrap;}
-  .tl-links a{
-    font-family:var(--mono); font-size:0.78rem; color:var(--pulse);
-    border-bottom:1px solid currentColor;
-  }
-  .tl-sub{
-    font-family:var(--mono); font-size:0.72rem; text-transform:uppercase;
-    color:var(--teal-soft); letter-spacing:.06em; margin:8px 0 20px;
-  }
-
-  /* ---------- CERTIFICATIONS ---------- */
-  .cert-grid{
-    display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:18px;
-  }
-  .cert-grid figure{
-    background:var(--paper-dim); border-radius:var(--radius);
-    padding:14px; text-align:center; border:1px solid var(--line);
-  }
-  .cert-grid img{border-radius:6px; margin-bottom:8px;}
-  .cert-grid figcaption{font-family:var(--mono); font-size:0.72rem; color:var(--teal-soft);}
-
-  /* ---------- COMPETENCES ---------- */
-  .skills-cols{display:grid; grid-template-columns:1fr 1fr; gap:48px;}
-  .skill-group h3{
-    font-family:var(--display); font-size:1.2rem; color:var(--teal); margin-bottom:20px; font-weight:600;
-  }
-  .skill{margin-bottom:16px;}
-  .skill-label{
-    display:flex; justify-content:space-between; font-size:0.9rem; margin-bottom:6px;
-  }
-  .skill-label span:last-child{font-family:var(--mono); color:var(--teal-soft); font-size:0.8rem;}
-  .bar{height:6px; border-radius:999px; background:var(--paper-dim); overflow:hidden;}
-  .bar i{
-    display:block; height:100%; background:linear-gradient(90deg,var(--teal-soft),var(--pulse));
-    border-radius:999px; width:0%;
-    transition:width 1.1s cubic-bezier(.2,.8,.2,1);
-  }
-  .toolchips{display:flex; flex-wrap:wrap; gap:10px; margin-top:36px;}
-  .toolchips span{
-    font-family:var(--mono); font-size:0.78rem; padding:7px 14px;
-    border:1px solid var(--line); border-radius:999px; color:var(--teal-soft);
-  }
-  @media (max-width:700px){.skills-cols{grid-template-columns:1fr;}}
-
-  /* ---------- PROJETS ---------- */
-  .proj-grid{
-    display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:24px;
-  }
-  .proj-card{
-    background:var(--paper-dim); border:1px solid var(--line); border-radius:var(--radius);
-    padding:28px; display:flex; flex-direction:column; height:100%;
-  }
-  .proj-card h3{
-    font-family:var(--display); font-size:1.25rem; color:var(--teal); margin-bottom:12px; font-weight:600;
-  }
-  .proj-card ul{margin-bottom:16px; flex:1;}
-  .proj-card li{position:relative; padding-left:16px; margin-bottom:6px; font-size:0.92rem; color:#aab6c0;}
-  .proj-card li::before{content:"—"; position:absolute; left:0; color:var(--sage);}
-  .proj-tags{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:16px;}
-  .proj-tags span{
-    font-family:var(--mono); font-size:0.7rem; padding:4px 10px;
-    background:var(--paper); border-radius:999px; color:var(--teal-soft);
-  }
-  .proj-links{display:flex; gap:14px; flex-wrap:wrap;}
-  .proj-links a{
-    font-family:var(--mono); font-size:0.78rem; color:var(--pulse); border-bottom:1px solid currentColor;
-  }
-
-  /* ---------- FOOTER ---------- */
-  footer{
-    border-top:1px solid var(--line); padding:40px 0; margin-top:40px;
-    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;
-  }
-  footer .logo{font-size:1rem;}
-  footer p{font-family:var(--mono); font-size:0.78rem; color:var(--teal-soft);}
-
-  .reveal{opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease;}
-  .reveal.in{opacity:1; transform:translateY(0);}
-  @media (prefers-reduced-motion:reduce){
-    .reveal{opacity:1; transform:none; transition:none;}
+  /* Carrousel certifications : l'image est la carte */
+  .certif-card { cursor: zoom-in; }
+  @media (prefers-reduced-motion: reduce) {
+    .certif-card, .about-btn, .spotlight-card { transition: none !important; }
   }
 </style>
 </head>
-<body>
+<body class="bg-darkBg text-slate-100 font-sans antialiased selection:bg-blue-500 selection:text-white relative overflow-x-hidden">
 
-<header>
-  <nav>
-    <a href="#home" class="logo">Sansika </a>
-    <button class="navtoggle" id="navToggle" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
-    <ul class="navlinks" id="navLinks">
-      <li><a href="#home">Accueil</a></li>
-      <li><a href="#profil">Profil</a></li>
-      <li><a href="#formations">Formations</a></li>
-      <li><a href="#experiences">Expériences</a></li>
-      <li><a href="#certifications">Certifications</a></li>
-      <li><a href="#competences">Compétences</a></li>
-      <li><a href="#projets">Projets</a></li>
-    </ul>
-  </nav>
-</header>
+  <div id="cursor-glow" class="pointer-events-none fixed w-[500px] h-[500px] rounded-full bg-gradient-to-tr from-blue-600/10 to-cyan-400/10 blur-[100px] -translate-x-1/2 -translate-y-1/2 z-0 transition-transform duration-75"></div>
 
-<main class="wrap">
+  <div class="absolute inset-0 bg-grid-pattern pointer-events-none z-0 fixed"></div>
+  <div class="absolute top-20 left-10 w-96 h-96 bg-blue-600/10 rounded-full blur-[120px] pointer-events-none animate-pulse-glow"></div>
+  <div class="absolute bottom-40 right-10 w-[500px] h-[500px] bg-cyan-600/10 rounded-full blur-[150px] pointer-events-none animate-pulse-glow" style="animation-delay: 2s;"></div>
 
-  <!-- ================= HERO ================= -->
-  <section id="home" class="hero">
-    <div>
-      <p class="eyebrow">Portfolio étudiant</p>
-      <h1>Bonjour, je suis<br><em>Sansika GNANAPRAGASAM</em></h1>
-      <p class="lede">
-        Étudiante en <strong>BTS SIO option SISR</strong> au
-        <strong>lycée Turgot</strong>, passionnée par
-        [vos centres d'intérêt — ex. la sémiologie, la relation soignant-patient, la recherche clinique].
-      </p>
-      <div class="cta-row">
-        <a href="#projets" class="btn solid">Mes projets</a>
-        <a href="#profil" class="btn ghost">Qui suis-je ?</a>
-      </div>
-      <p class="social">↳ <a href="#" target="_blank">linkedin.com/in/votre-profil</a></p>
+  <!-- NAVIGATION -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-darkBg/80 backdrop-blur-md border-b border-slate-800/80 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="#home" class="font-heading text-xl font-bold tracking-tight flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-cyan-400 flex items-center justify-center text-white font-heading font-extrabold shadow-lg shadow-blue-500/30 group-hover:scale-105 transition-transform">
+          SG
+        </div>
+        <span class="bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">Sansika G.</span>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+        <a href="#about" class="hover:text-blue-400 transition-colors">À propos</a>
+        <a href="#parcours" class="hover:text-blue-400 transition-colors">Parcours</a>
+        <a href="#competences" class="hover:text-blue-400 transition-colors">Compétences</a>
+        <a href="#projets" class="hover:text-blue-400 transition-colors">Projets</a>
+        <a href="#certifications" class="hover:text-blue-400 transition-colors">Certifications</a>
+        <a href="#veille" class="hover:text-blue-400 transition-colors">Veille</a>
+        <a href="#contact" class="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold shadow-lg shadow-blue-600/25 transition-all transform hover:-translate-y-0.5">Contact</a>
+      </nav>
+
+      <button id="mobileMenuBtn" class="md:hidden p-2 rounded-xl bg-slate-800/80 text-slate-200 hover:text-white focus:outline-none" aria-label="Menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
     </div>
-    <div class="hero-portrait">
-      <img src="c:\Users\user\Desktop\portfolio\portrait-dessin.png" alt="Moi">
+
+    <div id="mobileMenu" class="hidden md:hidden bg-slate-900/95 border-b border-slate-800 px-6 py-6 flex flex-col gap-4 text-base font-medium">
+      <a href="#about" class="mobile-link text-slate-300 hover:text-blue-400">À propos</a>
+      <a href="#parcours" class="mobile-link text-slate-300 hover:text-blue-400">Parcours (Diplômes & Expériences)</a>
+      <a href="#competences" class="mobile-link text-slate-300 hover:text-blue-400">Compétences</a>
+      <a href="#projets" class="mobile-link text-slate-300 hover:text-blue-400">Projets</a>
+      <a href="#certifications" class="mobile-link text-slate-300 hover:text-blue-400">Certifications</a>
+      <a href="#veille" class="mobile-link text-slate-300 hover:text-blue-400">Veille Technologique</a>
+      <a href="#contact" class="mobile-link px-4 py-2.5 rounded-xl bg-blue-600 text-white text-center font-semibold">Contactez-moi</a>
     </div>
-  </section>
+  </header>
 
-  <div class="stats reveal">
-    <div class="stat"><b>0</b><span>Stages</span></div>
-    <div class="stat"><b>0</b><span>Certifications</span></div>
-    <div class="stat"><b>0</b><span>Projets</span></div>
-    <div class="stat"><b>0</b><span>Ans d'études</span></div>
-  </div>
+  <!-- MAIN CONTENT CONTAINER -->
+  <main class="relative z-10 max-w-7xl mx-auto px-6 pt-32 pb-24 space-y-36">
 
-  <div class="pulse-divider reveal">
-    <svg viewBox="0 0 1000 46" preserveAspectRatio="none">
-      <path class="pulse-path" d="M0,23 L280,23 L320,23 L345,6 L370,40 L395,23 L430,23 L1000,23"/>
-    </svg>
-  </div>
+    <!-- HERO SECTION -->
+    <section id="home" class="min-h-[85vh] flex flex-col lg:flex-row items-center justify-between gap-12 pt-8">
+      <div class="flex-1 space-y-6 text-left">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-semibold tracking-wide uppercase animate-bounce">
+          <span class="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
+          Recherche de stage (Nov 2026 – Jan 2027)
+        </div>
+        
+        <h1 class="font-heading text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-[1.1]">
+          Sansika <br>
+          <span class="bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-400 bg-clip-text text-transparent">GNANAPRAGASAM</span>
+        </h1>
 
-  <!-- ================= PROFIL ================= -->
-  <section id="profil">
-    <div class="section-head reveal">
-      <p class="eyebrow">À propos</p>
-      <h2>Qui suis-je ?</h2>
-      <p>Connaissez-moi un peu mieux.</p>
-    </div>
-    <div class="profil">
-      <div class="profil-photo reveal">
-        <img src="https://via.placeholder.com/500x500/12181f/7fd4c1?text=Photo" alt="[Prénom NOM]">
-      </div>
-      <div class="profil-card reveal">
-        <h3>Sansika GNANAPRAGASAM</h3>
-        <p>
-          Je m'appelle <strong>Sansika GNANAPRAGASAM</strong>, j'ai <strong>19 ans</strong> et je suis en
-          <strong>1ère année de BTS SIO</strong> au <strong>Lycée Turgot à Paris.</strong>.
+        <p class="text-xl font-medium text-slate-300">
+          Étudiante en <span class="text-blue-400 font-semibold">BTS SIO option SISR</span> — Lycée Turgot, Paris
         </p>
-       <p>
-  La médecine est un domaine qui me passionne depuis longtemps, et c’est ce qui guide mes choix d’orientation. L’informatique, que j’approfondis aujourd’hui à travers mon BTS SIO option SISR, est pour moi un outil essentiel que je souhaite maîtriser pour pouvoir évoluer dans des métiers où la technologie et la santé se rejoignent.
-  Mon objectif est de construire un parcours qui me permettra de combiner ces deux domaines et de m’orienter vers un métier dans lequel je pourrai m’épanouir, à savoir devenir <strong>ingénieure en médecine</strong>, un domaine où la technologie et la santé avancent ensemble pour améliorer la vie des patients.
-</p>
 
-<br><br>
+        <p class="text-slate-400 max-w-xl text-base leading-relaxed">
+          Passionnée par la convergence entre l'informatique (Systèmes & Réseaux) et le domaine médical, avec l'ambition de devenir ingénieure en e-santé et technologie médicale.
+        </p>
 
-<div class="doc-row">
-  <a href="#" target="_blank" class="btn solid"><i class='bx bxs-file-pdf'></i> CV</a>
-  <a href="#" target="_blank" class="btn ghost"><i class='bx bxs-file-doc'></i> Lettre de motivation</a>
-</div>
+        <div class="flex flex-wrap gap-4 pt-2">
+          <a href="CV_2026-10-27_Sansika_Gnanapragasam.pdf" target="_blank" rel="noopener" class="px-6 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold shadow-lg shadow-blue-600/30 transition-all transform hover:-translate-y-1 flex items-center gap-2 group">
+            <svg class="w-5 h-5 group-hover:translate-y-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+            Mon CV
+          </a>
+          <a href="#about" class="px-6 py-3.5 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-200 border border-slate-700 font-semibold transition-all transform hover:-translate-y-1">
+            Qui suis-je ?
+          </a>
+        </div>
+      </div>
 
-        <p class="tl-sub" style="margin-top:32px;">Centres d'intérêt</p>
-        <div class="interests">
-          <div class="interest-card">
-            <i class='bx bxs-palette'></i>
-            <span>Dessiner</span>
-          </div>
-          <div class="interest-card">
-            <i class='bx bxs-plus-medical'></i>
-            <span>La Médecine</span>
-          </div>
-          <div class="interest-card">
-            <i class='bx bx-network-chart'></i>
-            <span>Réseau</span>
-          </div>
-          <div class="interest-card">
-            <i class='bx bxs-music'></i>
-            <span>Danse</span>
+      <div class="relative w-full lg:w-[420px] aspect-[4/5] rounded-3xl spotlight-card p-4 shadow-2xl animate-float">
+        <div class="absolute inset-0 bg-gradient-to-tr from-blue-600/20 via-transparent to-cyan-400/20 rounded-3xl pointer-events-none"></div>
+        <div class="w-full h-full rounded-2xl bg-slate-900 overflow-hidden relative border border-slate-700/60 flex items-center justify-center">
+          <img src="portrait-dessin.png" alt="Sansika Gnanapragasam" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+          <div style="display:none;" class="w-full h-full flex flex-col items-center justify-center p-6 text-center bg-gradient-to-b from-slate-900 to-slate-950">
+            <div class="w-24 h-24 rounded-full bg-blue-600/20 border-2 border-blue-500/40 flex items-center justify-center text-4xl mb-4 font-heading font-bold text-blue-400">SG</div>
+            <h3 class="font-heading text-xl font-bold text-white">Sansika Gnanapragasam</h3>
+            <p class="text-xs text-blue-400 mt-1">BTS SIO SISR — Turgot</p>
           </div>
         </div>
+        <div class="absolute -bottom-6 -left-6 bg-slate-900/90 backdrop-blur-md border border-slate-700 px-5 py-3 rounded-2xl shadow-xl flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-green-500/20 text-green-400 flex items-center justify-center font-bold">🏥</div>
+          <div>
+            <div class="text-xs text-slate-400">Spécialisation</div>
+            <div class="text-sm font-semibold text-white">Informatique & Santé</div>
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="scroll-mt-28">
+      <div class="max-w-6xl mx-auto">
+        <div class="flex items-center gap-4 mb-5">
+          <span class="block w-14 h-0.5 bg-emerald-400"></span>
+          <span class="text-sm font-semibold uppercase tracking-[0.3em] text-slate-400">À propos</span>
+        </div>
+        <h2 class="font-heading text-4xl sm:text-6xl font-extrabold text-blue-400">Qui suis-je ?</h2>
+        <p class="text-lg text-slate-400 mt-5">Connaissez-moi un peu mieux.</p>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-14 lg:gap-20 mt-14 items-center">
+          <div class="lg:col-span-5">
+            <div class="about-photo max-w-md mx-auto lg:mx-0">
+              <div class="relative aspect-square rounded-3xl overflow-hidden bg-slate-900 border border-slate-700/70 flex items-center justify-center">
+                <img src="portrait-dessin.png" alt="Sansika Gnanapragasam" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                <div style="display:none;" class="w-full h-full items-center justify-center bg-slate-900">
+                  <span class="font-heading text-4xl text-emerald-300/80">Photo</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-7">
+            <h3 class="font-heading text-3xl sm:text-4xl font-bold text-blue-400">Sansika GNANAPRAGASAM</h3>
+            <div class="mt-6 space-y-5 text-slate-300 leading-relaxed text-base sm:text-lg">
+              <p>
+                Je m'appelle <strong class="text-blue-400 font-semibold">Sansika GNANAPRAGASAM</strong>, étudiante en <strong class="text-blue-400 font-semibold">BTS SIO option SISR</strong> au <strong class="text-blue-400 font-semibold">Lycée Turgot à Paris</strong>.
+              </p>
+              <p>
+                La médecine est un domaine qui me passionne depuis longtemps, et c’est ce qui guide mes choix d’orientation. L’informatique, que j’approfondis aujourd’hui à travers mon BTS SIO option SISR, est pour moi un outil essentiel que je souhaite maîtriser pour pouvoir évoluer dans des métiers où la technologie et la santé se rejoignent. Mon objectif est de construire un parcours qui me permettra de combiner ces deux domaines et de m’orienter vers un métier dans lequel je pourrai m’épanouir, à savoir devenir <strong class="text-blue-400 font-semibold">ingénieure en médecine</strong>, un domaine où la technologie et la santé avancent ensemble pour améliorer la vie des patients.
+              </p>
+            </div>
+
+            <div class="flex flex-wrap gap-4 mt-10">
+              <a href="CV_2026-10-27_Sansika_Gnanapragasam.pdf" target="_blank" rel="noopener" class="about-btn about-btn-fill">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                CV
+              </a>
+              <a href="Lettre%20de%20Motivation%20Sansika%20GNANAPRAGASAM%20(3)%20(1).pdf" target="_blank" rel="noopener" class="about-btn about-btn-outline">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                Lettre de motivation
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <div class="pulse-divider reveal">
-    <svg viewBox="0 0 1000 46" preserveAspectRatio="none">
-      <path class="pulse-path" d="M0,23 L280,23 L320,23 L345,6 L370,40 L395,23 L430,23 L1000,23"/>
-    </svg>
-  </div>
-
-  <!-- ================= FORMATIONS ================= -->
-  <section id="formations">
-    <div class="section-head reveal">
-      <p class="eyebrow">Parcours</p>
-      <h2>Formations</h2>
-      <p>Mon parcours académique et mes centres d'intérêt.</p>
-    </div>
-
-    <p class="tl-sub reveal">Cursus Scolaire</p>
-    <div class="timeline reveal">
-      <div class="tl-item">
-        <span class="tl-date">2024 – 2025</span>
-        <h3>BAC Technologique STMG — (Paris) <a href="#" target="_blank">Lycée Elisa Lemmonier</a></h3>
-        <ul>
-          <li>Management — comprendre le fonctionnement d’une organisation, analyser son fonctionnement, ses objectifs et ses ressources.</li>
-          <li>Gestion — apprendre à gérer des budgets, analyser des données, suivre des indicateurs.</li>
-          <li>Droit — connaître les règles juridiques de base : contrat, responsabilité, entreprise.</li>
-            <li>Économie — comprendre comment fonctionne l’économie, les marchés, les acteurs économiques.</li>
-        </ul>
+    <!-- PARCOURS SECTION -->
+    <section id="parcours" class="scroll-mt-28">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-xs font-bold uppercase tracking-widest text-blue-400 mb-3 block">Parcours</span>
+        <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-white">Formations & Expériences</h2>
       </div>
-      <div class="tl-item">
-        <span class="tl-date">2025 – 2026</span>
-        <h3>BTS SIO (SISR) — (Paris) <a href="#" target="_blank">Lycée Turgot</a></h3>
-        <ul>
-          <li>[Matière ou compétence clé]</li>
-          <li>[Matière ou compétence clé]</li>
-        </ul>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+
+        <!-- COLONNE FORMATIONS (bleu, blocs "diplôme") -->
+        <div class="space-y-6">
+          <div class="flex items-center gap-3 pb-3 border-b-2 border-blue-500/40">
+            <div class="w-10 h-10 rounded-xl bg-blue-500/20 text-blue-400 flex items-center justify-center text-lg">🎓</div>
+            <h3 class="font-heading text-2xl font-bold text-white">Diplômes et formations</h3>
+          </div>
+          <div class="space-y-5">
+
+          <!-- Formation : bloc "diplôme" (année à gauche, fond bleu) -->
+          <div class="group spotlight-card rounded-2xl cursor-pointer flex flex-col sm:flex-row" onclick="openDiplomaModal('bts')">
+            <div class="sm:w-32 shrink-0 flex sm:flex-col items-center justify-center gap-3 sm:gap-1 px-5 py-4 sm:py-6 text-center bg-gradient-to-b from-blue-600/35 to-blue-900/25 border-b sm:border-b-0 sm:border-r border-blue-500/25">
+              <span class="text-2xl">🎓</span>
+              <span class="font-heading text-xl font-extrabold text-white leading-none">2025</span>
+              <span class="text-xs text-blue-200/80">à</span>
+              <span class="font-heading text-xl font-extrabold text-white leading-none">2027</span>
+            </div>
+            <div class="flex-1 p-6">
+              <div class="flex flex-wrap items-center gap-2 mb-2"><span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-blue-500/15 text-blue-300 border border-blue-500/25">En cours</span></div>
+              <h4 class="font-heading text-xl font-bold text-white group-hover:text-blue-300 transition-colors">BTS - SIO SISR</h4>
+              <p class="text-sm text-slate-400 mt-1 mb-3">Lycée Turgot — Paris 75003</p>
+              <p class="text-sm text-slate-300 line-clamp-2">Formation spécialisée en Solutions d'Infrastructure, Systèmes et Réseaux, administration des serveurs, virtualisation et sécurité.</p>
+              <div class="mt-4 flex items-center justify-between pt-4 border-t border-slate-800/80">
+                <span class="text-xs text-blue-400 font-semibold group-hover:underline flex items-center gap-1">En savoir plus <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg></span>
+                <span class="text-xs px-2.5 py-1 rounded-md bg-blue-500/10 text-blue-400 border border-blue-500/20">Détails &amp; Modules</span>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- Formation : bloc "diplôme" (année à gauche, fond bleu) -->
+          <div class="group spotlight-card rounded-2xl cursor-pointer flex flex-col sm:flex-row" onclick="openDiplomaModal('bac')">
+            <div class="sm:w-32 shrink-0 flex sm:flex-col items-center justify-center gap-3 sm:gap-1 px-5 py-4 sm:py-6 text-center bg-gradient-to-b from-blue-600/35 to-blue-900/25 border-b sm:border-b-0 sm:border-r border-blue-500/25">
+              <span class="text-2xl">🎓</span>
+              <span class="font-heading text-xl font-extrabold text-white leading-none">2024</span>
+              <span class="text-xs text-blue-200/80">à</span>
+              <span class="font-heading text-xl font-extrabold text-white leading-none">2025</span>
+            </div>
+            <div class="flex-1 p-6">
+              <div class="flex flex-wrap items-center gap-2 mb-2"><span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-blue-500/15 text-blue-300 border border-blue-500/25">Mention Bien</span></div>
+              <h4 class="font-heading text-xl font-bold text-white group-hover:text-blue-300 transition-colors">Bac STMG option GF</h4>
+              <p class="text-sm text-slate-400 mt-1 mb-3">Lycée Elisa Lemonnier — Paris 75012</p>
+              <p class="text-sm text-slate-300 line-clamp-2">Baccalauréat Sciences et Technologies du Management et de la Gestion, option Gestion et Finance.</p>
+              <div class="mt-4 flex items-center justify-between pt-4 border-t border-slate-800/80">
+                <span class="text-xs text-blue-400 font-semibold group-hover:underline flex items-center gap-1">En savoir plus <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg></span>
+                <span class="text-xs px-2.5 py-1 rounded-md bg-blue-500/10 text-blue-400 border border-blue-500/20">Détails &amp; Matières</span>
+              </div>
+            </div>
+          </div>
+
+          </div>
+        </div>
+
+        <!-- COLONNE EXPÉRIENCES (vert, timeline) -->
+        <div class="space-y-6">
+          <div class="flex items-center gap-3 pb-3 border-b-2 border-emerald-500/40">
+            <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-300 flex items-center justify-center text-lg">💼</div>
+            <h3 class="font-heading text-2xl font-bold text-white">Expériences professionnelles</h3>
+          </div>
+          <div class="relative pl-8 space-y-6 before:absolute before:left-[7px] before:top-3 before:bottom-3 before:w-0.5 before:bg-gradient-to-b before:from-emerald-400/70 before:to-emerald-400/0">
+
+          <!-- Expérience : carte timeline (point + trait vert à gauche) -->
+          <div class="relative">
+            <span class="absolute -left-8 top-7 w-4 h-4 rounded-full bg-darkBg border-[3px] border-emerald-400"></span>
+            <div class="group spotlight-card rounded-2xl p-6 pl-8">
+              <span class="absolute left-0 inset-y-0 w-1.5 bg-gradient-to-b from-emerald-400 to-teal-500"></span>
+              <div class="flex flex-wrap items-center gap-2 mb-3">
+                <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/25">Mai 2026 – Juil. 2026</span>
+                <span class="text-xs font-medium px-2.5 py-1 rounded-full bg-slate-800 text-slate-300 border border-slate-700">8 semaines</span>
+              </div>
+              <h4 class="font-heading text-xl font-bold text-white group-hover:text-emerald-300 transition-colors">Stage informatique — Cabinet d'ophtalmologie</h4>
+              <p class="text-sm text-slate-400 mt-1 mb-3">Institut Arthur Vernes — 36 rue d'Assas, 75006 Paris (Dr Mikaël Guedj)</p>
+              <p class="text-sm text-slate-300 line-clamp-2">Stage immersif de 8 semaines au croisement de la médecine et du développement informatique : MIKBOOK, scripts Python d'automatisation et double sauvegarde Cloud &amp; Locale.</p>
+              <div class="mt-4 flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-slate-800/80">
+                <button onclick="openMissionModal('stageMedecin')" class="px-4 py-2 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-semibold transition-all flex items-center gap-2"><span>Voir les missions</span><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg></button>
+                <div class="flex gap-2">
+                  <a href="https://www.institut-vernes.fr/" target="_blank" class="px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold transition-all">Voir le site</a>
+                  <a href="Rapport de Stage.odt" target="_blank" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold border border-slate-700 transition-all">Rapport de stage</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- Expérience : carte timeline (point + trait vert à gauche) -->
+          <div class="relative">
+            <span class="absolute -left-8 top-7 w-4 h-4 rounded-full bg-darkBg border-[3px] border-emerald-400"></span>
+            <div class="group spotlight-card rounded-2xl p-6 pl-8">
+              <span class="absolute left-0 inset-y-0 w-1.5 bg-gradient-to-b from-emerald-400 to-teal-500"></span>
+              <div class="flex flex-wrap items-center gap-2 mb-3">
+                <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/25">Juin 2021</span>
+                <span class="text-xs font-medium px-2.5 py-1 rounded-full bg-slate-800 text-slate-300 border border-slate-700">Stage d’observation</span>
+              </div>
+              <h4 class="font-heading text-xl font-bold text-white group-hover:text-emerald-300 transition-colors">Stage — Cabinet dentaire</h4>
+              <p class="text-sm text-slate-400 mt-1 mb-3">Centre Dentaire Paris 12 Daumesnil — 166 avenue Daumesnil, 75012 Paris</p>
+              <p class="text-sm text-slate-300 line-clamp-2">Stérilisation du matériel dentaire, gestion des rendez-vous via Doctolib / Desmos et assistance en chirurgie dentaire.</p>
+              <div class="mt-4 flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-slate-800/80">
+                <button onclick="openMissionModal('stageDentaire')" class="px-4 py-2 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-semibold transition-all flex items-center gap-2"><span>Voir les missions</span><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg></button>
+                <div class="flex gap-2">
+                  <a href="#" target="_blank" class="px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold transition-all">Voir le site</a>
+                  <a href="#" target="_blank" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold border border-slate-700 transition-all">Rapport de stage</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          </div>
+        </div>
+
       </div>
-    </div>
+    </section>
 
-    <p class="tl-sub reveal" style="margin-top:44px;">Centres d'intérêt</p>
-    <div class="timeline reveal">
-      <div class="tl-item">
-        <span class="tl-date">[année] – [année]</span>
-        <h3>[Centre d'intérêt — ex. Bénévolat associatif]</h3>
-        <p style="color:#aab6c0; font-size:0.95rem;">[Une phrase sur ce que cette activité vous a appris.]</p>
+    <!-- COMPÉTENCES SECTION -->
+    <section id="competences" class="scroll-mt-28">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-xs font-bold uppercase tracking-widest text-blue-400 mb-3 block">Savoir-faire technique</span>
+        <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-white">Compétences & Domaines</h2>
+        <p class="text-slate-400 mt-2">Survolez ou cliquez sur chaque domaine pour afficher les détails complets de mes compétences.</p>
       </div>
-      <div class="tl-item">
-        <span class="tl-date">[année] – [année]</span>
-        <h3>[Centre d'intérêt — ex. Sport / Musique]</h3>
-        <p style="color:#aab6c0; font-size:0.95rem;">[Une phrase sur ce que cette activité vous a appris.]</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <div class="skill-group-card spotlight-card rounded-2xl p-6 transition-all duration-300 cursor-pointer group" onclick="this.classList.toggle('active')">
+          <div class="flex items-center justify-between mb-3">
+            <div class="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-400 flex items-center justify-center font-bold text-lg">🖥️</div>
+            <span class="text-xs text-blue-400 font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">Détails <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></span>
+          </div>
+          <h3 class="font-heading text-xl font-bold text-white group-hover:text-blue-300 transition-colors">Systèmes et virtualisation</h3>
+          <p class="text-xs text-slate-400 mt-1">Infrastructure, OS & Hyperviseurs</p>
+          <div class="skill-details pt-4 mt-4 border-t border-slate-800 space-y-2 text-sm text-slate-300">
+            <p>• Linux (Debian, Ubuntu), Arch Linux</p>
+            <p>• Windows Server / Windows 10 / 11</p>
+            <p>• Hyperviseur : <strong class="text-white">Proxmox VE</strong></p>
+            <p>• Sauvegarde & restauration (snapshots, backups)</p>
+          </div>
+        </div>
+
+        <div class="skill-group-card spotlight-card rounded-2xl p-6 transition-all duration-300 cursor-pointer group" onclick="this.classList.toggle('active')">
+          <div class="flex items-center justify-between mb-3">
+            <div class="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 flex items-center justify-center font-bold text-lg">🔒</div>
+            <span class="text-xs text-cyan-400 font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">Détails <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></span>
+          </div>
+          <h3 class="font-heading text-xl font-bold text-white group-hover:text-cyan-300 transition-colors">Administration réseaux & sécurité</h3>
+          <p class="text-xs text-slate-400 mt-1">Routage, Firewall & IDS/IPS</p>
+          <div class="skill-details pt-4 mt-4 border-t border-slate-800 space-y-2 text-sm text-slate-300">
+            <p>• Sécurité & filtrage : <strong class="text-white">pfSense</strong>, Suricata (IDS/IPS)</p>
+            <p>• Configuration routeurs & switches Cisco</p>
+            <p>• Adressage & routage IPv4, masques, tables</p>
+          </div>
+        </div>
+
+        <div class="skill-group-card spotlight-card rounded-2xl p-6 transition-all duration-300 cursor-pointer group" onclick="this.classList.toggle('active')">
+          <div class="flex items-center justify-between mb-3">
+            <div class="w-10 h-10 rounded-xl bg-teal-500/10 border border-teal-500/20 text-teal-400 flex items-center justify-center font-bold text-lg">🌐</div>
+            <span class="text-xs text-teal-400 font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">Détails <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></span>
+          </div>
+          <h3 class="font-heading text-xl font-bold text-white group-hover:text-teal-300 transition-colors">Services & applications web</h3>
+          <p class="text-xs text-slate-400 mt-1">Annuaire, LAMP, Conteneurs</p>
+          <div class="skill-details pt-4 mt-4 border-t border-slate-800 space-y-2 text-sm text-slate-300">
+            <p>• Active Directory (AD DS, GPO, DNS, DHCP)</p>
+            <p>• Pile LAMP (Linux, Apache, MariaDB, PHP), WordPress</p>
+            <p>• Conteneurisation : <strong class="text-white">Docker</strong></p>
+          </div>
+        </div>
+
+        <div class="skill-group-card spotlight-card rounded-2xl p-6 transition-all duration-300 cursor-pointer group" onclick="this.classList.toggle('active')">
+          <div class="flex items-center justify-between mb-3">
+            <div class="w-10 h-10 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold text-lg">🛠️</div>
+            <span class="text-xs text-indigo-400 font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">Détails <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></span>
+          </div>
+          <h3 class="font-heading text-xl font-bold text-white group-hover:text-indigo-300 transition-colors">Outils & environnements</h3>
+          <p class="text-xs text-slate-400 mt-1">Virtualisation & Analyse</p>
+          <div class="skill-details pt-4 mt-4 border-t border-slate-800 space-y-2 text-sm text-slate-300">
+            <p>• VirtualBox, VMware</p>
+            <p>• Wireshark (analyse de trafic)</p>
+            <p>• Cisco Packet Tracer</p>
+            <p>• Visual Studio Code, GitHub</p>
+          </div>
+        </div>
+
+        <div class="skill-group-card spotlight-card rounded-2xl p-6 transition-all duration-300 cursor-pointer group" onclick="this.classList.toggle('active')">
+          <div class="flex items-center justify-between mb-3">
+            <div class="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/20 text-purple-400 flex items-center justify-center font-bold text-lg">💻</div>
+            <span class="text-xs text-purple-400 font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">Détails <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></span>
+          </div>
+          <h3 class="font-heading text-xl font-bold text-white group-hover:text-purple-300 transition-colors">Programmation</h3>
+          <p class="text-xs text-slate-400 mt-1">Langages & Scripting</p>
+          <div class="skill-details pt-4 mt-4 border-t border-slate-800 space-y-2 text-sm text-slate-300">
+            <p>• HTML5, CSS3</p>
+            <p>• Python (automatisation, scripts)</p>
+            <p>• JavaScript, PHP</p>
+            <p>• MySQL / MariaDB / SQL</p>
+          </div>
+        </div>
+
+        <div class="skill-group-card spotlight-card rounded-2xl p-6 transition-all duration-300 cursor-pointer group" onclick="this.classList.toggle('active')">
+          <div class="flex items-center justify-between mb-3">
+            <div class="w-10 h-10 rounded-xl bg-pink-500/10 border border-pink-500/20 text-pink-400 flex items-center justify-center font-bold text-lg">📊</div>
+            <span class="text-xs text-pink-400 font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">Détails <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></span>
+          </div>
+          <h3 class="font-heading text-xl font-bold text-white group-hover:text-pink-300 transition-colors">Gestion de projet & bureautique</h3>
+          <p class="text-xs text-slate-400 mt-1">Organisation & livrables</p>
+          <div class="skill-details pt-4 mt-4 border-t border-slate-800 space-y-2 text-sm text-slate-300">
+            <p>• Cahier des charges, cahier des tests & recette</p>
+            <p>• Diagrammes de Gantt, livrables</p>
+            <p>• Excel, Word, Google Drive, Notion</p>
+          </div>
+        </div>
+
       </div>
-    </div>
-  </section>
+    </section>
 
-  <div class="pulse-divider reveal">
-    <svg viewBox="0 0 1000 46" preserveAspectRatio="none">
-      <path class="pulse-path" d="M0,23 L280,23 L320,23 L345,6 L370,40 L395,23 L430,23 L1000,23"/>
-    </svg>
-  </div>
+    <!-- PROJETS SECTION -->
+    <section id="projets" class="scroll-mt-28">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-xs font-bold uppercase tracking-widest text-blue-400 mb-3 block">Réalisations</span>
+        <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-white">Mes Projets</h2>
+        <p class="text-slate-400 mt-2">Survolez un projet pour le zoomer, cliquez pour ouvrir sa vue détaillée, ses spécifications et ses liens.</p>
+      </div>
 
-  <!-- ================= EXPERIENCES ================= -->
-  <section id="experiences">
-    <div class="section-head reveal">
-      <p class="eyebrow">Terrain</p>
-      <h2>Expériences</h2>
-      <p>Mes stages et expériences en milieu professionnel.</p>
-    </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-    <div class="timeline reveal">
-      <div class="tl-item">
-        <span class="tl-date"> 2021 – 2022 </span>
-        <h3>Stage d'Observation : Cabinet Dentaire — Paris</h3>
-        <ul>
-          <li>Stérilisation du matériel dentaire — préparation, nettoyage, désinfection et rangement des instruments selon les protocoles d’hygiène.</li>
-          <li>Gestion des rendez‑vous — prise et organisation des rendez‑vous via Doctolib / Desmos, mise à jour du planning, accueil des patients.</li>
-          <li>Assistance en chirurgie dentaire — observation de soins et d’actes chirurgicaux.</li>
-        </ul>
-        <div class="tl-links">
-          <a href="#" target="_blank">Rapport de stage (PDF)</a>
+        <!-- Projet 0: Création de mon portfolio en autonomie -->
+        <div class="spotlight-card rounded-3xl p-5 flex flex-col justify-between group cursor-pointer transition-all duration-500 hover:scale-[1.04] hover:-translate-y-2 hover:z-20 hover:shadow-2xl hover:shadow-blue-500/20" onclick="openProjectModal('portfolioAuto')">
+          <div class="space-y-4">
+            <div class="w-full h-64 rounded-2xl bg-slate-800/80 border border-slate-700 overflow-hidden relative flex items-center justify-center">
+              <img src="apercu-portfolio.png" alt="Portfolio en autonomie" class="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-500" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+              <div style="display:none;" class="w-full h-full flex items-center justify-center bg-gradient-to-tr from-indigo-900/40 to-slate-900 text-indigo-400 font-heading font-bold text-lg">🚀 Portfolio SIO</div>
+            </div>
+            <h3 class="font-heading text-2xl font-bold text-white group-hover:text-indigo-300 transition-colors">Création de mon portfolio en autonomie</h3>
+            <p class="text-sm text-slate-300">Projet de longue haleine mené sur un an pour mettre en valeur mes compétences en BTS SIO (développement, réseau, virtualisation).</p>
+            <div class="flex flex-wrap gap-2 pt-2">
+              <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-xs font-medium">VS Code</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-xs font-medium">GitHub Copilot / Gemini / Claude</span>
+              <span class="px-2.5 py-1 rounded-md bg-indigo-500/20 text-indigo-400 text-xs font-semibold">Autonomie</span>
+            </div>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-800 flex items-center justify-between text-sm text-indigo-400 font-semibold">
+            <span class="group-hover:underline flex items-center gap-1">Voir le détail du projet <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></span>
+            <span class="text-xs px-2 py-1 rounded bg-slate-800 text-slate-400">Modal</span>
+          </div>
+        </div>
+
+        <!-- Projet 1: MIKBOOK -->
+        <div class="spotlight-card rounded-3xl p-5 flex flex-col justify-between group cursor-pointer transition-all duration-500 hover:scale-[1.04] hover:-translate-y-2 hover:z-20 hover:shadow-2xl hover:shadow-blue-500/20" onclick="openProjectModal('mikbook')">
+          <div class="space-y-4">
+            <div class="w-full h-64 rounded-2xl bg-slate-800/80 border border-slate-700 overflow-hidden relative flex items-center justify-center">
+              <img src="apercu-mikbook.png" alt="MIKBOOK" class="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-500" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+              <div style="display:none;" class="w-full h-full flex items-center justify-center bg-gradient-to-tr from-blue-900/40 to-slate-900 text-blue-400 font-heading font-bold text-lg">🩺 MIKBOOK</div>
+            </div>
+            <h3 class="font-heading text-2xl font-bold text-white group-hover:text-blue-300 transition-colors">MIKBOOK</h3>
+            <p class="text-sm text-slate-300">Site web éducatif développé pour le Dr Guedj (cabinet d'ophtalmologie) destiné aux étudiants en médecine.</p>
+            <div class="flex flex-wrap gap-2 pt-2">
+              <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-xs font-medium">HTML/CSS</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-xs font-medium">JavaScript</span>
+              <span class="px-2.5 py-1 rounded-md bg-blue-500/20 text-blue-400 text-xs font-semibold">Médical</span>
+            </div>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-800 flex items-center justify-between text-sm text-blue-400 font-semibold">
+            <span class="group-hover:underline flex items-center gap-1">Voir le détail du projet <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></span>
+            <span class="text-xs px-2 py-1 rounded bg-slate-800 text-slate-400">Modal</span>
+          </div>
+        </div>
+
+        <!-- Projet 2: Automatisation Python & Cloud -->
+        <div class="spotlight-card rounded-3xl p-5 flex flex-col justify-between group cursor-pointer transition-all duration-500 hover:scale-[1.04] hover:-translate-y-2 hover:z-20 hover:shadow-2xl hover:shadow-blue-500/20" onclick="openProjectModal('pythonCloud')">
+          <div class="space-y-4">
+            <div class="w-full h-64 rounded-2xl bg-slate-800/80 border border-slate-700 overflow-hidden relative flex items-center justify-center">
+              <img src="apercu-python.png" alt="Automatisation Python" class="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-500" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+              <div style="display:none;" class="w-full h-full flex items-center justify-center bg-gradient-to-tr from-cyan-900/40 to-slate-900 text-cyan-400 font-heading font-bold text-lg">⚡ Python & Cloud</div>
+            </div>
+            <h3 class="font-heading text-2xl font-bold text-white group-hover:text-cyan-300 transition-colors">Automatisation Python & Cloud</h3>
+            <p class="text-sm text-slate-300">Script Python pour générer des ordonnances PDF, avec sauvegarde locale et synchronisation externe sécurisée via Cloudinary et Notion.</p>
+            <div class="flex flex-wrap gap-2 pt-2">
+              <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-xs font-medium">Python</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-xs font-medium">Notion & Cloudinary</span>
+            </div>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-800 flex items-center justify-between text-sm text-cyan-400 font-semibold">
+            <span class="group-hover:underline flex items-center gap-1">Voir le détail du projet <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></span>
+            <span class="text-xs px-2 py-1 rounded bg-slate-800 text-slate-400">Modal</span>
+          </div>
+        </div>
+
+        <!-- Projet 3: E-commerce Maillots (Maillot Pirate) -->
+        <div class="spotlight-card rounded-3xl p-5 flex flex-col justify-between group cursor-pointer transition-all duration-500 hover:scale-[1.04] hover:-translate-y-2 hover:z-20 hover:shadow-2xl hover:shadow-blue-500/20" onclick="openProjectModal('ecommerce')">
+          <div class="space-y-4">
+            <div class="w-full h-64 rounded-2xl bg-slate-800/80 border border-slate-700 overflow-hidden relative flex items-center justify-center">
+              <img src="apercu-maillot.png" alt="Maillot Pirate" class="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-500" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+              <div style="display:none;" class="w-full h-full flex items-center justify-center bg-gradient-to-tr from-teal-900/40 to-slate-900 text-teal-400 font-heading font-bold text-lg">⚽ Maillot Pirate</div>
+            </div>
+            <h3 class="font-heading text-2xl font-bold text-white group-hover:text-teal-300 transition-colors">E-commerce Maillots ("Maillot Pirate")</h3>
+            <p class="text-sm text-slate-300">Plateforme de vente en ligne de maillots de football, catalogue structuré, expérience utilisateur et vitrine interactive.</p>
+            <div class="flex flex-wrap gap-2 pt-2">
+              <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-xs font-medium">HTML/CSS/JS</span>
+              <span class="px-2.5 py-1 rounded-md bg-teal-500/20 text-teal-400 text-xs font-semibold">E-commerce</span>
+            </div>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-800 flex items-center justify-between text-sm text-teal-400 font-semibold">
+            <span class="group-hover:underline flex items-center gap-1">Voir le détail du projet <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></span>
+            <span class="text-xs px-2 py-1 rounded bg-slate-800 text-slate-400">Modal</span>
+          </div>
+        </div>
+
+        <!-- Projet 4: Site Papothé et Chouchouthé -->
+        <div class="spotlight-card rounded-3xl p-5 flex flex-col justify-between group cursor-pointer transition-all duration-500 hover:scale-[1.04] hover:-translate-y-2 hover:z-20 hover:shadow-2xl hover:shadow-blue-500/20" onclick="openProjectModal('papothe')">
+          <div class="space-y-4">
+            <div class="w-full h-64 rounded-2xl bg-slate-800/80 border border-slate-700 overflow-hidden relative flex items-center justify-center">
+              <img src="papothé chouchouthé.png" alt="Papothé & Chouchouthé" class="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-500" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+              <div style="display:none;" class="w-full h-full flex items-center justify-center bg-gradient-to-tr from-pink-900/40 to-slate-900 text-pink-400 font-heading font-bold text-lg">☕ Papothé & Chouchouthé</div>
+            </div>
+            <h3 class="font-heading text-2xl font-bold text-white group-hover:text-pink-300 transition-colors">Papothé & Chouchouthé</h3>
+            <p class="text-sm text-slate-300">Création d'un site web vitrine esthétique et sur-mesure pour une entrepreneure en institut de beauté / espace détente (Lycée Le Rebours).</p>
+            <div class="flex flex-wrap gap-2 pt-2">
+              <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-xs font-medium">HTML/CSS/JS</span>
+              <span class="px-2.5 py-1 rounded-md bg-pink-500/20 text-pink-400 text-xs font-semibold">Web Design</span>
+            </div>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-800 flex items-center justify-between text-sm text-pink-400 font-semibold">
+            <span class="group-hover:underline flex items-center gap-1">Voir le détail du projet <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></span>
+            <span class="text-xs px-2 py-1 rounded bg-slate-800 text-slate-400">Modal</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CERTIFICATIONS SECTION (10 CARTES INTERACTIVES TYPE CARROUSEL) -->
+    <section id="certifications" class="scroll-mt-28">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <span class="text-xs font-bold uppercase tracking-widest text-blue-400 mb-3 block">Attestations officielles</span>
+        <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-white">Certifications</h2>
+        <p class="text-slate-400 mt-2">Mes 10 attestations officielles : survolez pour zoomer, cliquez pour afficher en grand.</p>
+      </div>
+
+      <!-- Conteneur Carrousel Interactif -->
+      <div class="relative max-w-6xl mx-auto px-4">
+        <!-- Piste des cartes défilables -->
+        <div id="certifCarousel" class="flex gap-6 overflow-x-auto no-scrollbar snap-x snap-mandatory py-10 px-6 scroll-smooth">
+
+          <!-- Carte 1 -->
+          <div class="certif-card snap-start shrink-0 w-[340px] sm:w-[380px] spotlight-card rounded-3xl p-4 group transition-all duration-500 hover:scale-[1.07] hover:-translate-y-2 hover:z-20 hover:shadow-2xl hover:shadow-blue-500/25"
+               data-title="RGPD Module 1" data-desc="Le RGPD et ses notions clés — Attestation officielle CNIL." data-img="Capture d'écran RGPD module 1.png" data-pdf="Attestation/RGPD%201.pdf" onclick="openCertifModal(0)">
+            <div class="relative w-full aspect-[4/3] rounded-2xl bg-white overflow-hidden border border-slate-700/80">
+              <img src="Capture d'écran RGPD module 1.png" alt="Attestation : RGPD Module 1" loading="lazy" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-110"
+                   onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+              <div style="display:none;" class="absolute inset-0 flex-col items-center justify-center text-center p-4 bg-gradient-to-tr from-blue-900/60 to-slate-900">
+                <span class="text-4xl">📜</span>
+                <span class="text-xs text-slate-400 mt-3 break-all">Dépose l'image ici :<br>Attestation/RGPD%201.png</span>
+              </div>
+              <span class="absolute top-3 right-3 z-10 px-2.5 py-1 rounded-md bg-slate-900/85 text-blue-300 text-xs font-semibold backdrop-blur">CNIL</span>
+            </div>
+            <div class="px-2 pt-4 pb-1">
+              <h3 class="font-heading text-lg font-bold text-white group-hover:text-blue-300 transition-colors">RGPD Module 1</h3>
+              <p class="text-sm text-slate-400 mt-1">Le RGPD et ses notions clés — Attestation officielle CNIL.</p>
+              <span class="text-xs text-slate-500 mt-3 block">Septembre 2024</span>
+            </div>
+          </div>
+
+          <!-- Carte 2 -->
+          <div class="certif-card snap-start shrink-0 w-[340px] sm:w-[380px] spotlight-card rounded-3xl p-4 group transition-all duration-500 hover:scale-[1.07] hover:-translate-y-2 hover:z-20 hover:shadow-2xl hover:shadow-blue-500/25"
+               data-title="RGPD Module 2" data-desc="Les principes de la protection des données personnelles." data-img="Attestation/RGPD%202.png" data-pdf="Attestation/RGPD%202.pdf" onclick="openCertifModal(1)">
+            <div class="relative w-full aspect-[4/3] rounded-2xl bg-white overflow-hidden border border-slate-700/80">
+              <img src="Capture d'écranRGPD mod2.png" alt="Attestation : RGPD Module 2" loading="lazy" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-110"
+                   onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+              <div style="display:none;" class="absolute inset-0 flex-col items-center justify-center text-center p-4 bg-gradient-to-tr from-blue-900/60 to-slate-900">
+                <span class="text-4xl">📜</span>
+                <span class="text-xs text-slate-400 mt-3 break-all">Dépose l'image ici :<br>Attestation/RGPD%202.png</span>
+              </div>
+              <span class="absolute top-3 right-3 z-10 px-2.5 py-1 rounded-md bg-slate-900/85 text-blue-300 text-xs font-semibold backdrop-blur">CNIL</span>
+            </div>
+            <div class="px-2 pt-4 pb-1">
+              <h3 class="font-heading text-lg font-bold text-white group-hover:text-blue-300 transition-colors">RGPD Module 2</h3>
+              <p class="text-sm text-slate-400 mt-1">Les principes de la protection des données personnelles.</p>
+              <span class="text-xs text-slate-500 mt-3 block">Septembre 2024</span>
+            </div>
+          </div>
+
+          <!-- Carte 3 -->
+          <div class="certif-card snap-start shrink-0 w-[340px] sm:w-[380px] spotlight-card rounded-3xl p-4 group transition-all duration-500 hover:scale-[1.07] hover:-translate-y-2 hover:z-20 hover:shadow-2xl hover:shadow-blue-500/25"
+               data-title="RGPD Module 3" data-desc="Les responsabilités des acteurs et conformité." data-img="Attestation/RGPD%203.png" data-pdf="Attestation/RGPD%203.pdf" onclick="openCertifModal(2)">
+            <div class="relative w-full aspect-[4/3] rounded-2xl bg-white overflow-hidden border border-slate-700/80">
+              <img src="Capture d'écran RGPD mod3.png" alt="Attestation : RGPD Module 3" loading="lazy" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-110"
+                   onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+              <div style="display:none;" class="absolute inset-0 flex-col items-center justify-center text-center p-4 bg-gradient-to-tr from-blue-900/60 to-slate-900">
+                <span class="text-4xl">📜</span>
+                <span class="text-xs text-slate-400 mt-3 break-all">Dépose l'image ici :<br>Attestation/RGPD%203.png</span>
+              </div>
+              <span class="absolute top-3 right-3 z-10 px-2.5 py-1 rounded-md bg-slate-900/85 text-blue-300 text-xs font-semibold backdrop-blur">CNIL</span>
+            </div>
+            <div class="px-2 pt-4 pb-1">
+              <h3 class="font-heading text-lg font-bold text-white group-hover:text-blue-300 transition-colors">RGPD Module 3</h3>
+              <p class="text-sm text-slate-400 mt-1">Les responsabilités des acteurs et conformité.</p>
+              <span class="text-xs text-slate-500 mt-3 block">Septembre 2024</span>
+            </div>
+          </div>
+
+          <!-- Carte 4 -->
+          <div class="certif-card snap-start shrink-0 w-[340px] sm:w-[380px] spotlight-card rounded-3xl p-4 group transition-all duration-500 hover:scale-[1.07] hover:-translate-y-2 hover:z-20 hover:shadow-2xl hover:shadow-cyan-500/25"
+               data-title="RGPD Module 4" data-desc="Cisco Networking Academy — Simulation et routage." data-img="Attestation/2Certificat_rgpd%20module%204%20(1).png" data-pdf="Attestation/2Certificat_rgpd%20module%204%20(1).pdf" onclick="openCertifModal(3)">
+            <div class="relative w-full aspect-[4/3] rounded-2xl bg-white overflow-hidden border border-slate-700/80">
+              <img src="Capture d'écran RGPD mod4.png" alt="Attestation : RGPD Module 4" loading="lazy" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-110"
+                   onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+              <div style="display:none;" class="absolute inset-0 flex-col items-center justify-center text-center p-4 bg-gradient-to-tr from-cyan-900/60 to-slate-900">
+                <span class="text-4xl">🌐</span>
+                <span class="text-xs text-slate-400 mt-3 break-all">Dépose l'image ici :<br>Attestation/2Certificat_rgpd%20module%204%20(1).png</span>
+              </div>
+              <span class="absolute top-3 right-3 z-10 px-2.5 py-1 rounded-md bg-slate-900/85 text-cyan-300 text-xs font-semibold backdrop-blur">Cisco</span>
+            </div>
+            <div class="px-2 pt-4 pb-1">
+              <h3 class="font-heading text-lg font-bold text-white group-hover:text-cyan-300 transition-colors">RGPD Module 4</h3>
+              <p class="text-sm text-slate-400 mt-1">Cisco Networking Academy — Simulation et routage.</p>
+              <span class="text-xs text-slate-500 mt-3 block">2025</span>
+            </div>
+          </div>
+
+          <!-- Carte 5 -->
+          <div class="certif-card snap-start shrink-0 w-[340px] sm:w-[380px] spotlight-card rounded-3xl p-4 group transition-all duration-500 hover:scale-[1.07] hover:-translate-y-2 hover:z-20 hover:shadow-2xl hover:shadow-teal-500/25"
+               data-title="Attestation Cisco" data-desc="Packettracer" data-img="Attestation/3certification-packettracer-2025.png" data-pdf="Attestation/3certification-packettracer-2025.pdf" onclick="openCertifModal(4)">
+            <div class="relative w-full aspect-[4/3] rounded-2xl bg-white overflow-hidden border border-slate-700/80">
+              <img src="Capture d'écran Cisco Packet.png" alt="Attestation : Attestation Cisco" loading="lazy" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-110"
+                   onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+              <div style="display:none;" class="absolute inset-0 flex-col items-center justify-center text-center p-4 bg-gradient-to-tr from-teal-900/60 to-slate-900">
+                <span class="text-4xl">🐧</span>
+                <span class="text-xs text-slate-400 mt-3 break-all">Dépose l'image ici :<br>Attestation/3certification-packettracer-2025.png</span>
+              </div>
+              <span class="absolute top-3 right-3 z-10 px-2.5 py-1 rounded-md bg-slate-900/85 text-teal-300 text-xs font-semibold backdrop-blur">Linux</span>
+            </div>
+            <div class="px-2 pt-4 pb-1">
+              <h3 class="font-heading text-lg font-bold text-white group-hover:text-teal-300 transition-colors">Attestation Cisco</h3>
+              <p class="text-sm text-slate-400 mt-1">Packettracer</p>
+              <span class="text-xs text-slate-500 mt-3 block">2025</span>
+            </div>
+          </div>
+
+          <!-- Carte 6 -->
+          <div class="certif-card snap-start shrink-0 w-[340px] sm:w-[380px] spotlight-card rounded-3xl p-4 group transition-all duration-500 hover:scale-[1.07] hover:-translate-y-2 hover:z-20 hover:shadow-2xl hover:shadow-indigo-500/25"
+               data-title="SecNumacadémie" data-desc="Attestation officielle de formation à la cybersécurité (ANSSI)." data-img="Attestation/1Test_final___ANSSI_x_Club_EBIOS_11-12-2025.png" data-pdf="Attestation/1Test_final___ANSSI_x_Club_EBIOS_11-12-2025.pdf" onclick="openCertifModal(5)">
+            <div class="relative w-full aspect-[4/3] rounded-2xl bg-white overflow-hidden border border-slate-700/80">
+              <img src="Capture d'écran ANSII ebios.png" alt="Attestation : SecNumacadémie" loading="lazy" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-110"
+                   onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+              <div style="display:none;" class="absolute inset-0 flex-col items-center justify-center text-center p-4 bg-gradient-to-tr from-indigo-900/60 to-slate-900">
+                <span class="text-4xl">🛡️</span>
+                <span class="text-xs text-slate-400 mt-3 break-all">Dépose l'image ici :<br>Attestation/1Test_final___ANSSI_x_Club_EBIOS_11-12-2025.png</span>
+              </div>
+              <span class="absolute top-3 right-3 z-10 px-2.5 py-1 rounded-md bg-slate-900/85 text-indigo-300 text-xs font-semibold backdrop-blur">ANSSI</span>
+            </div>
+            <div class="px-2 pt-4 pb-1">
+              <h3 class="font-heading text-lg font-bold text-white group-hover:text-indigo-300 transition-colors">SecNumacadémie</h3>
+              <p class="text-sm text-slate-400 mt-1">Attestation officielle de formation à la cybersécurité (ANSSI).</p>
+              <span class="text-xs text-slate-500 mt-3 block">2025</span>
+            </div>
+          </div>
+
+          <!-- Carte 7 -->
+          <div class="certif-card snap-start shrink-0 w-[340px] sm:w-[380px] spotlight-card rounded-3xl p-4 group transition-all duration-500 hover:scale-[1.07] hover:-translate-y-2 hover:z-20 hover:shadow-2xl hover:shadow-purple-500/25"
+               data-title="Windows Server Fundamentals" data-desc="Configuration des services Active Directory, DNS &amp; DHCP." data-img="Attestation/5certification-pix-20220510.png" data-pdf="Attestation/5certification-pix-20220510.pdf" onclick="openCertifModal(6)">
+            <div class="relative w-full aspect-[4/3] rounded-2xl bg-white overflow-hidden border border-slate-700/80">
+              <img src="Capture d'écran PIX 2022.png" alt="Attestation : Windows Server Fundamentals" loading="lazy" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-110"
+                   onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+              <div style="display:none;" class="absolute inset-0 flex-col items-center justify-center text-center p-4 bg-gradient-to-tr from-purple-900/60 to-slate-900">
+                <span class="text-4xl">🏢</span>
+                <span class="text-xs text-slate-400 mt-3 break-all">Dépose l'image ici :<br>Attestation/5certification-pix-20220510.png</span>
+              </div>
+              <span class="absolute top-3 right-3 z-10 px-2.5 py-1 rounded-md bg-slate-900/85 text-purple-300 text-xs font-semibold backdrop-blur">PIX 2022</span>
+            </div>
+            <div class="px-2 pt-4 pb-1">
+              <h3 class="font-heading text-lg font-bold text-white group-hover:text-purple-300 transition-colors">Windows Server Fundamentals</h3>
+              <p class="text-sm text-slate-400 mt-1">Configuration des services Active Directory, DNS & DHCP.</p>
+              <span class="text-xs text-slate-500 mt-3 block">2026</span>
+            </div>
+          </div>
+
+          <!-- Carte 8 -->
+          <div class="certif-card snap-start shrink-0 w-[340px] sm:w-[380px] spotlight-card rounded-3xl p-4 group transition-all duration-500 hover:scale-[1.07] hover:-translate-y-2 hover:z-20 hover:shadow-2xl hover:shadow-pink-500/25"
+               data-title="Proxmox VE &amp; Virtualisation" data-desc="Attestation de maîtrise des hyperviseurs et déploiement de VMs." data-img="Attestation/6certification-pix-20250121.png" data-pdf="Attestation/6certification-pix-20250121.pdf" onclick="openCertifModal(7)">
+            <div class="relative w-full aspect-[4/3] rounded-2xl bg-white overflow-hidden border border-slate-700/80">
+              <img src="Capture d'écran PIX 2025.png" alt="Attestation : Proxmox VE &amp; Virtualisation" loading="lazy" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-110"
+                   onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+              <div style="display:none;" class="absolute inset-0 flex-col items-center justify-center text-center p-4 bg-gradient-to-tr from-pink-900/60 to-slate-900">
+                <span class="text-4xl">☁️</span>
+                <span class="text-xs text-slate-400 mt-3 break-all">Dépose l'image ici :<br>Attestation/6certification-pix-20250121.png</span>
+              </div>
+              <span class="absolute top-3 right-3 z-10 px-2.5 py-1 rounded-md bg-slate-900/85 text-pink-300 text-xs font-semibold backdrop-blur">PIX 2024</span>
+            </div>
+            <div class="px-2 pt-4 pb-1">
+              <h3 class="font-heading text-lg font-bold text-white group-hover:text-pink-300 transition-colors">Proxmox VE & Virtualisation</h3>
+              <p class="text-sm text-slate-400 mt-1">Attestation de maîtrise des hyperviseurs et déploiement de VMs.</p>
+              <span class="text-xs text-slate-500 mt-3 block">2026</span>
+            </div>
+          </div>
+
+          <!-- Carte 9 -->
+          <div class="certif-card snap-start shrink-0 w-[340px] sm:w-[380px] spotlight-card rounded-3xl p-4 group transition-all duration-500 hover:scale-[1.07] hover:-translate-y-2 hover:z-20 hover:shadow-2xl hover:shadow-amber-500/25"
+               data-title="Python Automation Basics" data-desc="Certification de scripting et automatisation de processus." data-img="Attestation/python-automation.png" data-pdf="#" onclick="openCertifModal(8)">
+            <div class="relative w-full aspect-[4/3] rounded-2xl bg-white overflow-hidden border border-slate-700/80">
+              <img src="Attestation/python-automation.png" alt="Attestation : Python Automation Basics" loading="lazy" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-110"
+                   onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+              <div style="display:none;" class="absolute inset-0 flex-col items-center justify-center text-center p-4 bg-gradient-to-tr from-amber-900/60 to-slate-900">
+                <span class="text-4xl">🐍</span>
+                <span class="text-xs text-slate-400 mt-3 break-all">Dépose l'image ici :<br>Attestation/python-automation.png</span>
+              </div>
+              <span class="absolute top-3 right-3 z-10 px-2.5 py-1 rounded-md bg-slate-900/85 text-amber-300 text-xs font-semibold backdrop-blur">Python</span>
+            </div>
+            <div class="px-2 pt-4 pb-1">
+              <h3 class="font-heading text-lg font-bold text-white group-hover:text-amber-300 transition-colors">Python Automation Basics</h3>
+              <p class="text-sm text-slate-400 mt-1">Certification de scripting et automatisation de processus.</p>
+              <span class="text-xs text-slate-500 mt-3 block">2026</span>
+            </div>
+          </div>
+
+          <!-- Carte 10 -->
+          <div class="certif-card snap-start shrink-0 w-[340px] sm:w-[380px] spotlight-card rounded-3xl p-4 group transition-all duration-500 hover:scale-[1.07] hover:-translate-y-2 hover:z-20 hover:shadow-2xl hover:shadow-emerald-500/25"
+               data-title="Sécurité des Données de Santé (HDS)" data-desc="Sensibilisation aux normes de santé et hébergement sécurisé." data-img="Attestation/securite-donnees-sante.png" data-pdf="#" onclick="openCertifModal(9)">
+            <div class="relative w-full aspect-[4/3] rounded-2xl bg-white overflow-hidden border border-slate-700/80">
+              <img src="Attestation/securite-donnees-sante.png" alt="Attestation : Sécurité des Données de Santé (HDS)" loading="lazy" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-110"
+                   onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+              <div style="display:none;" class="absolute inset-0 flex-col items-center justify-center text-center p-4 bg-gradient-to-tr from-emerald-900/60 to-slate-900">
+                <span class="text-4xl">🏥</span>
+                <span class="text-xs text-slate-400 mt-3 break-all">Dépose l'image ici :<br>Attestation/securite-donnees-sante.png</span>
+              </div>
+              <span class="absolute top-3 right-3 z-10 px-2.5 py-1 rounded-md bg-slate-900/85 text-emerald-300 text-xs font-semibold backdrop-blur">Santé</span>
+            </div>
+            <div class="px-2 pt-4 pb-1">
+              <h3 class="font-heading text-lg font-bold text-white group-hover:text-emerald-300 transition-colors">Sécurité des Données de Santé (HDS)</h3>
+              <p class="text-sm text-slate-400 mt-1">Sensibilisation aux normes de santé et hébergement sécurisé.</p>
+              <span class="text-xs text-slate-500 mt-3 block">2026</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Contrôles de navigation du carrousel (flèches et 10 puces interactives) -->
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-6 mt-8 px-4">
+          <!-- Flèche Gauche -->
+          <button onclick="scrollCertif(-1)" class="w-12 h-12 rounded-full bg-slate-800 hover:bg-blue-600 border border-slate-700 hover:border-blue-500 text-white flex items-center justify-center shadow-lg transition-all focus:outline-none">
+            ←
+          </button>
+
+          <!-- 10 Puces interactives -->
+          <div id="certifDots" class="flex flex-wrap justify-center gap-2 max-w-xl">
+            <button onclick="goToCertif(0)" class="certif-dot w-8 h-2.5 rounded-full bg-blue-550 bg-blue-600 transition-all" aria-label="1"></button>
+            <button onclick="goToCertif(1)" class="certif-dot w-2.5 h-2.5 rounded-full bg-slate-700 hover:bg-slate-500 transition-all" aria-label="2"></button>
+            <button onclick="goToCertif(2)" class="certif-dot w-2.5 h-2.5 rounded-full bg-slate-700 hover:bg-slate-500 transition-all" aria-label="3"></button>
+            <button onclick="goToCertif(3)" class="certif-dot w-2.5 h-2.5 rounded-full bg-slate-700 hover:bg-slate-500 transition-all" aria-label="4"></button>
+            <button onclick="goToCertif(4)" class="certif-dot w-2.5 h-2.5 rounded-full bg-slate-700 hover:bg-slate-500 transition-all" aria-label="5"></button>
+            <button onclick="goToCertif(5)" class="certif-dot w-2.5 h-2.5 rounded-full bg-slate-700 hover:bg-slate-500 transition-all" aria-label="6"></button>
+            <button onclick="goToCertif(6)" class="certif-dot w-2.5 h-2.5 rounded-full bg-slate-700 hover:bg-slate-500 transition-all" aria-label="7"></button>
+            <button onclick="goToCertif(7)" class="certif-dot w-2.5 h-2.5 rounded-full bg-slate-700 hover:bg-slate-500 transition-all" aria-label="8"></button>
+            <button onclick="goToCertif(8)" class="certif-dot w-2.5 h-2.5 rounded-full bg-slate-700 hover:bg-slate-500 transition-all" aria-label="9"></button>
+            <button onclick="goToCertif(9)" class="certif-dot w-2.5 h-2.5 rounded-full bg-slate-700 hover:bg-slate-500 transition-all" aria-label="10"></button>
+          </div>
+
+          <!-- Flèche Droite -->
+          <button onclick="scrollCertif(1)" class="w-12 h-12 rounded-full bg-slate-800 hover:bg-blue-600 border border-slate-700 hover:border-blue-500 text-white flex items-center justify-center shadow-lg transition-all focus:outline-none">
+            →
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- VEILLE TECHNOLOGIQUE SECTION -->
+    <section id="veille" class="scroll-mt-28">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-xs font-bold uppercase tracking-widest text-blue-400 mb-3 block">Veille Technologique</span>
+        <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-white">L'IA : une révolution pour la médecine ?</h2>
+        <p class="text-slate-400 mt-3 max-w-2xl mx-auto">
+          <strong class="text-white font-semibold">Question de veille :</strong> En quoi l'intelligence artificielle révolutionne-t-elle la médecine, et quelles sont ses limites ? (Outil : Google Alertes).
+        </p>
+      </div>
+
+      <div class="mb-16">
+        <h3 class="font-heading text-xl font-bold text-white mb-6 flex items-center gap-2">
+          <span class="w-3 h-3 rounded-full bg-blue-500"></span> Méthode QQOQCP
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="spotlight-card rounded-2xl p-5">
+            <h4 class="font-heading font-bold text-blue-400 mb-2">Qui ?</h4>
+            <p class="text-sm text-slate-300">Les médecins, chercheurs, établissements de santé, entreprises de solutions d'IA et les patients.</p>
+          </div>
+          <div class="spotlight-card rounded-2xl p-5">
+            <h4 class="font-heading font-bold text-blue-400 mb-2">Quoi ?</h4>
+            <p class="text-sm text-slate-300">Applications de l'IA dans le diagnostic, imagerie médicale, recherche de traitements, assistance et limites/risques.</p>
+          </div>
+          <div class="spotlight-card rounded-2xl p-5">
+            <h4 class="font-heading font-bold text-blue-400 mb-2">Où ?</h4>
+            <p class="text-sm text-slate-300">Secteur médical, hôpitaux, centres de recherche en France et à l'international.</p>
+          </div>
+          <div class="spotlight-card rounded-2xl p-5">
+            <h4 class="font-heading font-bold text-blue-400 mb-2">Quand ?</h4>
+            <p class="text-sm text-slate-300">Suivi des évolutions actuelles et publications régulières à partir de 2026.</p>
+          </div>
+          <div class="spotlight-card rounded-2xl p-5">
+            <h4 class="font-heading font-bold text-blue-400 mb-2">Comment ?</h4>
+            <p class="text-sm text-slate-300">Via sites institutionnels, publications scientifiques, actualités spécialisées et Google Alertes.</p>
+          </div>
+          <div class="spotlight-card rounded-2xl p-5">
+            <h4 class="font-heading font-bold text-blue-400 mb-2">Pourquoi ?</h4>
+            <p class="text-sm text-slate-300">Comprendre les progrès, identifier les limites et anticiper la transformation du métier soignant.</p>
+          </div>
         </div>
       </div>
 
-      <div class="tl-item">
-        <span class="tl-date">[date début] – [date fin]</span>
-        <h3>Stage : [intitulé] — [Établissement]</h3>
-        <ul>
-          <li>[Tâche ou observation clé]</li>
-          <li>[Tâche ou observation clé]</li>
-        </ul>
-        <div class="tl-links">
-          <a href="#" target="_blank">Rapport de stage (PDF)</a>
+      <h3 class="font-heading text-xl font-bold text-white mb-6 flex items-center gap-2">
+        <span class="w-3 h-3 rounded-full bg-cyan-400"></span> Articles suivis & Synthèses
+      </h3>
+      <div class="space-y-4 max-w-4xl mx-auto" id="veilleArticlesContainer"></div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="scroll-mt-28">
+      <div class="spotlight-card rounded-3xl p-10 sm:p-16 text-center max-w-3xl mx-auto space-y-8 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-tr from-blue-600/10 via-transparent to-cyan-400/10 pointer-events-none"></div>
+        <span class="text-xs font-bold uppercase tracking-widest text-blue-400 block">Restons en contact</span>
+        <h2 class="font-heading text-3xl sm:text-5xl font-extrabold text-white">Me contacter</h2>
+        <p class="text-slate-300 max-w-lg mx-auto text-base">
+          Je suis activement à la recherche d'un <strong class="text-white">stage en systèmes et réseaux de 8 semaines</strong>, du <span class="text-blue-400 font-semibold">30 novembre 2026 au 28 janvier 2027</span>.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4 pt-4">
+          <a href="mailto:sansika.gnanapragasam@gmail.com" class="px-6 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold shadow-lg shadow-blue-600/30 transition-all flex items-center gap-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+            sansika.gnanapragasam@gmail.com
+          </a>
+          <a href="tel:+33764293287" class="px-6 py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-semibold transition-all flex items-center gap-2">
+            <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+            07 64 29 32 87
+          </a>
         </div>
+        <p class="text-xs text-slate-500 pt-2">Basée à Paris (75012)</p>
       </div>
+    </section>
 
-      <div class="tl-item">
-        <span class="tl-date">[date début] – [date fin]</span>
-        <h3>Stage : [intitulé] — [Établissement]</h3>
-        <ul>
-          <li>[Tâche ou observation clé]</li>
-          <li>[Tâche ou observation clé]</li>
-        </ul>
-      </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-slate-800 py-10 text-slate-500 text-sm">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p>© 2026 Sansika GNANAPRAGASAM — Tous droits réservés.</p>
+      <a href="#home" class="hover:text-blue-400 transition-colors flex items-center gap-1">Retour en haut ↑</a>
     </div>
-  </section>
-
-  <div class="pulse-divider reveal">
-    <svg viewBox="0 0 1000 46" preserveAspectRatio="none">
-      <path class="pulse-path" d="M0,23 L280,23 L320,23 L345,6 L370,40 L395,23 L430,23 L1000,23"/>
-    </svg>
-  </div>
-
-  <!-- ================= CERTIFICATIONS ================= -->
-  <section id="certifications">
-    <div class="section-head reveal">
-      <p class="eyebrow">Attestations</p>
-      <h2>Certifications</h2>
-      <p>Mes attestations et diplômes obtenus (PSC1, AFGSU, MOOC, etc.)</p>
-    </div>
-    <div class="cert-grid reveal">
-      <figure>
-        <img src="https://via.placeholder.com/200x140/12181f/39d98a?text=AFGSU" alt="Certification AFGSU">
-        <figcaption>[Nom de la certification]</figcaption>
-      </figure>
-      <figure>
-        <img src="https://via.placeholder.com/200x140/12181f/39d98a?text=PSC1" alt="Certification PSC1">
-        <figcaption>[Nom de la certification]</figcaption>
-      </figure>
-      <figure>
-        <img src="https://via.placeholder.com/200x140/12181f/39d98a?text=MOOC" alt="Certification MOOC">
-        <figcaption>[Nom de la certification]</figcaption>
-      </figure>
-      <figure>
-        <img src="https://via.placeholder.com/200x140/12181f/39d98a?text=+" alt="Autre certification">
-        <figcaption>[Nom de la certification]</figcaption>
-      </figure>
-    </div>
-  </section>
-
-  <div class="pulse-divider reveal">
-    <svg viewBox="0 0 1000 46" preserveAspectRatio="none">
-      <path class="pulse-path" d="M0,23 L280,23 L320,23 L345,6 L370,40 L395,23 L430,23 L1000,23"/>
-    </svg>
-  </div>
-
-  <!-- ================= COMPETENCES ================= -->
-  <section id="competences">
-    <div class="section-head reveal">
-      <p class="eyebrow">Savoir-faire</p>
-      <h2>Compétences</h2>
-      <p>Ce que je maîtrise, sur le terrain et en dehors.</p>
-    </div>
-    <div class="skills-cols reveal">
-      <div class="skill-group">
-        <h3>Compétences cliniques</h3>
-        <div class="skill">
-          <div class="skill-label"><span>[Compétence — ex. Examen clinique]</span><span>80%</span></div>
-          <div class="bar"><i style="width:80%"></i></div>
-        </div>
-        <div class="skill">
-          <div class="skill-label"><span>[Compétence — ex. Prise de constantes]</span><span>75%</span></div>
-          <div class="bar"><i style="width:75%"></i></div>
-        </div>
-        <div class="skill">
-          <div class="skill-label"><span>[Compétence — ex. Gestes d'urgence]</span><span>70%</span></div>
-          <div class="bar"><i style="width:70%"></i></div>
-        </div>
-      </div>
-      <div class="skill-group">
-        <h3>Savoir-être & outils</h3>
-        <div class="skill">
-          <div class="skill-label"><span>Relation soignant-patient</span><span>85%</span></div>
-          <div class="bar"><i style="width:85%"></i></div>
-        </div>
-        <div class="skill">
-          <div class="skill-label"><span>Travail en équipe pluridisciplinaire</span><span>78%</span></div>
-          <div class="bar"><i style="width:78%"></i></div>
-        </div>
-        <div class="skill">
-          <div class="skill-label"><span>[Outil — ex. Recherche bibliographique]</span><span>65%</span></div>
-          <div class="bar"><i style="width:65%"></i></div>
-        </div>
-      </div>
-    </div>
-    <div class="toolchips reveal">
-      <span>[Outil]</span><span>[Outil]</span><span>[Outil]</span>
-      <span>[Logiciel]</span><span>[Langue]</span><span>[Compétence transversale]</span>
-    </div>
-  </section>
-
-  <div class="pulse-divider reveal">
-    <svg viewBox="0 0 1000 46" preserveAspectRatio="none">
-      <path class="pulse-path" d="M0,23 L280,23 L320,23 L345,6 L370,40 L395,23 L430,23 L1000,23"/>
-    </svg>
-  </div>
-
-  <!-- ================= PROJETS ================= -->
-  <section id="projets">
-    <div class="section-head reveal">
-      <p class="eyebrow">Réalisations</p>
-      <h2>Projets</h2>
-      <p>Quelques travaux, présentations et réalisations menées durant mon parcours.</p>
-    </div>
-    <div class="proj-grid reveal">
-      <div class="proj-card">
-        <h3>Infrastructure Virtuelle</h3>
-        <ul>
-          <li>Installation/Configuration Windows Server DHCP</li>
-          <li>Installation d'un serveur LAMP (Apache, MySQL, PHP)</li>
-          <li>[Élément clé du projet]</li>
-        </ul>
-        <div class="proj-tags"><span>Windows Server</span><span>VirtualBox</span></div>
-        <div class="proj-links">
-          <a href="#" target="_blank">Voir</a>
-          <a href="#" target="_blank">Document</a>
-        </div>
-      </div>
-      <div class="proj-card">
-        <h3>
-E-Commerce Maillots</h3>
-        <ul>
-          <li>Site web e-commerce pour des maillots de foot, intégration paiement et catalogue dynamique.
-
-</li>
-          <li>Cahier des charges & recettes</li>
-          <li>Diagramme de Gantt & schéma d'infrastructure</li>
-        </ul>
-        <div class="proj-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
-        <div class="proj-links">
-           <a href="https://chaima951.github.io/site-foot/" target="_blank"><i class="bx bx-link-external"></i> Visiter</a>
-                    <a href="https://docs.google.com/document/d/1XZ_ax6Q86zLErj3cHxIVwiKCqsUyEeNaHr_FpZTWEaw/edit?usp=drive_link" target="_blank"><i class="bx bxs-file-doc"></i> CDC</a>
-                    <a href="https://drive.google.com/file/d/1EWmKAFSSDdjbMJwJxTdfxnQ49QBEZebB/view?usp=drive_link" target="_blank"><i class="bx bxs-bar-chart-alt-2"></i> Gantt</a>
-        </div>
-      </div>
-      <div class="proj-card">
-        <h3>Site Web Esthétique</h3>
-        <ul>
-          <li>Création d'un site internet pour un spa esthétique luxueux, pour les étudiants en licence esthétique</li>
-          <li>Cahier des charges & recettes</li>
-          <li>Diagramme de Gantt & schéma d'infrastructure</li>
-        </ul>
-        <div class="proj-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
-        <div class="proj-links">
-         <a href="https://sansikag.github.io/Projet-Laurine/" target="_blank"><i class="bx bx-link-external"></i> Visiter</a>
-                    <a href="https://docs.google.com/document/d/1XCVdYUDkRSFTv3ktUTo1PqsleWNYzK1h9IuCcFXwby8/edit?usp=drive_link" target="_blank"><i class="bx bxs-file-doc"></i> CDC</a>
-                    <a href="https://drive.google.com/file/d/1A1IVcDI-Z-WIcdiAclU-yS-cBP0WGY0y/view?usp=drive_link" target="_blank"><i class="bx bxs-bar-chart-alt-2"></i> Gantt</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <a href="#home" class="logo">[Sansika]</a>
-    <p>© 2026 [Sansika GNANAPRAGASAM] — Tous droits réservés</p>
   </footer>
 
-</main>
+  <!-- IMMERSIVE MODAL OVERLAY -->
+  <div id="immersiveModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 opacity-0 pointer-events-none transition-all duration-300 modal-backdrop">
+    <div id="modalContent" class="w-full max-w-3xl max-h-[90vh] overflow-y-auto bg-slate-900 border border-slate-700 rounded-3xl p-6 sm:p-10 shadow-2xl transform scale-95 transition-transform duration-300 relative">
+      <button onclick="closeModal()" class="absolute top-6 right-6 w-10 h-10 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white flex items-center justify-center transition-colors">
+        ✕
+      </button>
+      <div id="modalInnerBody"></div>
+    </div>
+  </div>
 
-<script>
-  // Menu mobile
-  const navToggle = document.getElementById('navToggle');
-  const navLinks = document.getElementById('navLinks');
-  navToggle.addEventListener('click', () => {
-    const open = navLinks.classList.toggle('open');
-    navToggle.setAttribute('aria-expanded', open);
-  });
-  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-    navLinks.classList.remove('open');
-    navToggle.setAttribute('aria-expanded', false);
-  }));
-
-  // Reveal on scroll + pulse draw + skill bars
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('in');
-        const path = entry.target.querySelector('.pulse-path');
-        if (path && !reduceMotion) path.classList.add('draw');
-        io.unobserve(entry.target);
-      }
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    document.addEventListener('mousemove', e => {
+      const x = e.clientX;
+      const y = e.clientY;
+      const glow = document.getElementById('cursor-glow');
+      glow.style.transform = `translate(${x}px, ${y}px)`;
+      document.querySelectorAll('.spotlight-card').forEach(card => {
+        const rect = card.getBoundingClientRect();
+        card.style.setProperty('--mouse-x', `${x - rect.left}px`);
+        card.style.setProperty('--mouse-y', `${y - rect.top}px`);
+      });
     });
-  }, { threshold: 0.2 });
 
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
-  // Counters
-  const stats = document.querySelectorAll('.stat b');
-  const statTargets = [0, 0, 0, 0]; // ex: [3, 5, 6, 3] — mettez vos vrais chiffres
-  const statIO = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        stats.forEach((el, i) => {
-          const target = statTargets[i] || 0;
-          let current = 0;
-          const step = () => {
-            current += 1;
-            el.textContent = current;
-            if (current < target) requestAnimationFrame(step);
-            else el.textContent = target;
-          };
-          if (target > 0) step();
-        });
-        statIO.disconnect();
-      }
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
     });
-  }, { threshold: 0.5 });
-  const statsEl = document.querySelector('.stats');
-  if (statsEl) statIO.observe(statsEl);
-</script>
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+    });
 
+    // Logique du carrousel de certifications (10 cartes)
+    const certifCarousel = document.getElementById('certifCarousel');
+    const certifDots = document.querySelectorAll('.certif-dot');
+
+    const certifStep = () => certifCarousel.firstElementChild.offsetWidth + 24; // largeur réelle + gap
+
+    function scrollCertif(direction) {
+      const cardWidth = certifStep();
+      certifCarousel.scrollBy({ left: direction * cardWidth, behavior: 'smooth' });
+    }
+
+    function goToCertif(index) {
+      const cardWidth = certifStep();
+      certifCarousel.scrollTo({ left: index * cardWidth, behavior: 'smooth' });
+    }
+
+    certifCarousel.addEventListener('scroll', () => {
+      const cardWidth = certifStep();
+      const index = Math.round(certifCarousel.scrollLeft / cardWidth);
+      certifDots.forEach((dot, i) => {
+        if(i === index) {
+          dot.classList.remove('w-2.5', 'bg-slate-700');
+          dot.classList.add('w-8', 'bg-blue-600');
+        } else {
+          dot.classList.remove('w-8', 'bg-blue-600');
+          dot.classList.add('w-2.5', 'bg-slate-700');
+        }
+      });
+    });
+
+    const modalData = {
+      bts: {
+        title: "BTS - SIO SISR (Solutions d'Infrastructure, Systèmes et Réseaux)",
+        subtitle: "Lycée Turgot — Paris 75003 | 2025 – 2027",
+        badge: "Diplôme Supérieur",
+        content: `<h4 class="text-lg font-bold text-blue-400 mb-3">Détails de la formation</h4><p class="text-slate-300 mb-4">Formation de Brevet de Technicien Supérieur en Services Informatiques aux Organisations, option Solutions d'Infrastructure, Systèmes et Réseaux.</p>`
+      },
+      bac: {
+        title: "Bac STMG option GF (Gestion et Finance)",
+        subtitle: "Lycée Elisa Lemonnier — Paris 75012 | 2024 – 2025 | Mention Bien",
+        badge: "Diplôme Secondaire",
+        content: `<h4 class="text-lg font-bold text-blue-400 mb-3">Détails de la formation</h4><p class="text-slate-300 mb-4">Bases solides en gestion d'entreprise, comptabilité, analyse financière et tableurs avancés.</p>`
+      },
+      stageMedecin: {
+        title: "Stage informatique — Cabinet d'ophtalmologie du Dr Mikaël Guedj",
+        subtitle: "Institut Arthur Vernes — 36 rue d'Assas, 75006 Paris | Mai 2026 – Juil. 2026",
+        badge: "Expérience Médicale & Info (8 semaines)",
+        content: `
+          <p class="text-slate-300 mb-4 leading-relaxed">
+            Stage immersif de 8 semaines au croisement de la médecine et du développement informatique, visant à digitaliser l'apprentissage des étudiants et à optimiser la gestion des données médicales du cabinet.
+          </p>
+          <h4 class="text-lg font-bold text-cyan-400 mt-6 mb-3">Détails des missions réalisées</h4>
+          <div class="space-y-4 text-slate-300">
+            <div>
+              <h5 class="font-bold text-white">Création et développement du site web éducatif <a href="https://sansikag.github.io/site-foot/" target="_blank" class="text-blue-400 underline hover:text-blue-300">"MIKBOOK"</a> :</h5>
+              <p class="text-sm mt-1 text-slate-300"><strong class="text-slate-200">Contexte & Objectif :</strong> Refonte numérique du livre du Dr Mikaël Guedj, jugé trop dense et lourd pour les révisions des étudiants en médecine.</p>
+              <p class="text-sm mt-1 text-slate-300"><strong class="text-slate-200">Fonctionnalités :</strong> Conception d’une plateforme interactive intégrant des QCM, des flashcards d'apprentissage, des jeux pédagogiques et l'accès aux supports de cours au format PDF, permettant aux étudiants d'apprendre de manière ludique et efficace.</p>
+            </div>
+            <div>
+              <h5 class="font-bold text-white">Automatisation intelligente des ordonnances (Python) :</h5>
+              <p class="text-sm mt-1 text-slate-300">Développement de scripts Python sur-mesure pour automatiser la génération, le traitement et le formatage des ordonnances ophtalmologiques, réduisant les tâches manuelles et les risques d’erreurs.</p>
+            </div>
+            <div>
+              <h5 class="font-bold text-white">Architecture de double sauvegarde sécurisée (Cloud & Locale) :</h5>
+              <p class="text-sm mt-1 text-slate-300">• <strong class="text-slate-200">Intégration Notion :</strong> Centralisation et structuration des données et des ordonnances dans une <a href="https://www.notion.so" target="_blank" class="text-blue-400 underline hover:text-blue-300">base de données Notion dédiée</a>.</p>
+              <p class="text-sm mt-1 text-slate-300">• <strong class="text-slate-200">Sauvegarde et Sécurité :</strong> Mise en place d'un système de double sauvegarde automatisé (stockage local sur les ordinateurs du cabinet et synchronisation externe sécurisée via <a href="https://cloudinary.com" target="_blank" class="text-blue-400 underline hover:text-blue-300">Cloudinary</a> via un script Python) pour garantir la traçabilité et la protection des données médicales.</p>
+            </div>
+          </div>
+        `
+      },
+      stageDentaire: {
+        title: "Stage — Cabinet Dentaire & Orthodontie",
+        subtitle: "Centre Dentaire Paris 12 Daumesnil — 166 avenue Daumesnil, 75012 Paris | Juin 2021",
+        badge: "Première Expérience d'Observation",
+        content: `
+          <h4 class="text-lg font-bold text-cyan-400 mb-3">Détails des missions réalisées</h4>
+          <ul class="list-disc pl-5 space-y-3 text-slate-300 mb-6">
+            <li><strong class="text-white">Stérilisation du matériel dentaire :</strong> préparation, nettoyage, désinfection et rangement des instruments selon les protocoles d’hygiène.</li>
+            <li><strong class="text-white">Gestion des rendez-vous :</strong> prise et organisation des rendez-vous via Doctolib / Desmos, mise à jour du planning et accueil des patients.</li>
+            <li><strong class="text-white">Assistance en chirurgie dentaire :</strong> observation des soins et des actes chirurgicaux.</li>
+          </ul>
+        `
+      },
+      portfolioAuto: {
+        title: "Création de mon portfolio en autonomie",
+        subtitle: "Projet personnel de longue haleine — BTS SIO SISR",
+        badge: "Projet Web & Autonomie",
+        content: `
+          <h4 class="text-lg font-bold text-indigo-400 mb-3">Présentation du projet</h4>
+          <p class="text-slate-300 mb-4 leading-relaxed">
+            La réalisation de ce portfolio a été un projet de longue haleine, mené en autonomie sur une période d'environ un an. Conçu avec passion et rigueur, il me permet de mettre en valeur l'ensemble de mes compétences et réalisations acquises tout au long de mon BTS SIO. Il démontre concrètement mon savoir-faire, que ce soit en développement web, en administration réseau ou en virtualisation.
+          </p>
+
+          <h4 class="text-lg font-bold text-indigo-400 mt-6 mb-3">Outils et technologies utilisés</h4>
+          <div class="space-y-3 text-slate-300">
+            <div>
+              <h5 class="font-bold text-white">Environnement de développement :</h5>
+              <p class="text-sm mt-1 text-slate-300">Utilisation principale de <strong class="text-white">Visual Studio Code (VSCode)</strong> pour la conception et l'écriture propre du code source.</p>
+            </div>
+            <div>
+              <h5 class="font-bold text-white">IA et assistance au développement :</h5>
+              <p class="text-sm mt-1 text-slate-300">Collaboration active avec des assistants intelligents (<strong class="text-white">GitHub Copilot, Gemini, Claude</strong>) pour accélérer le processus de développement, générer des idées, rédiger du code et explorer de nouvelles solutions techniques de manière efficace.</p>
+            </div>
+          </div>
+        `
+      },
+      mikbook: {
+        title: "MIKBOOK — Site web médical éducatif",
+        subtitle: "Projet de développement web pour le Dr Guedj",
+        badge: "Projet Phare",
+        content: `
+          <h4 class="text-lg font-bold text-blue-400 mb-3">Présentation du Projet</h4>
+          <p class="text-slate-300 mb-4">Plateforme web interactive développée pour accompagner les étudiants en médecine dans leurs révisions et l'apprentissage clinique.</p>
+          <div class="flex gap-4">
+            <a href="https://sansikag.github.io/site-foot/" target="_blank" class="px-4 py-2 rounded-xl bg-blue-600 text-white text-xs font-semibold hover:bg-blue-500">Voir le site</a>
+          </div>
+        `
+      },
+      pythonCloud: {
+        title: "Automatisation des ordonnances & Double sauvegarde sécurisée",
+        subtitle: "Python, Notion, Cloudinary",
+        badge: "Automatisation & Sécurité",
+        content: `
+          <h4 class="text-lg font-bold text-cyan-400 mb-3">Le Problème initial</h4>
+          <ul class="list-disc pl-5 space-y-2 text-slate-300 mb-4">
+            <li><strong class="text-white">Absence de sécurité :</strong> Le serveur local du cabinet fonctionnait sans aucun système de sauvegarde, exposant les données à un risque de perte totale.</li>
+            <li><strong class="text-white">Saisie manuelle et répétitive :</strong> Le Dr Guedj devait retaper manuellement toutes les valeurs des machines pour chaque patient.</li>
+          </ul>
+          <h4 class="text-lg font-bold text-cyan-400 mb-3">La Solution mise en place (Mon POC combiné)</h4>
+          <p class="text-slate-300 mb-2">J'ai conçu une méthode complète et automatisée via un script Python local qui fait le lien entre les différents outils :</p>
+          <ul class="list-disc pl-5 space-y-2 text-slate-300 mb-4">
+            <li><strong class="text-white">Génération automatique :</strong> Le script extrait les données du serveur pour créer l'ordonnance sur-mesure au format PDF.</li>
+            <li><strong class="text-white">Double protection (Locale & Cloud) :</strong> Le fichier est sauvegardé en local et envoyé de manière externe et sécurisée sur <a href="https://cloudinary.com" target="_blank" class="text-blue-400 underline">Cloudinary</a>.</li>
+            <li><strong class="text-white">Intégration directe dans Notion :</strong> Cloudinary génère un lien sécurisé du PDF, inséré dans la <a href="https://www.notion.so" target="_blank" class="text-blue-400 underline">base de données Notion</a> dédiée.</li>
+          </ul>
+          <h4 class="text-lg font-bold text-cyan-400 mb-3">L'Impact</h4>
+          <p class="text-slate-300">Grâce à cette fusion, le système est beaucoup plus fiable, les données sont protégées deux fois, et les ordonnances arrivent à la fois dans le dossier local et dans le cloud.</p>
+        `
+      },
+      ecommerce: {
+        title: "Création d'un site e-commerce — Maillots de foot (\"Maillot Pirate\")",
+        subtitle: "Plateforme de vente en ligne",
+        badge: "E-commerce",
+        content: `
+          <h4 class="text-lg font-bold text-teal-400 mb-3">Présentation du projet</h4>
+          <p class="text-slate-300 mb-4">Conception et développement d'une plateforme de vente en ligne dédiée à un entrepreneur spécialisé dans la commercialisation de maillots de football.</p>
+          <h5 class="font-bold text-white mb-2">Objectifs & Fonctionnalités</h5>
+          <ul class="list-disc pl-5 space-y-2 text-slate-300 mb-4">
+            <li><strong class="text-white">Catalogue structuré :</strong> Système de classification clair pour organiser les différents types de maillots (équipes, sélections nationales, rétro).</li>
+            <li><strong class="text-white">Expérience utilisateur (UX/UI) :</strong> Design épuré et dynamique orienté e-commerce.</li>
+            <li><strong class="text-white">Vitrine interactive :</strong> Navigation fluide permettant de découvrir les nouveautés et les promotions.</li>
+          </ul>
+          <p class="text-slate-300 mb-4"><strong class="text-white">Apports du projet :</strong> Ce projet m'a permis de concevoir une interface e-commerce concrète, de structurer un grand volume de produits de manière ergonomique.</p>
+          <div class="flex flex-wrap gap-3 mt-4">
+            <a href="https://chaima951.github.io/site-foot/" target="_blank" class="px-4 py-2 rounded-xl bg-teal-600 text-white text-xs font-semibold hover:bg-teal-500">Voir le site</a>
+            <a href="#" target="_blank" class="px-4 py-2 rounded-xl bg-slate-800 text-teal-400 text-xs font-semibold border border-slate-700 hover:bg-slate-700">Voir le drive</a>
+            <a href="#" target="_blank" class="px-4 py-2 rounded-xl bg-slate-800 text-teal-400 text-xs font-semibold border border-slate-700 hover:bg-slate-700">Voir le rapport de stage</a>
+          </div>
+        `
+      },
+      papothe: {
+        title: "Création d'un site web — Papothé & Chouchouthé",
+        subtitle: "Projet pour Laurine, entrepreneure en institut de beauté | Lycée Le Rebours",
+        badge: "Web Design",
+        content: `
+          <h4 class="text-lg font-bold text-pink-400 mb-3">Présentation du projet</h4>
+          <p class="text-slate-300 mb-4">Création d'un site web vitrine esthétique et sur-mesure pour une entrepreneure combinant un espace détente (« papothé ») et des prestations de bien-être (« chouchouthé »).</p>
+          <h5 class="font-bold text-white mb-2">Déroulement et étapes du projet</h5>
+          <ul class="list-disc pl-5 space-y-2 text-slate-300 mb-4">
+            <li><strong class="text-white">Échanges et recueil des besoins :</strong> Collaboration étroite avec la cliente (WhatsApp, Google Drive) et rencontres approfondies au Lycée Le Rebours.</li>
+            <li><strong class="text-white">Conception et développement :</strong> Réalisation sous Visual Studio Code en HTML, CSS (responsive) et JavaScript.</li>
+          </ul>
+          <h5 class="font-bold text-white mb-2">Fonctionnalités clés du site</h5>
+          <ul class="list-disc pl-5 space-y-2 text-slate-300 mb-4">
+            <li><strong class="text-white">Page d'accueil :</strong> Immersion visuelle et présentation chaleureuse de l'univers.</li>
+            <li><strong class="text-white">Espace Boissons & Prestations Beauté :</strong> Présentation de la carte et des tarifs.</li>
+            <li><strong class="text-white">Contact :</strong> Page interactive dotée d'un formulaire.</li>
+          </ul>
+          <div class="flex flex-wrap gap-3 mt-4">
+            <a href="https://sansikag.github.io/Projet-Laurine/" target="_blank" class="px-4 py-2 rounded-xl bg-pink-600 text-white text-xs font-semibold hover:bg-pink-500">Voir le site</a>
+            <a href="https://drive.google.com" target="_blank" class="px-4 py-2 rounded-xl bg-slate-800 text-pink-400 text-xs font-semibold border border-slate-700 hover:bg-slate-700">Voir le drive (cahier des charges, recette, test, Gantt)</a>
+          </div>
+        `
+      }
+    };
+
+    const modal = document.getElementById('immersiveModal');
+    const modalContent = document.getElementById('modalContent');
+    const modalInnerBody = document.getElementById('modalInnerBody');
+
+    function openDiplomaModal(key) { renderModal(key); }
+    function openMissionModal(key) { renderModal(key); }
+    function openProjectModal(key) { renderModal(key); }
+
+    function renderModal(key) {
+      const data = modalData[key];
+      if(!data) return;
+      modalInnerBody.innerHTML = `
+        <span class="px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-semibold uppercase tracking-wider mb-3 inline-block">${data.badge}</span>
+        <h3 class="font-heading text-2xl sm:text-3xl font-extrabold text-white mt-1">${data.title}</h3>
+        <p class="text-sm text-slate-400 mb-6 pb-4 border-b border-slate-800">${data.subtitle}</p>
+        <div class="space-y-4">${data.content}</div>
+      `;
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+      modalContent.classList.remove('scale-95');
+      document.body.style.overflow = 'hidden';
+    }
+
+
+    function openCertifModal(i) {
+      const card = document.querySelectorAll('.certif-card')[i];
+      if (!card) return;
+      const { title, desc, img, pdf } = card.dataset;
+      const pdfBtn = (pdf && pdf !== '#')
+        ? `<a href="${pdf}" target="_blank" rel="noopener" class="inline-block mt-5 px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-sm font-semibold transition-colors">Ouvrir le PDF</a>`
+        : '';
+      modalInnerBody.innerHTML = `
+        <h3 class="font-heading text-2xl font-extrabold text-white pr-12">${title}</h3>
+        <p class="text-sm text-slate-400 mb-5 pb-4 border-b border-slate-800">${desc}</p>
+        <img src="${img}" alt="${title}" class="w-full rounded-xl bg-white" onerror="this.outerHTML='<p class=&quot;text-slate-400 text-sm&quot;>Image introuvable : ${img}</p>'">
+        ${pdfBtn}
+      `;
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+      modalContent.classList.remove('scale-95');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      modal.classList.add('opacity-0', 'pointer-events-none');
+      modalContent.classList.add('scale-95');
+      document.body.style.overflow = 'auto';
+    }
+
+    modal.addEventListener('click', (e) => { if(e.target === modal) closeModal(); });
+    document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeModal(); });
+
+    const articlesData = [
+      ["L'IA dans la santé : des résultats prometteurs, mais difficiles à intégrer", "Le Monde — tribune d'Olivier Cousin et Andy Smith", "", "L'IA peut contribuer au diagnostic, au pronostic et au choix des traitements grâce à l'analyse de données massives.", "L'IA représente un progrès technique qui nécessite une validation rigoureuse en conditions réelles."],
+      ["Construire une IA médicale adaptée aux besoins français", "Le Monde — tribune de Clément Goehrs et Guillaume Martin", "30 septembre 2025", "Usages possibles de l'IA pour la rédaction de courriers et l'assistance aux décisions médicales.", "Gains de temps et souveraineté numérique des données de santé."],
+      ["L'IA pour accélérer le diagnostic du cancer de la prostate", "NHS England", "28 octobre 2025", "Projet pilote utilisant l'IA pour analyser des IRM de patients suspects.", "Réduction notable des délais de prise en charge."]
+    ];
+
+    const veilleContainer = document.getElementById('veilleArticlesContainer');
+    articlesData.forEach((art, index) => {
+      const details = document.createElement('details');
+      details.className = 'spotlight-card rounded-2xl p-6 group cursor-pointer';
+      details.innerHTML = `
+        <summary class="list-none flex items-center justify-between font-heading font-semibold text-white text-base sm:text-lg focus:outline-none">
+          <div class="space-y-1">
+            <span class="text-xs font-semibold text-blue-400 block">Article ${index + 1} ${art[2] ? '• ' + art[2] : ''}</span>
+            <span>${art[0]}</span>
+            <span class="text-xs text-slate-400 block font-normal mt-1">${art[1]}</span>
+          </div>
+          <span class="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center text-slate-300 group-open:rotate-180 transition-transform ml-4 shrink-0">↓</span>
+        </summary>
+        <div class="mt-4 pt-4 border-t border-slate-800 space-y-3 text-sm text-slate-300">
+          <p><strong class="text-white font-medium">Résumé :</strong> ${art[3]}</p>
+          <p><strong class="text-blue-400 font-medium">Lien avec mon sujet :</strong> ${art[4]}</p>
+        </div>
+      `;
+      veilleContainer.appendChild(details);
+    });
+  </script>
 </body>
 </html>
